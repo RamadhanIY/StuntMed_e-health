@@ -52,11 +52,13 @@ public class MainActivity extends AppCompatActivity {
             final ArrayList<Double> accln = new ArrayList<>();
 
             float x = sensorEvent.values[0];
-
+            float y = sensorEvent.values[1];
+            float z = sensorEvent.values[2];
 
             if (!mInitialized) {
                 mLastX = x;
-
+                mLastY = y;
+                mLastZ = z;
 
                 mInitialized = true;
             } else {
@@ -65,14 +67,18 @@ public class MainActivity extends AppCompatActivity {
 //                    return; // Skip processing if 3 seconds have passed
 //                }
                 double deltaX = Math.abs(mLastX - x);
-
+                double deltaY = Math.abs(mLastY - y);
+                double deltaZ = Math.abs(mLastZ - z);
                 if (deltaX < NOISE) deltaX = (double) 0.0;
-
+                if (deltaY < NOISE) deltaY = (double) 0.0;
+                if (deltaZ < NOISE) deltaZ = (double) 0.0;
                 mLastX = x;
+                mLastY = y;
+                mLastZ = z;
 
                 //calculate agar nilai ketiga axis tidak berantakan
 
-                accCurrentVal = deltaX;
+                accCurrentVal = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ));
                 accln.add(accCurrentVal);
 
             }
