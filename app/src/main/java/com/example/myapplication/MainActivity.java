@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,25 +35,21 @@ public class MainActivity extends AppCompatActivity {
 
     private double mLastX;
 
-    private double NOISE = 0.03;
+    private double NOISE = 0.0003;
 
-    private static final long START_TIME_IN_MILLIS = 5000;
+    private static final long START_TIME_IN_MILLIS = 10000;
     private CountDownTimer mCountDownTimer;
     private  boolean mTimerRunning;
     private boolean onoffsensor;
     private long mTimeLeftinMillis =  START_TIME_IN_MILLIS;
     private SharedPreferences mSharedPreferences;
-
-    double lastAcceleration; // to store the last acceleration measurement
-    ArrayList<Double> sessionAccel = new ArrayList<>(); // to store the last acceleration of each session
-    // ...
-
+    private static final String PREFERENCES_NAME = "sensor_data";
+    private static final String KEY_LAST_MEASUREMENT = "last_measurement";
 
     private SensorEventListener sensorEventListener = new SensorEventListener() {
-
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
-
+            final ArrayList<Double> accln = new ArrayList<>();
 
             float x = sensorEvent.values[0];
 
@@ -78,20 +73,22 @@ public class MainActivity extends AppCompatActivity {
                 //calculate agar nilai ketiga axis tidak berantakan
 
                 accCurrentVal = deltaX;
-
+                accln.add(accCurrentVal);
 
             }
-
             double accChangeVal = Math.abs(accCurrentVal - accPrevVal);
             accPrevVal = accCurrentVal;
-            lastAcceleration = accCurrentVal;
-
-
 
             //Update text
             accels_text.setText("Current = " + Math.round(accCurrentVal * 100.0) / 100.0);
             txt_prev.setText("Previous = " + Math.round(accPrevVal * 100.0) / 100.0);
+            txt_change.setText("Change " + Math.round(accChangeVal * 100.0) / 100.0);
+
+
             probar.setProgress((int) accChangeVal);
+            SharedPreferences.Editor editor = mSharedPreferences.edit();
+            editor.putFloat(KEY_LAST_MEASUREMENT, (float) accCurrentVal);
+            editor.apply();
 
             long currentTimeInSeconds = System.currentTimeMillis() / 1000;
 
@@ -100,12 +97,15 @@ public class MainActivity extends AppCompatActivity {
 
             // Hitung jarak berdasarkan rumus fisika: distance = 0.5 * acceleration * time^2
             // Kita asumsikan bahwa akselerasi adalah akselerasi rata-rata selama interval waktu tersebut
+            distance = 0.5 * accCurrentVal * Math.pow(durationInSeconds, 2);
+            mStartTime = currentTimeInSeconds;
 
+            // Update teks jarak
+            distance_text.setText("Distance = " + distance);
 
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-
                     lastMeasurements_txt.setText("Last measurement = " + accCurrentVal);
                 }
             });
@@ -154,13 +154,12 @@ public class MainActivity extends AppCompatActivity {
         updateCountDownText();
 
         // Initialize SharedPreferences
-//        mSharedPreferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
-//
-//        // Read and display the last saved measurement
-//        float lastMeasurement = mSharedPreferences.getFloat(KEY_LAST_MEASUREMENT, 0);
+        mSharedPreferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
+
+        // Read and display the last saved measurement
+        float lastMeasurement = mSharedPreferences.getFloat(KEY_LAST_MEASUREMENT, 0);
 //        lastMeasurements_txt.setText("Last measurement = " + lastMeasurement);
         mStartTime = System.currentTimeMillis() / 1000;
-
 
     }
 
@@ -186,13 +185,6 @@ public class MainActivity extends AppCompatActivity {
                 mTimeLeftinMillis = START_TIME_IN_MILLIS;
 //                onoffsensor = false;
                 updateCountDownText();
-                sessionAccel.add(lastAcceleration); // add the last acceleration of the session
-                // Convert the list to String and display it
-                String sessionAccelStr = Arrays.toString(sessionAccel.toArray());
-                txt_change.setText("List: " + sessionAccelStr);
-                distance = 0.5 * lastAcceleration * Math.pow(START_TIME_IN_MILLIS/1000, 2);
-                // Update teks jarak
-                distance_text.setText("Distance = " + distance + "m");
 
 
             }
