@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             //Update text
-            accels_text.setText("Current = " + Math.round(accCurrentVal * 100.0) / 100.0);
+            accels_text.setText("Current = " + Math.round(accCurrentVal * 100.0) / 100.0 + "m/s^2");
             txt_prev.setText("Previous = " + Math.round(accPrevVal * 100.0) / 100.0);
             probar.setProgress((int) accChangeVal);
 
