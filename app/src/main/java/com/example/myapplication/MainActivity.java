@@ -20,6 +20,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     TextView accels_text, txt_prev, txt_change, txt_countdown,lastMeasurements_txt;
+    TextView distance_text;
+    double distance;
     Button mButtonStart;
     ProgressBar probar;
 
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean mInitialized;
 
-    private double mLastX, mLastY, mLastZ;
+    private double mLastX;
 
     private double NOISE = 0.0003;
 
@@ -88,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
             editor.putFloat(KEY_LAST_MEASUREMENT, (float) accCurrentVal);
             editor.apply();
 
+            long currentTimeInSeconds = System.currentTimeMillis() / 1000;
+
+            // Hitung durasi dalam detik sejak pengukuran terakhir
+            long durationInSeconds = currentTimeInSeconds - mStartTime;
+
+            // Hitung jarak berdasarkan rumus fisika: distance = 0.5 * acceleration * time^2
+            // Kita asumsikan bahwa akselerasi adalah akselerasi rata-rata selama interval waktu tersebut
+            distance = 0.5 * accCurrentVal * Math.pow(durationInSeconds, 2);
+            mStartTime = currentTimeInSeconds;
+
+            // Update teks jarak
+            distance_text.setText("Distance = " + distance);
+
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -117,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
         txt_countdown = findViewById(R.id.txt_countdown);
         mButtonStart = findViewById(R.id.mButtonStart);
         lastMeasurements_txt = findViewById(R.id.lastMeasurement_txt);
+        distance_text = findViewById(R.id.distance_text);
+
 
         //Sensor
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -142,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         // Read and display the last saved measurement
         float lastMeasurement = mSharedPreferences.getFloat(KEY_LAST_MEASUREMENT, 0);
 //        lastMeasurements_txt.setText("Last measurement = " + lastMeasurement);
+        mStartTime = System.currentTimeMillis() / 1000;
 
     }
 
