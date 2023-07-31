@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView accels_text, txt_prev, txt_change, txt_countdown,lastMeasurements_txt;
+    TextView accels_text, txt_prev, txt_change, txt_countdown,lastMeasurements_txt,txt_listdistances;
     TextView distance_text;
     double distance;
     Button mButtonStart;
@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
     double lastAcceleration; // to store the last acceleration measurement
     ArrayList<Double> sessionAccel = new ArrayList<>(); // to store the last acceleration of each session
+    // ...
+
+    double lastDistance; // to store the last acceleration measurement
+    ArrayList<Double> listDistances = new ArrayList<>(); // to store the last acceleration of each session
     // ...
 
 
@@ -133,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         mButtonStart = findViewById(R.id.mButtonStart);
         lastMeasurements_txt = findViewById(R.id.lastMeasurement_txt);
         distance_text = findViewById(R.id.distance_text);
+        txt_listdistances = findViewById(R.id.txt_listdistances);
 
 
         //Sensor
@@ -184,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
                 mSensorManager.unregisterListener(sensorEventListener); // unregister listener here
                 mButtonStart.setText("Start");
                 mTimeLeftinMillis = START_TIME_IN_MILLIS;
-//                onoffsensor = false;
                 updateCountDownText();
                 sessionAccel.add(lastAcceleration); // add the last acceleration of the session
                 // Convert the list to String and display it
@@ -193,6 +197,11 @@ public class MainActivity extends AppCompatActivity {
                 distance = 0.5 * lastAcceleration * Math.pow(START_TIME_IN_MILLIS/1000, 2);
                 // Update teks jarak
                 distance_text.setText("Distance = " + distance + "m");
+                listDistances.add(distance);
+                String sessionlistdistances = Arrays.toString(listDistances.toArray());
+                txt_listdistances.setText("List" + sessionlistdistances);
+
+
 
 
             }
