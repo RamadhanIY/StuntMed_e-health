@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.stuntmed;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.stuntmed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,11 +14,13 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.stuntmed.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MeasurementActivity extends AppCompatActivity {
 
     TextView accels_text, txt_prev, txt_change, txt_countdown,lastMeasurements_txt,txt_listdistances;
     TextView distance_text;
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_measurement);
 
         accels_text = findViewById(R.id.accels_text);
         txt_change = findViewById(R.id.txt_change);
