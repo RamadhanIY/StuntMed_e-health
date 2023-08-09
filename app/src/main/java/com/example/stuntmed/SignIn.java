@@ -43,6 +43,7 @@ public class SignIn extends AppCompatActivity {
     Button btGoogleSignIn;
     Button btSignIn;
     EditText tv_email, tv_password;
+    TextView tv_register;
 
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
@@ -58,6 +59,16 @@ public class SignIn extends AppCompatActivity {
         btSignIn = findViewById(R.id.signinbtn);
         tv_email = findViewById(R.id.username);
         tv_password = findViewById(R.id.password);
+        tv_register = findViewById(R.id.tv_register);
+
+        // add register event listener
+        tv_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignIn.this, Register.class);
+                startActivity(intent);
+            }
+        });
 
         // Initialize sign in options the client-id is copied form google-services.json file
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
