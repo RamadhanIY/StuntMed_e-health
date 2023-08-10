@@ -11,9 +11,8 @@
         android:title="Explore"
         android:icon="@drawable/li_search"/>
     <item
-        android:id="@+id/scan"
-        android:title=""
-        android:icon=""/>
+        android:id="@+id/fab"
+        android:title=""/>
     <item
         android:id="@+id/history"
         android:title="History"
