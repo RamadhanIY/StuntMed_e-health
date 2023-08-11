@@ -13,8 +13,19 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExplorerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomepageUser"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -24,17 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider
-            android:authorities="com.example.camerapermission.fileProvider"
-            android:name="androidx.core.content.FileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_FILE_PATHS"
-                android:resource="@xml/file_paths">
-
-            </meta-data>
-        </provider>
     </application>
 
 </manifest>
