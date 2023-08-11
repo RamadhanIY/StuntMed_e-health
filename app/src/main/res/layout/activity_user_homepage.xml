@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".HomepageUser">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="787dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/radius">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height=""
+
+    </RelativeLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
