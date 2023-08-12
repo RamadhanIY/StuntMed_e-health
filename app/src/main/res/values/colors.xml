@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name ="bluemaincolor">#5A74FF</color>
+    <color name="bluebuttoncolor">#ABC7FF</color>
 </resources>
 
 <!--homepage-->

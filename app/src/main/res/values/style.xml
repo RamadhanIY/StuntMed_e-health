@@ -9,6 +9,7 @@
         <item name="colorOnSecondary">#FFFFFF</item>
         <item name="colorError">#F44336</item>
         <item name="colorOnError">#FFFFFF</item>
+
     </style>
     <color name="background">#FAFAFA</color>
 </resources>
