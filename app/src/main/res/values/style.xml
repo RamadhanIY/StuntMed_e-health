@@ -2,10 +2,10 @@
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
 
-        <item name="colorPrimary">#3846FF</item>
+        <item name="colorPrimary">#ABC7FF</item>
         <item name="colorPrimaryVariant">#000000</item>
         <item name="colorSecondary">#2962FF</item>
-        <item name="colorSecondaryVariant">#0039CB</item>
+        <item name="colorSecondaryVariant">#718CD1</item>
         <item name="colorOnSecondary">#FFFFFF</item>
         <item name="colorError">#F44336</item>
         <item name="colorOnError">#FFFFFF</item>
