@@ -36,7 +36,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="110dp"
             android:layout_marginTop="76dp"
-            android:text="BLANK" />
+            android:text="BLANK"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -47,7 +48,7 @@
             android:layout_marginStart="110dp"
             android:layout_marginTop="25dp"
             android:text="Name"
-            android:textSize="25dp" />
+            android:textSize="30sp" />
 
         <RelativeLayout
             android:layout_width="370dp"
@@ -153,9 +154,16 @@
                 android:background="@drawable/rounded_3"
                 app:cardBackgroundColor="@color/bluebuttoncolor">
                 <com.denzcoskun.imageslider.ImageSlider
-                    android:layout_width=""
+                    android:id="@+id/imageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iss_period="1000"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="1000"
+                    app:iss_corner_radius="30"
+                    app:iss_title_background="@color/bluemaincolor">
 
-
+                </com.denzcoskun.imageslider.ImageSlider>
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
