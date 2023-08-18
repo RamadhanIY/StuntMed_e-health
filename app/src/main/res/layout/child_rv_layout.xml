@@ -34,9 +34,9 @@
 
                 </ImageView>
                 <TextView
+                    android:id="@+id/title_trends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="content"
                     android:layout_marginTop="5dp">
                 </TextView>
             </LinearLayout>
