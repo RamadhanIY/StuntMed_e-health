@@ -153,14 +153,15 @@
                 android:layout_marginTop="400dp"
                 android:background="@drawable/rounded_3"
                 app:cardBackgroundColor="@color/bluebuttoncolor">
+
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/imageSlider"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:iss_period="1000"
                     app:iss_auto_cycle="true"
-                    app:iss_delay="1000"
                     app:iss_corner_radius="30"
+                    app:iss_delay="1000"
+                    app:iss_period="1000"
                     app:iss_title_background="@color/bluemaincolor">
 
                 </com.denzcoskun.imageslider.ImageSlider>
