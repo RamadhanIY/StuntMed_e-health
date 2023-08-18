@@ -34,7 +34,7 @@
 
                 <ImageView
                     android:layout_width="350dp"
-                    android:layout_height="80dp"
+                    android:layout_height="75dp"
                     android:background="#FFFFFF"
                     android:scaleType="fitXY"
                     android:srf="@drawable/radius"
@@ -42,7 +42,7 @@
                     tools:layout_editor_absoluteY="184dp" />
 
                 <TextView
-                    android:layout_width="156dp"
+                    android:layout_width="155dp"
                     android:layout_height="37dp"
                     android:autoSizeTextType="uniform"
                     android:text="Hello Taylor !"
