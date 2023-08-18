@@ -1,4 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.Explorer;
+
+import com.example.myapplication.Explorer.ChildModelClass;
 
 import java.util.List;
 

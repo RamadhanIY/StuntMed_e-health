@@ -12,4 +12,8 @@
 
     </style>
     <color name="background">#FAFAFA</color>
+    <style name="ProfileTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">#FFFF</item>
+        <item name="colorPrimaryVariant">#000000</item>
+    </style>
 </resources>
