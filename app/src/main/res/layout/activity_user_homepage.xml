@@ -7,101 +7,84 @@
     android:layout_height="match_parent"
     tools:context=".HomepageUser">
 
-    <RelativeLayout
-        android:id="@+id/topbar"
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/radius">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="314dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/rounded">
 
-        </ImageView>
 
-        <TextView
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="110dp"
-            android:layout_marginTop="76dp"
-            android:text="BLANK"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="110dp"
-            android:layout_marginTop="25dp"
-            android:text="Name"
-            android:textSize="30sp" />
-
-        <RelativeLayout
-            android:layout_width="370dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="119dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_2">
-
+            android:orientation="vertical">
             <TextView
+                android:id="@+id/nameuser_homepage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="10dp"
-                android:text="Search">
+                android:text="Bengbeng"
+                android:textSize="40sp">
 
             </TextView>
 
-            <ImageView
+            <TextView
+                android:id="@+id/monthday_user_homepage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="17dp"
-                android:src="@drawable/li_search">
+                android:text="3 month 1 day"
+                android:textSize="20sp">
 
-            </ImageView>
+            </TextView>
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="130dp"
+            android:src="@drawable/profie_pictures">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_bar"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:id="@+id/graph_layout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_3"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/list_items"
             android:layout_width="match_parent"
-            android:layout_height="787dp"
-            android:layout_marginTop="200dp"
-            android:background="@drawable/radius_2">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/graph_layout"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/feature1"
-                android:layout_width="55dp"
-                android:layout_height="85dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="38.2dp"
-                android:layout_marginTop="23dp"
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:layout_margin="10dp"
                 android:background="@android:color/transparent"
                 android:drawableBottom="@drawable/group_415">
 
@@ -109,12 +92,9 @@
 
             <Button
                 android:id="@+id/feature2"
-                android:layout_width="55dp"
-                android:layout_height="85dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="38.2dp"
-                android:layout_marginTop="23dp"
-                android:layout_toEndOf="@id/feature1"
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:layout_margin="10dp"
                 android:background="@android:color/transparent"
                 android:drawableBottom="@drawable/group_415">
 
@@ -122,53 +102,44 @@
 
             <Button
                 android:id="@+id/feature3"
-                android:layout_width="55dp"
-                android:layout_height="85dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="38.2dp"
-                android:layout_marginTop="23dp"
-                android:layout_toEndOf="@id/feature2"
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:layout_margin="10dp"
                 android:background="@android:color/transparent"
                 android:drawableBottom="@drawable/group_415">
 
             </Button>
+        </LinearLayout>
 
-            <Button
-                android:id="@+id/feature4"
-                android:layout_width="55dp"
-                android:layout_height="85dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="38.2dp"
-                android:layout_marginTop="23dp"
-                android:layout_toEndOf="@id/feature3"
-                android:background="@android:color/transparent"
-                android:drawableBottom="@drawable/group_415">
 
-            </Button>
-            <androidx.cardview.widget.CardView
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_below="@+id/list_items"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_3"
+            app:cardBackgroundColor="@color/bluebuttoncolor">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="400dp"
-                android:background="@drawable/rounded_3"
-                app:cardBackgroundColor="@color/bluebuttoncolor">
+                android:layout_height="match_parent"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="30"
+                app:iss_delay="1000"
+                app:iss_period="1000"
+                app:iss_title_background="@color/bluemaincolor">
 
-                <com.denzcoskun.imageslider.ImageSlider
-                    android:id="@+id/imageSlider"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:iss_auto_cycle="true"
-                    app:iss_corner_radius="30"
-                    app:iss_delay="1000"
-                    app:iss_period="1000"
-                    app:iss_title_background="@color/bluemaincolor">
-
-                </com.denzcoskun.imageslider.ImageSlider>
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
-
+            </com.denzcoskun.imageslider.ImageSlider>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
+</RelativeLayout>
+
+
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
