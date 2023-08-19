@@ -33,7 +33,7 @@ public class ChildAdapter2 extends RecyclerView.Adapter<ChildAdapter2.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ChildAdapter2.ViewHolder holder, int position) {
-        holder.iv_child_image.setImageResource(childModelClassList.get(position).image);
+        holder.iv_child_image_2.setImageResource(childModelClassList.get(position).image);
         holder.title_trends.setText(childModelClassList.get(position).title_trends);
 
     }
@@ -45,14 +45,14 @@ public class ChildAdapter2 extends RecyclerView.Adapter<ChildAdapter2.ViewHolder
 
     public class ViewHolder  extends RecyclerView.ViewHolder{
 
-        ImageView iv_child_image;
+        ImageView iv_child_image_2;
         TextView title_trends;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv_child_image = itemView.findViewById(R.id.iv_child_item);
-            title_trends = itemView.findViewById(R.id.title_trends);
+            iv_child_image_2 = itemView.findViewById(R.id.iv_child_item_2);
+            title_trends = itemView.findViewById(R.id.title_trends_2);
         }
     }
 }

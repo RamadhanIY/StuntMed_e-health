@@ -13,7 +13,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:id="@+id/child_item">
+            android:id="@+id/child_item_2">
 
             <Button
                 android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
                 <ImageView
-                    android:id="@+id/iv_child_item"
+                    android:id="@+id/iv_child_item_2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:padding="0dp"
@@ -36,7 +36,7 @@
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/title_trends"
+                    android:id="@+id/title_trends_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"

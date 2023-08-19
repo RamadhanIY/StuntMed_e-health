@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.WindowDecorActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class ParentAdapter2 extends RecyclerView.Adapter<ParentAdapter2.ViewHolder> {
 
     List<ParentModelClass> parentModelClassList;
+
     Context context;
 
     public ParentAdapter2(List<ParentModelClass> parentModelClassList, Context context) {
@@ -33,12 +35,12 @@ public class ParentAdapter2 extends RecyclerView.Adapter<ParentAdapter2.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ParentAdapter2.ViewHolder holder, int position) {
-        holder.tv_parent_title.setText(parentModelClassList.get(position).title);
+        holder.tv_parent_title_2.setText(parentModelClassList.get(position).title);
 
         ChildAdapter2 childAdapter2;
         childAdapter2 = new ChildAdapter2(parentModelClassList.get(position).childModelClassList,context);
-        holder.rv_child.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false));
-        holder.rv_child.setAdapter(childAdapter2);
+        holder.rv_child_2.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false));
+        holder.rv_child_2.setAdapter(childAdapter2);
         childAdapter2.notifyDataSetChanged();
         
     }
@@ -50,13 +52,14 @@ public class ParentAdapter2 extends RecyclerView.Adapter<ParentAdapter2.ViewHold
 
     public class ViewHolder  extends RecyclerView.ViewHolder{
 
-        RecyclerView rv_child;
-        TextView tv_parent_title;
+
+        RecyclerView rv_child_2;
+        TextView tv_parent_title_2;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            rv_child = itemView.findViewById(R.id.rv_child);
-            tv_parent_title = itemView.findViewById(R.id.tv_parent_title);
+            rv_child_2 = itemView.findViewById(R.id.rv_child_2);
+            tv_parent_title_2 = itemView.findViewById(R.id.tv_parent_title_2);
         }
     }
 }
