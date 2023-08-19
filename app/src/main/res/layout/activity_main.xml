@@ -39,6 +39,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="GRAFIK"
+        android:id="@+id/btnGrafik"
+        android:layout_margin="10dp"
+        android:layout_above="@id/signOutBtn"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="SIGN OUT"
         android:id="@+id/signOutBtn"
         android:layout_margin="10dp"
