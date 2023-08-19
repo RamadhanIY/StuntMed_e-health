@@ -34,7 +34,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
-
+        //Bottom Navbar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setSelectedItemId(R.id.button_home);
 
