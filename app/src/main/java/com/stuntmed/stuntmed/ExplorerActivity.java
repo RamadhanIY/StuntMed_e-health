@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.stuntmed.R;
+import com.stuntmed.stuntmed.R;
 import com.stuntmed.stuntmed.Explorer.ChildModelClass;
 import com.stuntmed.stuntmed.Explorer.ChildModelClassPost;
 import com.stuntmed.stuntmed.Explorer.ExplorerActivity2;

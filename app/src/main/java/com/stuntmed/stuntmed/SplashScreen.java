@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import com.example.stuntmed.R;
+import com.stuntmed.stuntmed.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashScreen.this, HomepageUser.class);
+                Intent intent = new Intent(SplashScreen.this, SignIn.class);
                 startActivity(intent);
                 finish();
             }

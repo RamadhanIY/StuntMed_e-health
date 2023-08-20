@@ -3,7 +3,7 @@ package com.stuntmed.stuntmed;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import com.example.stuntmed.R;
+import com.stuntmed.stuntmed.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
