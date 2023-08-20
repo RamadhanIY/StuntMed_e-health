@@ -1,11 +1,10 @@
-package com.example.stuntmed;
+package com.stuntmed.stuntmed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
 import com.example.stuntmed.R;
 
 public class SplashScreen extends AppCompatActivity {
@@ -19,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashScreen.this, SignIn.class);
+                Intent intent = new Intent(SplashScreen.this, HomepageUser.class);
                 startActivity(intent);
                 finish();
             }

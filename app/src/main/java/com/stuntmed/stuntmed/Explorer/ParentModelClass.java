@@ -1,6 +1,4 @@
-package com.example.myapplication.Explorer;
-
-import com.example.myapplication.Explorer.ChildModelClass;
+package com.stuntmed.stuntmed.Explorer;
 
 import java.util.List;
 

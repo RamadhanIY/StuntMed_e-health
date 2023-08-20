@@ -15,31 +15,28 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.stuntmed.stuntmed.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".HistoryActivity"
+            android:name="com.stuntmed.stuntmed.HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ExplorerActivity"
+            android:name="com.stuntmed.stuntmed.ExplorerActivity"
             android:exported="false" />
         <activity
-            android:name=".HomepageUser"
+            android:name="com.stuntmed.stuntmed.HomepageUser"
             android:exported="true">
 
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.stuntmed.stuntmed.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SignIn"
+            android:name="com.stuntmed.stuntmed.SignIn"
             android:exported="false" />
         <activity
-            android:name=".MeasurementActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashScreen"
+            android:name="com.stuntmed.stuntmed.SplashScreen"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

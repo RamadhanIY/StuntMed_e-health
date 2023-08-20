@@ -5,15 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.stuntmed.SignIn"
+    tools:context="com.stuntmed.stuntmed.SignIn"
     android:background="#E9E9E9">
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/image1"
-        android:id="@+id/image"
-        android:layout_margin="40dp"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="40dp"
+        android:padding="0dp"
+        android:src="@drawable/imagesignin"/>
 
     <TextView
         android:id="@+id/signin"
@@ -114,15 +120,15 @@
         android:textColor="@color/black"
         android:backgroundTint="#FFFFFF"/>
 
-<!--    <com.google.android.gms.common.SignInButton-->
-<!--        android:id="@+id/sign_in_button"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/line"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginEnd="10dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        />-->
+    <!--    <com.google.android.gms.common.SignInButton-->
+    <!--        android:id="@+id/sign_in_button"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/line"-->
+    <!--        android:layout_marginStart="10dp"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:layout_marginEnd="10dp"-->
+    <!--        android:layout_marginBottom="10dp"-->
+    <!--        />-->
 
 </RelativeLayout>

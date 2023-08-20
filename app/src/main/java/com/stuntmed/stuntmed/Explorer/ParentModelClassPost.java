@@ -1,4 +1,4 @@
-package com.example.myapplication.Explorer;
+package com.stuntmed.stuntmed.Explorer;
 
 import java.util.List;
 

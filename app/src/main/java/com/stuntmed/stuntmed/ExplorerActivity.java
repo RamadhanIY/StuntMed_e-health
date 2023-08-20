@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.stuntmed.stuntmed;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,14 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.myapplication.Explorer.ChildModelClass;
-import com.example.myapplication.Explorer.ChildModelClassPost;
-import com.example.myapplication.Explorer.ExplorerActivity2;
-import com.example.myapplication.Explorer.ParentAdapter;
-import com.example.myapplication.Explorer.ParentAdapter2;
-import com.example.myapplication.Explorer.ParentAdapter3;
-import com.example.myapplication.Explorer.ParentModelClass;
-import com.example.myapplication.Explorer.ParentModelClassPost;
+import com.example.stuntmed.R;
+import com.stuntmed.stuntmed.Explorer.ChildModelClass;
+import com.stuntmed.stuntmed.Explorer.ChildModelClassPost;
+import com.stuntmed.stuntmed.Explorer.ExplorerActivity2;
+import com.stuntmed.stuntmed.Explorer.ParentAdapter;
+import com.stuntmed.stuntmed.Explorer.ParentAdapter2;
+import com.stuntmed.stuntmed.Explorer.ParentAdapter3;
+import com.stuntmed.stuntmed.Explorer.ParentModelClass;
+import com.stuntmed.stuntmed.Explorer.ParentModelClassPost;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
