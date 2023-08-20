@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.myapplication.Explorer.ChildModelClass;
+import com.example.myapplication.Explorer.ChildModelClassPost;
 import com.example.myapplication.Explorer.ExplorerActivity2;
 import com.example.myapplication.Explorer.ParentAdapter;
 import com.example.myapplication.Explorer.ParentAdapter2;
+import com.example.myapplication.Explorer.ParentAdapter3;
 import com.example.myapplication.Explorer.ParentModelClass;
+import com.example.myapplication.Explorer.ParentModelClassPost;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -25,10 +28,16 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
     ArrayList<ChildModelClass> trend1Lists;
     ArrayList<ChildModelClass> trend2Lists;
 
+    ArrayList<ChildModelClass> trend3Lists;
 
+    ArrayList<ParentModelClassPost> parentModelClassPosts;
+    ArrayList<ChildModelClassPost> childModelClassPostArrayList;
+    ArrayList<ChildModelClassPost> postbyuser1;
 
     ParentAdapter parentAdapter;
     ParentAdapter2 parentAdapter2;
+
+    ParentAdapter3 parentAdapter3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +83,8 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
 //
 //        parentAdapter.notifyDataSetChanged();
         trends1();
-        trends2();
+//        trends2();
+//        post_by_user();
 //        trends3();
 
     }
@@ -83,6 +93,8 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
         recyclerView = findViewById(R.id.rv_parents);
         childModelClassArrayList = new ArrayList<>();
         trend1Lists = new ArrayList<>();
+        trend2Lists = new ArrayList<>();
+        trend3Lists = new ArrayList<>();
         parentModelClassArrayList =  new ArrayList<>();
         trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
         trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test2"));
@@ -91,6 +103,19 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
 
         parentModelClassArrayList.add(new ParentModelClass("Trending Topics",trend1Lists));
 
+        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
+        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test2"));
+        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test3"));
+        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test4"));
+
+        parentModelClassArrayList.add(new ParentModelClass("Trending Topics",trend2Lists));
+
+        trend3Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
+        trend3Lists.add(new ChildModelClass(R.drawable.threads1,"test2"));
+        trend3Lists.add(new ChildModelClass(R.drawable.threads1,"test3"));
+        trend3Lists.add(new ChildModelClass(R.drawable.threads1,"test4"));
+
+        parentModelClassArrayList.add(new ParentModelClass("Trending Topics",trend3Lists));
 
         parentAdapter = new ParentAdapter(parentModelClassArrayList,ExplorerActivity.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -101,10 +126,9 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
 
     protected void trends2(){
 
-        recyclerView = findViewById(R.id.rv_parents_2);
+        recyclerView = findViewById(R.id.rv_parents);
         childModelClassArrayList = new ArrayList<>();
         trend1Lists = new ArrayList<>();
-        trend2Lists = new ArrayList<>();
         parentModelClassArrayList =  new ArrayList<>();
 
         trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
@@ -122,47 +146,29 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
         parentAdapter2.notifyDataSetChanged();
     }
 
-//    protected void trends3(){
-//
-//        recyclerView = findViewById(R.id.rv_parents_3);
-//        childModelClassArrayList = new ArrayList<>();
-//        trend1Lists = new ArrayList<>();
-//        trend2Lists = new ArrayList<>();
-//        parentModelClassArrayList =  new ArrayList<>();
-//
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test2"));
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test3"));
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test4"));
-//
-//        parentAdapter2 = new ParentAdapter2(parentModelClassArrayList,ExplorerActivity.this);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(parentAdapter2);
-//
-//        parentAdapter2.notifyDataSetChanged();
-//    }
+    protected void post_by_user(){
 
-//    protected void trends2(){
-//
-//        recyclerView = findViewById(R.id.rv_parents_2);
-//        childModelClassArrayList = new ArrayList<>();
-//        trend2Lists = new ArrayList<>();
-//        parentModelClassArrayList =  new ArrayList<>();
-//
-//        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
-//        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test2"));
-//        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test3"));
-//        trend2Lists.add(new ChildModelClass(R.drawable.threads1,"test4"));
-//
-//        parentModelClassArrayList.add(new ParentModelClass("Trending Topics",trend2Lists));
-//
-//
-//        parentAdapter = new ParentAdapter(parentModelClassArrayList,ExplorerActivity.this);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(parentAdapter);
-//
-//        parentAdapter.notifyDataSetChanged();
-//    }
+        recyclerView = findViewById(R.id.rv_parents);
+        childModelClassPostArrayList = new ArrayList<>();
+        postbyuser1 = new ArrayList<>();
+        parentModelClassPosts =  new ArrayList<>();
+
+        postbyuser1.add(new ChildModelClassPost(R.drawable.threads1,"test1","Mantap anak2"));
+        postbyuser1.add(new ChildModelClassPost(R.drawable.threads1,"test2","Mantap anak2"));
+        postbyuser1.add(new ChildModelClassPost(R.drawable.threads1,"test3","Mantap anak2"));
+        postbyuser1.add(new ChildModelClassPost(R.drawable.threads1,"test4","Mantap anak2"));
+
+        parentModelClassPosts.add(new ParentModelClassPost("More information",postbyuser1));
+
+
+        parentAdapter3 = new ParentAdapter3(parentModelClassPosts,ExplorerActivity.this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(parentAdapter3);
+
+        parentAdapter3.notifyDataSetChanged();
+
+    }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;
