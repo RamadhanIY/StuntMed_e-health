@@ -26,9 +26,23 @@
         <activity
             android:name=".MeasurementActivity"
             android:exported="false" />
+            
         <activity
-            android:name=".SplashScreen"
-            android:exported="true">
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExplorerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomepageUser"
+            android:exported="true" />
+
+        <activity
+            android:name="com.stuntmed.stuntmed.SplashScreen"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
