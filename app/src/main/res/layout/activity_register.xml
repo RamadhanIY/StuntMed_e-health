@@ -89,15 +89,18 @@
 
     <!--  Button : Sign In with Google  -->
     <Button
+        android:id="@+id/google_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign up with Google"
         android:layout_below="@id/line"
-        android:layout_margin="10dp"
-        android:id="@+id/google_btn"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/google"
-        android:textSize="18dp"
+        android:text="Sign up with Google"
         android:textColor="@color/black"
-        android:backgroundTint="#FFFFFF"/>
+        android:textSize="18dp" />
 
 </RelativeLayout>
