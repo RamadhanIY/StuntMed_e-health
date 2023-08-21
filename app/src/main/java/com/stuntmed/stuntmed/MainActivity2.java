@@ -1,7 +1,8 @@
-package com.example.myapplication;
+package com.stuntmed.stuntmed;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
@@ -23,9 +24,19 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.*;
+import org.opencv.core.MatOfRect;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 
 
@@ -37,6 +48,10 @@ import java.util.Random;
 public class MainActivity2 extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     CameraBridgeViewBase cameraBridgeViewBase;
+    File cascafile;
+    CascadeClassifier bodydetector;
+
+    private Mat mRgba,mGrey;
 
     int counter = 0;
     private static String TAG = "MainActivity2";
@@ -55,7 +70,54 @@ public class MainActivity2 extends AppCompatActivity implements CameraBridgeView
                 case BaseLoaderCallback.SUCCESS:
                 {
                     Log.d(TAG, "case success");
+//                    InputStream is = getResources().openRawResource(R.raw.haarcascade_fullbody);
+//                    File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
+//                    cascafile = new File(cascadeDir,"haarcascade_fullbody");
+//
+//                    FileOutputStream fos = null;
+//                    try {
+//                        fos = new FileOutputStream(cascafile);
+//                    } catch (FileNotFoundException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//
+//                    byte[] buffer =  new byte[4096];
+//                    int byteread;
+//
+//                    while(true){
+//                        try {
+//                            if (!((byteread = is.read(buffer)) != 1)) break;
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                        try {
+//                            fos.write(buffer,0,byteread);
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//
+//                    try {
+//                        is.close();
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    try {
+//                        fos.close();
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    bodydetector = new CascadeClassifier(cascafile.getAbsolutePath());
+//
+//                    if(bodydetector .empty()){
+//                        bodydetector = null;
+//                    }
+//                    else{
+//                        cascadeDir.delete();
+//                    }
+
                     javaCameraView.enableView();
+
                     break;
                 }
                 default:
@@ -115,7 +177,7 @@ public class MainActivity2 extends AppCompatActivity implements CameraBridgeView
                 // result of the request.
             }
         } else {
-            Log.d(TAG, "PERMISSIOns granted");
+            Log.d(TAG, "PERMISSIONSs granted");
             javaCameraView.setCameraPermissionGranted();
             // Permission has already been granted
         }
@@ -146,6 +208,17 @@ public class MainActivity2 extends AppCompatActivity implements CameraBridgeView
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+//        mRgba =  inputFrame.rgba();
+//        mGrey =  inputFrame.gray();
+//
+//        MatOfRect bodydetections = new MatOfRect();
+//        bodydetector.detectMultiScale(mRgba,bodydetections);
+//
+//        for(Rect rect: bodydetections.toArray()) {
+//            Imgproc.rectangle(mRgba,new Point(rect.x,rect.y),new Point(rect.x + rect.width,rect.y+rect.height),new Scalar(255,0,0));
+//
+//        }
+//        return mRgba;
 
         Mat frame = inputFrame.rgba();
 
@@ -170,13 +243,15 @@ public class MainActivity2 extends AppCompatActivity implements CameraBridgeView
 
     @Override
     public void onCameraViewStarted(int width, int height) {
-
+//        mRgba = new Mat();
+//        mGrey = new Mat();
     }
 
 
     @Override
     public void onCameraViewStopped() {
-
+//        mRgba.release();
+//        mGrey.release();
     }
 
 
