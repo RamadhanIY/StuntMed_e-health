@@ -17,6 +17,10 @@
         <activity
             android:name=".grafik"
             android:exported="false" />
+        
+        <activity
+            android:name=".Register"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -26,9 +30,23 @@
         <activity
             android:name=".MeasurementActivity"
             android:exported="false" />
+            
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExplorerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomepageUser"
+            android:exported="true" />
+
         <activity
             android:name=".SplashScreen"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

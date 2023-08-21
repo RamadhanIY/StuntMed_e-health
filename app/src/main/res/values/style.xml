@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+
+        <item name="colorPrimary">#ABC7FF</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorSecondary">#2962FF</item>
+        <item name="colorSecondaryVariant">#718CD1</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorError">#F44336</item>
+        <item name="colorOnError">#FFFFFF</item>
+
+    </style>
+    <color name="background">#FAFAFA</color>
+    <style name="ProfileTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">#FFFF</item>
+        <item name="colorPrimaryVariant">#000000</item>
+    </style>
+</resources>

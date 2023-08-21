@@ -43,10 +43,39 @@
       },
       "oauth_client": [
         {
-          "client_id": "593444102839-foongcn3qkvvmgv1p8mja31p6jrhik4q.apps.googleusercontent.com",
+          "client_id": "593444102839-jfu7mv63j25okrea49q2nbu87hgcgal0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFzRH59aj93FL1vuwVMBKCLST-iFxyjVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593444102839-jfu7mv63j25okrea49q2nbu87hgcgal0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593444102839:android:d474f58c96f1a2a2792332",
+        "android_client_info": {
+          "package_name": "com.stuntmed.stuntmed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593444102839-2tqvsqeqbcm1ceagpt5tm67sgfpijr3r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.stuntmed",
+            "package_name": "com.stuntmed.stuntmed",
             "certificate_hash": "9ed38890786ee83b3bd9dc0c3a66aa95cd1c26ca"
           }
         },

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/button_home"
+        android:title="Home"
+        android:icon="@drawable/li_home"
+        />
+    <item
+        android:id="@+id/button_explore"
+        android:title="Explore"
+        android:icon="@drawable/li_search"/>
+    <item
+        android:id="@+id/fab"
+        android:title=""/>
+    <item
+        android:id="@+id/button_history"
+        android:title="History"
+        android:icon="@drawable/li_clock"/>
+    <item
+        android:id="@+id/button_profile"
+        android:title="Profile"
+        android:icon="@drawable/li_user"/>
+</menu>
