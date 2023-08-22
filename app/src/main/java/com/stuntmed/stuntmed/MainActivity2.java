@@ -1,57 +1,46 @@
 package com.stuntmed.stuntmed;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import android.Manifest;
-import android.content.pm.PackageManager;
-
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
+import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.*;
 import org.opencv.core.MatOfRect;
-import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Random;
-
-
-
-
-
 
 
 public class MainActivity2 extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
-    CameraBridgeViewBase cameraBridgeViewBase;
-    File cascafile;
-    CascadeClassifier bodydetector;
 
-    private Mat mRgba,mGrey;
+
+    CascadeClassifier cascadeClassifier;
+
+    private Mat mRgba,mGray;
 
     int counter = 0;
     private static String TAG = "MainActivity2";
@@ -70,52 +59,6 @@ public class MainActivity2 extends AppCompatActivity implements CameraBridgeView
                 case BaseLoaderCallback.SUCCESS:
                 {
                     Log.d(TAG, "case success");
-//                    InputStream is = getResources().openRawResource(R.raw.haarcascade_fullbody);
-//                    File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
-//                    cascafile = new File(cascadeDir,"haarcascade_fullbody");
-//
-//                    FileOutputStream fos = null;
-//                    try {
-//                        fos = new FileOutputStream(cascafile);
-//                    } catch (FileNotFoundException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//
-//                    byte[] buffer =  new byte[4096];
-//                    int byteread;
-//
-//                    while(true){
-//                        try {
-//                            if (!((byteread = is.read(buffer)) != 1)) break;
-//                        } catch (IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                        try {
-//                            fos.write(buffer,0,byteread);
-//                        } catch (IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    }
-//
-//                    try {
-//                        is.close();
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                    try {
-//                        fos.close();
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                    bodydetector = new CascadeClassifier(cascafile.getAbsolutePath());
-//
-//                    if(bodydetector .empty()){
-//                        bodydetector = null;
-//                    }
-//                    else{
-//                        cascadeDir.delete();
-//                    }
-
                     javaCameraView.enableView();
 
                     break;
@@ -153,6 +96,39 @@ public class MainActivity2 extends AppCompatActivity implements CameraBridgeView
         javaCameraView = (JavaCameraView)findViewById(R.id.CameraView);
         javaCameraView.setVisibility(SurfaceView.VISIBLE);
         javaCameraView.setCvCameraViewListener(MainActivity2.this);
+        try {
+            InputStream is = getResources().openRawResource(R.raw.haarcascade_fullbody);
+            File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
+            File cascafile = new File(cascadeDir,"haarcascade_fullbody.xml");
+            FileOutputStream os = new FileOutputStream(cascafile);
+
+            byte[ ] buffer = new byte[4096];
+            int byteRead;
+
+            while((byteRead= is.read(buffer))!= - 1){
+                os.write(buffer,0,byteRead);
+            }
+            is.close();
+            os.close();
+            //Loading file from cascade folder created above
+            cascadeClassifier = new CascadeClassifier(cascafile.getAbsolutePath());
+
+        }
+        catch (IOException e){
+            Log.i(TAG,"Cascade file not found!");
+        }
+
+//        try {
+//            InputStream is = getResources().openRawResource(R.raw.haarcascade_fullbody);
+//            File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
+//            File cascafile = new File(cascadeDir,"haarcascade_fullbody");
+//            FileOutputStream os = new FileOutputStream(cascafile);
+//        }
+//        catch (IOException){
+//            Log.i(TAG,"Cascade file not found!");
+//        }
+
+
 
 // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
@@ -207,87 +183,79 @@ public class MainActivity2 extends AppCompatActivity implements CameraBridgeView
     }
 
     @Override
-    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
-//        mRgba =  inputFrame.rgba();
-//        mGrey =  inputFrame.gray();
-//
-//        MatOfRect bodydetections = new MatOfRect();
-//        bodydetector.detectMultiScale(mRgba,bodydetections);
-//
-//        for(Rect rect: bodydetections.toArray()) {
-//            Imgproc.rectangle(mRgba,new Point(rect.x,rect.y),new Point(rect.x + rect.width,rect.y+rect.height),new Scalar(255,0,0));
-//
-//        }
-//        return mRgba;
-
-        Mat frame = inputFrame.rgba();
-
-        if (counter % 2 == 0){
-
-            Core.flip(frame, frame, 1);
-            Imgproc.cvtColor(frame, frame, Imgproc.COLOR_RGBA2GRAY);
-
-
-        }
-
-        counter = counter + 1;
-
-
-
-
-
-
-        return frame;
-    }
-
-
-    @Override
-    public void onCameraViewStarted(int width, int height) {
-//        mRgba = new Mat();
-//        mGrey = new Mat();
-    }
-
-
-    @Override
-    public void onCameraViewStopped() {
-//        mRgba.release();
-//        mGrey.release();
-    }
-
-
-    @Override
     protected void onResume() {
         super.onResume();
-
-        if (!OpenCVLoader.initDebug()){
-            Toast.makeText(getApplicationContext(),"There's a problem, yo!", Toast.LENGTH_SHORT).show();
+        if (OpenCVLoader.initDebug()){
+            //if load success
+            Log.d(TAG,"Opencv initialization is done");
+            baseLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
-
-        else
-        {
-            baseLoaderCallback.onManagerConnected(baseLoaderCallback.SUCCESS);
+        else{
+            //if not loaded
+            Log.d(TAG,"Opencv is not loaded. try again");
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_4_0,this,baseLoaderCallback);
         }
-
-
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if(cameraBridgeViewBase!=null){
+        if (javaCameraView !=null){
+            javaCameraView.disableView();
+        }
+    }
 
-            cameraBridgeViewBase.disableView();
+    public void onDestroy(){
+        super.onDestroy();
+        if(javaCameraView !=null){
+            javaCameraView.disableView();
         }
 
     }
 
+    public void onCameraViewStarted(int width ,int height){
+        mRgba=new Mat(height,width, CvType.CV_8UC4);
+        mGray =new Mat(height,width,CvType.CV_8UC1);
+    }
+    public void onCameraViewStopped(){
+        mRgba.release();
+    }
+    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame){
+        mRgba=inputFrame.rgba();
+        mGray=inputFrame.gray();
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (cameraBridgeViewBase!=null){
-            cameraBridgeViewBase.disableView();
+        //in processing pass mRGBa to cascade class
+
+        mRgba =  CascadeRec(mRgba);
+
+        return mRgba;
+
+    }
+    private Mat CascadeRec(Mat mRgba){
+        //Original frame is -90 degree so we have to rotate to 90 degree
+
+        Core.flip(mRgba.t(),mRgba,1);
+        //convert into RGB
+        Mat mRBG = new Mat();
+        Imgproc.cvtColor(mRgba,mRBG,Imgproc.COLOR_RGBA2RGB);
+
+        int height = mRBG.height();
+        //Minimum size of face
+        int absolutebodysize = (int)(height*0.1);
+
+        MatOfRect body = new MatOfRect();
+        if(cascadeClassifier != null){
+            //                                              input output                             Minimum size of output
+            cascadeClassifier.detectMultiScale(mRBG,body,1.1,2,2,new Size(absolutebodysize,absolutebodysize),new Size());
         }
+        //Loop through all body
+        Rect[] bodyArray = body.toArray();
+        for(int i =0;i<bodyArray.length;i++){
+            //draw body on original frame
+            Imgproc.rectangle(mRgba,bodyArray[i].tl(),bodyArray[i].br(),new Scalar(0,255,0,255),2);
+        }
+        //rotate back original frame to -90 degree
+        Core.flip(mRgba.t(),mRgba,0);
+        return mRgba;
     }
 }
