@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.stuntmed.stuntmed;
 
 import org.junit.Test;
 

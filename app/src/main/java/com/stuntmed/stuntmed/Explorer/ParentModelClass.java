@@ -1,13 +1,13 @@
-package com.example.myapplication.Explorer;
-
-import com.example.myapplication.Explorer.ChildModelClass;
+package com.stuntmed.stuntmed.Explorer;
 
 import java.util.List;
 
 public class ParentModelClass {
 
+
     String title;
     List<ChildModelClass> childModelClassList;
+
 
     public ParentModelClass(String title,List<ChildModelClass> childModelClassList){
         this.title = title;

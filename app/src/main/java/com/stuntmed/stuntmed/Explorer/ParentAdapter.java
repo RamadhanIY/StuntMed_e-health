@@ -1,4 +1,4 @@
-package com.example.myapplication.Explorer;
+package com.stuntmed.stuntmed.Explorer;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+
+import com.stuntmed.stuntmed.R;
 
 import java.util.List;
 
