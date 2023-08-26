@@ -11,8 +11,8 @@
         android:title="Explore"
         android:icon="@drawable/li_search"/>
     <item
-        android:id="@+id/fab"
-        android:title=""/>
+        android:title=""
+        android:enabled="true"/>
     <item
         android:id="@+id/button_history"
         android:title="History"

@@ -172,7 +172,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_document_scanner_24"
-        app:layout_anchor="@id/bottomAppBar"
-        app:layout_anchorGravity="top|center" />
+        app:layout_anchor="@id/bottomAppBar"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

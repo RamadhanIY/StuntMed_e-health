@@ -1,155 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CheckStuntingActivity">
-
-    <ImageView
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="80dp"
-        android:contentDescription="Back Button"
-        android:src="@drawable/back_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="10dp"
+        android:id="@+id/topbar_checkstunting">
 
-    <TextView
-        android:id="@+id/checkStuntingText"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/checkStuntingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Check Stunting"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Back Button"
+            android:src="@drawable/back_button"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="72dp"
-        android:text="Check Stunting"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/topbar_checkstunting"
+        android:layout_marginTop="100dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="156dp"
-        android:src="@drawable/Step"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:id="@+id/stepcalendar">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="164dp"
-        android:text="Step"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/step"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Step"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="10dp"/>
+        </LinearLayout>
 
-    <ImageView
-        android:layout_width="313dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="240dp"
-        android:background="#F3F3F3"
-        android:src="drawable;rounded_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_below="@+id/stepcalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/checklist1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="256dp"
-        android:contentDescription="Check List1"
-        android:src="@drawable/checklist"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="10dp">
 
-    <ImageView
-        android:id="@+id/picttButton"
-        android:layout_width="313dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="340dp"
-        android:background="#F3F3F3"
-        android:src="drawable;rounded_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/subtract"
+                    android:padding="5dp">
 
-    <ImageView
-        android:id="@+id/checklist2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="356dp"
-        android:contentDescription="Check List 2"
-        android:src="@drawable/checklist"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                </de.hdodenhof.circleimageview.CircleImageView>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="296dp"
-        android:src="@drawable/line"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_berat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:hint="Berat Badan (Kg)"
+                    android:textSize="20sp">
+                </com.google.android.material.textfield.TextInputEditText>
 
-    <ImageView
-        android:layout_width="313dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="448dp"
-        android:background="#F3F3F3"
-        android:src="drawable;rounded_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/checklist3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="464dp"
-        android:contentDescription="Check List 3"
-        android:src="@drawable/checklist"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="40dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="400dp"
-        android:src="@drawable/line"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/subtract"
+                    android:padding="5dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="584dp"
-        android:src="@drawable/submit_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                </de.hdodenhof.circleimageview.CircleImageView>
 
-    <EditText
-        android:id="@+id/inputberat"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:hint="Berat Badan (Kg)"
-        android:layout_margin="20dp"
-        android:padding="20dp"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="247dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_tinggi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:hint="Tinggi badan (cm)"
+                    android:textSize="20sp">
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="40dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/subtract"
+                    android:padding="5dp">
+
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_lingkarkepala"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:hint="Lingkar kepala (cm)"
+                    android:textSize="20sp">
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_submit"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:text="Submit"
+                    android:textSize="20sp">
+                </com.google.android.material.button.MaterialButton>
+
+            </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+<!--    <ImageView-->
+<!--        android:layout_width="313dp"-->
+<!--        android:layout_height="77dp"-->
+<!--        android:layout_marginStart="68dp"-->
+<!--        android:layout_marginTop="240dp"-->
+<!--        android:background="#F3F3F3"-->
+<!--        android:src="drawable;rounded_2"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/checklist1"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="56dp"-->
+<!--        android:layout_marginTop="256dp"-->
+<!--        android:contentDescription="Check List1"-->
+<!--        android:src="@drawable/checklist"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/picttButton"-->
+<!--        android:layout_width="313dp"-->
+<!--        android:layout_height="77dp"-->
+<!--        android:layout_marginStart="68dp"-->
+<!--        android:layout_marginTop="340dp"-->
+<!--        android:background="#F3F3F3"-->
+<!--        android:src="drawable;rounded_2"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/checklist2"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="56dp"-->
+<!--        android:layout_marginTop="356dp"-->
+<!--        android:contentDescription="Check List 2"-->
+<!--        android:src="@drawable/checklist"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="68dp"-->
+<!--        android:layout_marginTop="296dp"-->
+<!--        android:src="@drawable/line"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="313dp"-->
+<!--        android:layout_height="77dp"-->
+<!--        android:layout_marginStart="68dp"-->
+<!--        android:layout_marginTop="448dp"-->
+<!--        android:background="#F3F3F3"-->
+<!--        android:src="drawable;rounded_2"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/checklist3"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="56dp"-->
+<!--        android:layout_marginTop="464dp"-->
+<!--        android:contentDescription="Check List 3"-->
+<!--        android:src="@drawable/checklist"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="68dp"-->
+<!--        android:layout_marginTop="400dp"-->
+<!--        android:src="@drawable/line"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="44dp"-->
+<!--        android:layout_marginTop="584dp"-->
+<!--        android:src="@drawable/submit_button"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/inputberat"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginBottom="424dp"-->
+<!--        android:hint="Berat Badan (Kg)"-->
+<!--        android:padding="20dp"-->
+<!--        tools:layout_editor_absoluteX="98dp"-->
+<!--        tools:layout_editor_absoluteY="247dp" />-->
+
+
+</RelativeLayout>

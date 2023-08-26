@@ -25,7 +25,7 @@ android {
         }
 
         applicationId "com.stuntmed.stuntmed"
-        minSdk 22
+        minSdk 30
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -59,6 +59,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    ndkVersion '25.1.8937393'
 }
 
 dependencies {
@@ -88,5 +89,7 @@ dependencies {
 
     // Also add the dependency for the Google Play services library and specify its version
     implementation "com.google.android.gms:play-services-auth:20.6.0"
+
+    implementation 'com.microsoft.onnxruntime:onnxruntime-android:latest.release'
 
 }

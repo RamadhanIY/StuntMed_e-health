@@ -4,11 +4,13 @@ package com.stuntmed.stuntmed;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.stuntmed.stuntmed.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 
 public class HomepageUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    FloatingActionButton fab;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,6 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(getApplicationContext(), HistoryActivity.class ));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
-                return true;
             } else if (id == R.id.button_profile) {
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class ));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -61,10 +62,23 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             }
             return false;
         });
+
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomepageUser.this, CheckStuntingActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;
     }
+
 }
