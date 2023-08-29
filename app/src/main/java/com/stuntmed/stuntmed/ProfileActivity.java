@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.stuntmed.stuntmed.Profiles.EditProfileBaby;
+import com.stuntmed.stuntmed.Profiles.EditProfileParents;
+import com.stuntmed.stuntmed.Profiles.Settings;
 import com.stuntmed.stuntmed.R;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -30,7 +34,13 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_2);
 
-
+        ImageView backButton = (ImageView) findViewById(R.id.backButtonprofiles);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         // Assign variable
@@ -42,21 +52,26 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void handleButtonClick(View view) {
         Intent intent;
+        int id = view.getId();
 
-        switch (view.getId()) {
-            case R.id.edit_profile_parent:
-                intent = new Intent(this, Activity1.class);
-                startActivity(intent);
-                break;
-            case R.id.edit_profile_baby:
-                intent = new Intent(this, Activity2.class);
-                startActivity(intent);
-                break;
-            case R.id.settings:
-                intent = new Intent(this, Activity2.class);
-                startActivity(intent);
-            // Anda bisa tambahkan case lainnya jika ada tombol lain
+        if (id == R.id.edit_profile_parent) {
+            intent = new Intent(this, EditProfileParents.class);
+            startActivity(intent);
+        } else if (id == R.id.edit_profile_baby) {
+            intent = new Intent(this, EditProfileBaby.class);
+            startActivity(intent);
+        } else if (id == R.id.settings) {
+            intent = new Intent(this, Settings.class);
+            startActivity(intent);
         }
+
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, HomepageUser.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     void signOutEvent(Button sign_out_btn){

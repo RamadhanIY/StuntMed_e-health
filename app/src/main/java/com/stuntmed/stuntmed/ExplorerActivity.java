@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.stuntmed.stuntmed.R;
 import com.stuntmed.stuntmed.Explorer.ChildModelClass;
 import com.stuntmed.stuntmed.Explorer.ChildModelClassPost;
@@ -29,6 +31,8 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
     ArrayList<ChildModelClass> childModelClassArrayList;
     ArrayList<ChildModelClass> trend1Lists;
     ArrayList<ChildModelClass> trend2Lists;
+
+    FloatingActionButton fab;
 
     ArrayList<ChildModelClass> trend3Lists;
 
@@ -70,6 +74,15 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
                 return false;
             }
             return false;
+        });
+
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExplorerActivity.this, CheckStuntingActivity.class);
+                startActivity(intent);
+            }
         });
 //        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
 //        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test2"));
