@@ -2,4 +2,5 @@
     <string name="app_name">My Application</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="web_client_id">593444102839-jfu7mv63j25okrea49q2nbu87hgcgal0.apps.googleusercontent.com</string>
+    <string name="Register">Hello! Register to get started</string>
 </resources>
