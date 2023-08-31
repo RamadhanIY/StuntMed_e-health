@@ -15,4 +15,22 @@
         <item name="colorPrimary">#FFFF</item>
         <item name="colorPrimaryVariant">#000000</item>
     </style>
+
+    <style name="NameBabyFontStyle">
+        <item name="android:fontFamily">@font/nunito_bold</item> <!-- Jika Anda menggunakan font kustom -->
+        <item name="android:textSize">40sp</item> <!-- Ukuran teks yang lebih besar -->
+        <item name="android:textStyle">bold</item> <!-- Teks tebal -->
+        <item name="android:textColor">#000000</item> <!-- Warna teks, misalnya orange -->
+    </style>
+
+    <style name="HomePageFontStyle">
+        <item name="android:fontFamily">@font/roboto_reguler</item> <!-- Jika Anda menggunakan font kustom -->
+        <item name="android:textSize">25sp</item> <!-- Ukuran teks yang lebih besar -->
+        <item name="android:textColor">#464444</item> <!-- Warna teks, misalnya orange -->
+    </style>
+
+    <style name="ProfilePageFontStyle">
+        <item name="android:fontFamily">@font/roboto_reguler</item> <!-- Jika Anda menggunakan font kustom -->
+        <item name="android:textColor">#FFFFFF</item> <!-- Warna teks, misalnya orange -->
+    </style>
 </resources>

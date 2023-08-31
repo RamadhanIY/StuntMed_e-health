@@ -67,24 +67,41 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nama"
-                    android:textSize="30sp">
+                    android:text="@string/user_name"
+                    style="@style/ProfilePageFontStyle"
+                    android:textSize="30sp"
+                    android:textStyle="bold">
 
                 </TextView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+62 812 - 833 - 2832"
-                    android:textSize="20sp">
+                    android:text="@string/user_numberphone"
+                    style="@style/ProfilePageFontStyle"
+                    android:textSize="20sp"
+                    android:layout_marginTop="8dp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_address"
+                    style="@style/ProfilePageFontStyle"
+                    android:textSize="20sp"
+                    android:layout_marginTop="8dp">
 
                 </TextView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="West Jakarta, Indonesia"
-                    android:textSize="20sp"></TextView>
+                    android:text="@string/user_country"
+                    style="@style/ProfilePageFontStyle"
+                    android:textSize="20sp"
+                    android:layout_marginTop="8dp">
+
+                </TextView>
             </LinearLayout>
         </LinearLayout>
 
@@ -97,13 +114,27 @@
             android:layout_marginEnd="30dp"
             android:layout_marginTop="200dp"
             android:background="@color/white">
-            <TextView
+
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="30dp"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:text="Tiny hands, boundless potential. A healthy start for a baby is a lifelong gift of love and care."></TextView>
+                android:textStyle="italic"
+                android:text="Tiny hands, boundless potential. A healthy start for a baby is a lifelong gift of love and care.">
+
+            </androidx.appcompat.widget.AppCompatEditText>
+
+            <ImageView
+                android:id="@+id/edit_quote"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:clickable="true"
+                android:layout_margin="5dp"
+                android:src="@drawable/edit_3_svgrepo_com">
+
+            </ImageView>
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -115,46 +146,42 @@
             android:orientation="vertical"
             android:gravity="center"
             >
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/edit_profile_parent"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_2"
                 android:drawableLeft="@drawable/parents_icons"
-                android:text="EDIT PROFILE PARENTS">
+                android:text="EDIT PROFILE PARENTS"
+                style="@style/ProfilePageFontStyle"
+                android:textColor="@color/black">
 
-            </Button>
-            <Button
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/edit_profile_baby"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_2"
                 android:drawableLeft="@drawable/baby_icons"
-                android:text="EDIT PROFILE BABY">
+                android:text="EDIT PROFILE BABY"
+                style="@style/ProfilePageFontStyle"
+                android:textColor="@color/black">
 
-            </Button>
-            <Button
-                android:id="@+id/settings"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/rounded_2"
-                android:drawableLeft="@drawable/settings"
-                android:text="SETTINGS">
+            </androidx.appcompat.widget.AppCompatButton>
 
-            </Button>
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/log_out"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_2"
                 android:drawableLeft="@drawable/logout"
-                android:text="LOG OUT">
-
-            </Button>
+                android:text="LOG OUT"
+                style="@style/ProfilePageFontStyle"
+                android:textColor="@color/black">
+            </androidx.appcompat.widget.AppCompatButton>
         </LinearLayout>
 
 

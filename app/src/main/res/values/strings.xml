@@ -45,4 +45,26 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="update_success">Update Success</string>
+
+<!--    All Pages-->
+    <string name="submit">Submit</string>
+
+<!--    Homepage String -->
+
+    <string name="feature1">Check Stunting</string>
+    <string name="feature2">Jadwal Imunisasi</string>
+    <string name="baby_name">baby name</string>
+    <string name="monthday_baby">3 month 1 week</string>
+
+    <!--    ProfilePage String -->
+
+
+    <string name="user_name">User name</string>
+    <string name="user_numberphone">0812-9999-999</string>
+    <string name="user_address">West Jakarta</string>
+    <string name="user_country">Indonesia</string>
+
+
+
 </resources>
