@@ -5,33 +5,61 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.stuntmed.stuntmed.Method;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Baby {
     public String nik;
     public String name;
     public String date_of_birth;
     public String country;
     public String gender;
-    public String address;
-
+    public double berat;
+    public  double tinggi;
+    public double lk;
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance(Method.database_url).getReference();
 
     public Baby(){
 
     }
 
-    public Baby(String nik, String name, String date_of_birth, String country, String gender, String address){
+    public Baby(String name, String date_of_birth, String country, String gender){
+        this.name = name;
+        this.date_of_birth = date_of_birth;
+        this.country = country;
+        this.gender = gender;
+    }
+
+    public Baby( String name, String date_of_birth, String country, String gender, double berat, double tinggi, double lk){
+
+        this.name = name;
+        this.date_of_birth = date_of_birth;
+        this.country = country;
+        this.gender = gender;
+        this.berat = berat;
+        this.tinggi = tinggi;
+        this.lk = lk;
+    }
+
+    public Baby(String nik, String name, String date_of_birth, String country, String gender, double berat, double tinggi, double lk){
         this.nik = nik;
         this.name = name;
         this.date_of_birth = date_of_birth;
         this.country = country;
         this.gender = gender;
-        this.address = address;
+        this.berat = berat;
+        this.tinggi = tinggi;
+        this.lk = lk;
     }
 
-    public static void writeNewUser(String username, String full_name, String email, String gender, String address, String country, String phone_number, String nik, String date_of_birth) {
-        User user = new User(username, full_name, email, gender, address, country, phone_number, nik, date_of_birth);
+    public static void writeNewBaby(String nik, String name, String date_of_birth, String country, String gender, double berat, double tinggi, double lk) {
 
-        mDatabase.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+
+
+        DatabaseReference usersRef = ref.child("baby");
+
+        Map<String, Baby> baby = new HashMap<>();
+        baby.child(nik).setValueAsync( new Baby(name,date_of_birth,country,gender,berat,tinggi,lk));
     }
 
 
