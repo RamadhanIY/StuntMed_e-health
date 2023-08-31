@@ -1,7 +1,9 @@
-package com.stuntmed.stuntmed;
+package com.stuntmed.stuntmed.Databases;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.stuntmed.stuntmed.Method;
 
 public class User {
     public String username;
@@ -36,7 +38,6 @@ public class User {
     public static void writeNewUser(String username, String full_name, String email, String gender, String address, String country, String phone_number, String nik, String date_of_birth) {
         User user = new User(username, full_name, email, gender, address, country, phone_number, nik, date_of_birth);
 
-
-        mDatabase.child("Users").child(username).setValue(user);
+        mDatabase.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
     }
 }

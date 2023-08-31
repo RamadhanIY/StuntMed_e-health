@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import com.stuntmed.stuntmed.R;
+
+import com.stuntmed.stuntmed.Databases.User;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -14,13 +15,12 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        User.writeNewUser("benngki", "Benediktus Hengki Setiawan", "benediktushengkisetiawan@gmail.com", "laki-laki", "Bengkayang", "Indonesia", "081257522018", "6107041313130004", "01-01-1000");
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashScreen.this, HomepageUser.class);
+                Intent intent = new Intent(SplashScreen.this, SignIn.class);
                 startActivity(intent);
                 finish();
             }

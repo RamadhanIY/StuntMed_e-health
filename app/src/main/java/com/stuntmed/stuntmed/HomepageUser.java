@@ -11,6 +11,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -26,8 +27,8 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_homepage);
 
+        User.writeNewUser("benngki", "Benediktus Hengki Setiawan", "benediktushengkisetiawan@gmail.com", "laki-laki", "Bengkayang", "Indonesia", "081257522018", "6107041313130004", "01-01-1000");
 
-//        image slider
         ImageSlider imageSlider = findViewById(R.id.imageSlider);
         //ArrayList buat nyimpen foto (sementara, blm pake database)
 
