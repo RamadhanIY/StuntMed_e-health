@@ -7,19 +7,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.stuntmed.stuntmed.Databases.Baby;
 import com.stuntmed.stuntmed.Databases.User;
+import com.stuntmed.stuntmed.Explorer.ParentAdapter;
+import com.stuntmed.stuntmed.Explorer.ParentModelClass;
+import com.stuntmed.stuntmed.Homepage.ChildAdapter;
+import com.stuntmed.stuntmed.Homepage.ChildModelClass;
 import com.stuntmed.stuntmed.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomepageUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    RecyclerView recyclerView;
+
+    List<ChildModelClass> childModelClassList = new ArrayList<>();
+
+    ChildAdapter childAdapter;
 
     FloatingActionButton fab;
     @Override
@@ -75,6 +89,23 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+
+        add_babies();
+
+    }
+
+    protected void add_babies(){
+        recyclerView = findViewById(R.id.baby_profiles);
+        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
+        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
+
+//        ListBabies.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
+        childAdapter = new ChildAdapter(childModelClassList,HomepageUser.this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setAdapter(childAdapter);
+        childAdapter.notifyDataSetChanged();
+
+
 
     }
 

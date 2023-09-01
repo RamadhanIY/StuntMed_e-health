@@ -19,7 +19,7 @@
                 android:id="@+id/photo"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:src="@+drawable/histiry_picture"></ImageView>
+                android:src="@drawable/histiry_picture"></ImageView>
 
         </LinearLayout>
 

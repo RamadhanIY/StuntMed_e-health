@@ -1,6 +1,6 @@
 package com.stuntmed.stuntmed;
 
-Public class ListData_History {
+public class ListData_History {
     int Photo;
     String NamaHistory;
     String hasil_desc;

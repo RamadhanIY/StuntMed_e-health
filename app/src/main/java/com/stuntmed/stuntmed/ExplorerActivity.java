@@ -84,23 +84,9 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
                 startActivity(intent);
             }
         });
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test1"));
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test2"));
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test3"));
-//        trend1Lists.add(new ChildModelClass(R.drawable.threads1,"test4"));
-//
-//        parentModelClassArrayList.add(new ParentModelClass("Trending Topics",trend1Lists));
-//
-//
-//        parentAdapter = new ParentAdapter(parentModelClassArrayList,ExplorerActivity.this);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(parentAdapter);
-//
-//        parentAdapter.notifyDataSetChanged();
+
         trends1();
-//        trends2();
-//        post_by_user();
-//        trends3();
+
 
     }
 

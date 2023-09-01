@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -31,6 +32,9 @@ public class EditProfileBaby extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_baby_remake);
 
+
+        ImageButton calendars = findViewById(R.id.calendar);
+
         AutoCompleteTextView dateAutoComplete = findViewById(R.id.dateAutoCompletes);
 
         // Bangun date picker
@@ -39,7 +43,7 @@ public class EditProfileBaby extends AppCompatActivity {
         final MaterialDatePicker<Long> materialDatePicker = builder.build();
 
         // Tampilkan date picker saat AutoCompleteTextView ditekan
-        dateAutoComplete.setOnClickListener(v -> materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER"));
+        calendars.setOnClickListener(v -> materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER"));
 
         // Tetapkan listener untuk saat tanggal dipilih
         materialDatePicker.addOnPositiveButtonClickListener(selection -> {
