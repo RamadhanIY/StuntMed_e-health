@@ -36,10 +36,10 @@ public class User {
         this.date_of_birth = date_of_birth;
     }
 
-    public static void writeNewUser() {
+    public static void writeNewUser(String username, String full_name, String email, String gender, String address, String country, String phone_number, String nik, String date_of_birth) {
 
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
-        User user = new User(null, current_user.getDisplayName(), current_user.getEmail(), null, null, null, current_user.getPhoneNumber(), null, null);
+        User user = new User(username, full_name, email, gender, address, country,phone_number, nik, date_of_birth);
 
         mDatabase.child("Users").child(current_user.getUid()).child("parents").setValue(user);
     }

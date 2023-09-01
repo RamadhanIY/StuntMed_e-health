@@ -115,7 +115,7 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // Check condition
                                 if (task.isSuccessful()) {
-                                    User.writeNewUser();
+//                                    User.writeNewUser();
                                     // When task is successful redirect to profile activity display Toast
                                     startActivity(new Intent(Register.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     displayToast("Firebase authentication successful");

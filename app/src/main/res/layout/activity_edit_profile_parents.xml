@@ -167,7 +167,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/country"
-                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+
                 android:layout_width="185dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
@@ -176,16 +176,15 @@
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true">
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_country"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/custom_edittext"></AutoCompleteTextView>
+                    android:background="@drawable/custom_edittext"></com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:id="@+id/Gender"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -197,12 +196,12 @@
                 app:hintEnabled="true"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small">
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_gender"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/custom_edittext">
-                </AutoCompleteTextView>
+                </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
