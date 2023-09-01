@@ -46,5 +46,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_document_scanner_24"
         app:layout_anchor="@id/bottomAppBar"
-        app:layout_anchorGravity="top|center" />
+        app:layout_anchorGravity="top|center"
+        android:contentDescription="Check Stunting Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

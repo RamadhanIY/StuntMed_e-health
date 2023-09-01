@@ -8,6 +8,12 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="history_text">History</string>
+    <string name="back_button_text"></string>
+    <string name="judul_history">Pengukuran Bulanan NAMA ANAK</string>
+    <string name="Desc_history">Anak ibu sehat dan memiliki berat, tinggi, dan lingkar kepala yang normal</string>
+    <string name="hasil">Hasil :</string>
+    <string name="tanggal">12-08-2022</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
