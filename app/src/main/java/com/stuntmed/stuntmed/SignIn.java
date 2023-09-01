@@ -95,7 +95,7 @@ public class SignIn extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(SignIn.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            startActivity(new Intent(SignIn.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
 
@@ -141,7 +141,7 @@ public class SignIn extends AppCompatActivity {
                                     // intent to home activity
                                     Intent intent
                                             = new Intent(SignIn.this,
-                                            HomepageUser.class);
+                                            MainActivity.class);
                                     startActivity(intent);
                                 }
 
@@ -186,7 +186,7 @@ public class SignIn extends AppCompatActivity {
                                 // Check condition
                                 if (task.isSuccessful()) {
                                     // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(SignIn.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    startActivity(new Intent(SignIn.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     displayToast("Firebase authentication successful");
                                 } else {
                                     // When task is unsuccessful display Toast
