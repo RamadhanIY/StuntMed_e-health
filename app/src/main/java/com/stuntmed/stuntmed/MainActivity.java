@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     TextView name, email;
     Button signOutBtn;
+    private Button grafikBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.nameText);
         email = findViewById(R.id.email);
         signOutBtn = findViewById(R.id.signOutBtn);
+        grafikBtn = findViewById(R.id.btnGrafik);
 
         // Initialize firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -67,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        });
+
+        grafikBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, grafik.class);
+                startActivity(intent);
+
+            }
         });
     }
 
