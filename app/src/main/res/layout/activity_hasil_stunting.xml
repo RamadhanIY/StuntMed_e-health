@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HasilStuntingActivity"
+    android:background="@drawable/gradient_blue_grey">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/gradasi_biru_putih" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- left arrow -->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_button"
+                    android:layout_centerVertical="true"/>
+
+                <!-- Result -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Result"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp">
+
+                <!-- profile_picture -->
+                <ImageView
+                    android:layout_width="50pt"
+                    android:layout_height="50pt"
+                    android:src="@drawable/pict"
+                    android:id="@+id/profile_pict"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50pt"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/profile_pict"
+                    android:paddingLeft="10dp">
+
+                    <!-- nama -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bengbeng"
+                        android:id="@+id/name"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/name"
+                        android:layout_weight="1"
+                        android:layout_toRightOf="@id/profile_pict"
+                        android:background="@drawable/green_radius"
+                        android:paddingHorizontal="5dp">
+
+                        <!-- medal -->
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/gold_medal"
+                            android:id="@+id/medal"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="3dp">
+
+                        </ImageView>
+
+                        <!-- status_stunting -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Tidak Stunting"
+                            android:id="@+id/status_stunting"
+                            android:gravity="center_vertical"
+                            android:layout_marginHorizontal="3dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <!-- Data Baby -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+
+                <!-- berat badan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="15dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/rounded_circle_black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Berat Badan"/>
+
+                </LinearLayout>
+
+                <!-- lingkar kepala -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="15dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/rounded_circle_black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="lingkar kepala"/>
+
+                </LinearLayout>
+
+                <!-- tinggi badan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="15dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/rounded_circle_black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="tinggi badan"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Messages -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anak anda tidak termasuk stunting dan tumbuh dengan kondisi yang sehat."
+                android:gravity="center"
+                android:background="@drawable/white_radius"
+                android:layout_marginVertical="10dp"
+                android:padding="25dp"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+
+            <!-- Grafik Perkembangan -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/white_radius"
+                android:layout_marginVertical="10dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Grafik Perkembangan"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp
+"/>
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

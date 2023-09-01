@@ -14,11 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
-import com.google.android.gms.auth.api.identity.Identity;
-import com.google.android.gms.auth.api.identity.SignInClient;
-import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -95,7 +90,7 @@ public class SignIn extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(SignIn.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            startActivity(new Intent(SignIn.this, HasilStuntingActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
 
@@ -141,7 +136,7 @@ public class SignIn extends AppCompatActivity {
                                     // intent to home activity
                                     Intent intent
                                             = new Intent(SignIn.this,
-                                            MainActivity.class);
+                                            HasilStuntingActivity.class);
                                     startActivity(intent);
                                 }
 
@@ -186,7 +181,7 @@ public class SignIn extends AppCompatActivity {
                                 // Check condition
                                 if (task.isSuccessful()) {
                                     // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(SignIn.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    startActivity(new Intent(SignIn.this, HasilStuntingActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     displayToast("Firebase authentication successful");
                                 } else {
                                     // When task is unsuccessful display Toast
