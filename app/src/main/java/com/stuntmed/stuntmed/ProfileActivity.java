@@ -60,9 +60,6 @@ public class ProfileActivity extends AppCompatActivity {
         } else if (id == R.id.edit_profile_baby) {
             intent = new Intent(this, EditProfileBaby.class);
             startActivity(intent);
-        } else if (id == R.id.settings) {
-            intent = new Intent(this, Settings.class);
-            startActivity(intent);
         }
 
     }

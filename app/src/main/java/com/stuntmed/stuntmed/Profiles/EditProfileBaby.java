@@ -9,51 +9,46 @@ import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.stuntmed.stuntmed.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class EditProfileBaby extends AppCompatActivity {
 
-    private TextView mDisplayDate;
+    private AutoCompleteTextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     private static final String TAG = "EditProfileBaby";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile_baby);
-        mDisplayDate = (TextView) findViewById(R.id.edit_birthdate);
+        setContentView(R.layout.activity_edit_profile_baby_remake);
 
-        mDisplayDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+        AutoCompleteTextView dateAutoComplete = findViewById(R.id.dateAutoCompletes);
 
-                DatePickerDialog dialog = new DatePickerDialog(
-                        EditProfileBaby.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-            }
+        // Bangun date picker
+        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
+        builder.setTitleText("Pilih tanggal");
+        final MaterialDatePicker<Long> materialDatePicker = builder.build();
+
+        // Tampilkan date picker saat AutoCompleteTextView ditekan
+        dateAutoComplete.setOnClickListener(v -> materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER"));
+
+        // Tetapkan listener untuk saat tanggal dipilih
+        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+            // Format dan set tanggal yang dipilih ke AutoCompleteTextView
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            String selectedDate = simpleDateFormat.format(new Date(selection));
+            dateAutoComplete.setText(selectedDate);
         });
-
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
-
-                String date = month + "/" + day + "/" + year;
-                mDisplayDate.setText(date);
-            }
-        };
-
     }
+
+
 }

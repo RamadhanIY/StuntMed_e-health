@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +33,7 @@ public class Register extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Button bt_sign_up;
-    private EditText et_email, et_password;
+    private EditText et_email, et_password,et_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,8 @@ public class Register extends AppCompatActivity {
 
         // initialising all views through id defined above
         bt_sign_up = findViewById(R.id.signupbtn);
-        et_email = findViewById(R.id.username);
+        et_name = findViewById(R.id.name);
+        et_email = findViewById(R.id.email);
         et_password = findViewById(R.id.password);
 
         bt_sign_up.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +115,7 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // Check condition
                                 if (task.isSuccessful()) {
+                                    User.writeNewUser();
                                     // When task is successful redirect to profile activity display Toast
                                     startActivity(new Intent(Register.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     displayToast("Firebase authentication successful");
@@ -136,11 +139,19 @@ public class Register extends AppCompatActivity {
 
     void registerNewUser(){
         // initialising all views through id defined above
-        String email, password;
+        String email, password, name;
+        name = et_name.getText().toString();
         email = et_email.getText().toString();
         password = et_password.getText().toString();
 
         // initialising all views through id defined above
+        if (TextUtils.isEmpty(name)){
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your full name!",
+                            Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
         if (TextUtils.isEmpty(email)){
             Toast.makeText(getApplicationContext(),
                     "Please enter email!",
