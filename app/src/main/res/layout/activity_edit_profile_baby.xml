@@ -62,14 +62,15 @@
             app:hintEnabled="true"
             app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:startIconDrawable="@drawable/baby_icons"
-            android:layout_below="@id/profilepic_baby">
+            android:layout_below="@id/profilepic_baby"
+            android:hint="NIK"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_NIK_baby"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/custom_edittext"
-                android:text="NIK"
                 tools:ignore="DuplicateClickableBoundsCheck">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -87,16 +88,15 @@
             app:boxBackgroundMode="outline"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:startIconDrawable="@drawable/baby_icons"
-            android:layout_below="@id/NIK">
+            android:layout_below="@id/NIK"
+            android:hint="Full Name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_fullname_baby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custom_edittext"
-                android:text="Full Name">
+                android:background="@drawable/custom_edittext">
 
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -116,14 +116,14 @@
             app:startIconDrawable="@drawable/baseline_calendar_month_24"
             android:layout_below="@id/fullnamebaby">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/edit_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext"
-                android:text="Date Birth">
+                android:hint="Date Birth">
 
-            </com.google.android.material.textfield.TextInputEditText>
+            </AutoCompleteTextView>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,7 +140,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/country"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:layout_width="185dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
@@ -162,19 +162,14 @@
                 style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:id="@+id/Gender"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_toRightOf="@id/country"
-                android:hint="Gender"
                 app:boxBackgroundMode="outline"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.52"
-                app:layout_constraintStart_toEndOf="@+id/country"
-                app:layout_constraintTop_toTopOf="parent">
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small">
 
                 <AutoCompleteTextView
                     android:id="@+id/edit_gender"

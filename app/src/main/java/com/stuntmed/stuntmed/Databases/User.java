@@ -41,6 +41,8 @@ public class User {
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
         User user = new User(null, current_user.getDisplayName(), current_user.getEmail(), null, null, null, current_user.getPhoneNumber(), null, null);
 
-        mDatabase.child("Users").child(current_user.getUid()).setValue(user);
+        mDatabase.child("Users").child(current_user.getUid()).child("parents").setValue(user);
     }
+
+
 }
