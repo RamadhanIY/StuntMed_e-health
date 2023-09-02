@@ -59,7 +59,7 @@ public class SignIn extends AppCompatActivity {
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignIn.this, HomepageUser.class);
+                Intent intent = new Intent(SignIn.this, MainActivity.class);
                 startActivity(intent);
             }
         });
