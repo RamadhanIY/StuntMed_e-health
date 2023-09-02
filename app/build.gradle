@@ -99,5 +99,5 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.6.0")
 
     // MPAndroid
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation ('com.github.PhilJay:MPAndroidChart:v3.1.0')
 }
