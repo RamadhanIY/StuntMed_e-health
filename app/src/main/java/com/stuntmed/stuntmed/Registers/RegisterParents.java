@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
 import com.stuntmed.stuntmed.R;
+import com.stuntmed.stuntmed.Register;
 
 import java.text.SimpleDateFormat;
 
@@ -158,7 +159,7 @@ public class RegisterParents extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, HomepageUser.class);
+        Intent intent = new Intent(RegisterParents.this, Register.class);
         startActivity(intent);
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

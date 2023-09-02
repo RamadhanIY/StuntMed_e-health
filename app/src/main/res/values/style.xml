@@ -38,4 +38,13 @@
     <style name="circular">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="AppThemeHomepage" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#ABC7FF</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorSecondary">#2962FF</item>
+        <item name="colorSecondaryVariant">#718CD1</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorError">#F44336</item>
+        <item name="colorOnError">#FFFFFF</item>
+    </style>
 </resources>
