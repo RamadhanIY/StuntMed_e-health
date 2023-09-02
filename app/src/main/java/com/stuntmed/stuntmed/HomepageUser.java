@@ -33,6 +33,8 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
     ChildAdapter childAdapter;
 
     FloatingActionButton fab;
+
+    View emptyLayout;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,9 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         slideModels.add(new SlideModel(R.drawable.image2, ScaleTypes.FIT));
 
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+        recyclerView = findViewById(R.id.baby_profiles);
+        emptyLayout = findViewById(R.id.empty_layout);
+
 
         //Bottom Navbar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
@@ -86,15 +91,14 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
-
+        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
+        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
         add_babies();
-
     }
 
     protected void add_babies(){
-        recyclerView = findViewById(R.id.baby_profiles);
-        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
-        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
+        checkDataAndDisplay(childModelClassList);
+
 
 //        ListBabies.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
         childAdapter = new ChildAdapter(childModelClassList,HomepageUser.this);
@@ -104,6 +108,15 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
 
 
+    }
+    private void checkDataAndDisplay(List<?> dataList) {
+        if (dataList.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            emptyLayout.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyLayout.setVisibility(View.GONE);
+        }
     }
 
 
