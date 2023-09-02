@@ -7,15 +7,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:background="@android:color/transparent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/child_item">
+            android:id="@+id/child_item"
+            android:backgroundTint="@color/bluebuttoncolor"
+            app:cardCornerRadius="30dp">
 
             <Button
                 android:layout_width="match_parent"
@@ -46,7 +47,7 @@
                         android:orientation="vertical"
                         android:layout_gravity="center_vertical">
                         <LinearLayout
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -56,7 +57,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Nama Anak"
-                                android:textSize="20sp">
+                                style="@style/HomePageFontStyle"
+                                android:textColor="@color/white"
+                                android:textSize="25sp">
                             </TextView>
                             <ImageView
                                 android:id="@+id/gender_anak"
@@ -69,11 +72,12 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_margin="10dp"
-                            android:layout_width="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:layout_gravity="center_horizontal">
+
+                            android:background="@drawable/rounded">
 
                             <ImageView
                                 android:id="@+id/pic_category"
@@ -87,7 +91,9 @@
                                 android:id="@+id/kategori_stunting"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                style="@style/NameBabyFontStyle"
                                 android:text="Kategori Stunting"
+                                android:textColor="@color/bluemaincolor"
                                 android:textSize="20sp">
 
                             </TextView>
@@ -123,11 +129,12 @@
 
                         </androidx.cardview.widget.CardView>
                         <TextView
+                            style="@style/ProfilePageFontStyle"
                             android:layout_below="@id/circle_berat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Berat Badan"
-                            android:textSize="10sp"
+                            android:textSize="13sp"
                             android:textAlignment="center">
 
                         </TextView>
@@ -155,11 +162,12 @@
 
                         </androidx.cardview.widget.CardView>
                         <TextView
+                            style="@style/ProfilePageFontStyle"
                             android:layout_below="@id/circle_tinggi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Tinggi Badan"
-                            android:textSize="10sp"
+                            android:textSize="13sp"
                             android:textAlignment="center">
 
                         </TextView>
@@ -187,11 +195,12 @@
 
                         </androidx.cardview.widget.CardView>
                         <TextView
+                            style="@style/ProfilePageFontStyle"
                             android:layout_below="@id/circle_lk"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Lingkar Kepala"
-                            android:textSize="10sp"
+                            android:textSize="13sp"
                             android:textAlignment="center">
 
                         </TextView>

@@ -9,6 +9,7 @@ import android.os.Handler;
 import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.Profiles.EditProfileBaby;
 import com.stuntmed.stuntmed.Profiles.EditProfileParents;
+import com.stuntmed.stuntmed.Registers.RegisterParents;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
 
                 Intent intent = new Intent(SplashScreen.this, EditProfileParents.class);
+
                 startActivity(intent);
                 finish();
             }

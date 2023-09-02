@@ -35,12 +35,15 @@
             android:name=".SignIn"
             android:exported="false" />
 
-
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".HistoryActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".HistoryActivity_2"
             android:exported="false" />
         <activity
             android:name=".ExplorerActivity"
@@ -51,7 +54,6 @@
         <activity
             android:name=".CheckStuntingActivity"
             android:exported="false" />
-
         <activity
             android:name=".grafik"
             android:exported="false" />

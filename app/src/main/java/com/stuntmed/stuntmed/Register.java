@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.stuntmed.stuntmed.Registers.RegisterParents;
 import com.stuntmed.stuntmed.SignIn;
 
 public class Register extends AppCompatActivity {
@@ -85,6 +86,9 @@ public class Register extends AppCompatActivity {
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
             startActivity(new Intent(this_activity, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        }
+        else{
+            startActivity(new Intent(this_activity, RegisterParents.class));
         }
     }
 
