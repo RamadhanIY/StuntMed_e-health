@@ -1,20 +1,12 @@
 package com.stuntmed.stuntmed;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -22,42 +14,52 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IFillFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.renderer.LineChartRenderer;
 import com.github.mikephil.charting.utils.Transformer;
-import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class grafik extends AppCompatActivity {
+public class Grafik {
 
+    private LineData data;
     private LineChart mChart;
+    LineDataSet line_sd3_neg;
+    private LineDataSet line_sd3;
+    private LineDataSet line_sd2_neg;
+    private LineDataSet line_sd2;
+    private LineDataSet line_sd1_neg;
+    private LineDataSet line_sd1;
+    private LineDataSet line_sd0;
+    private LineDataSet line_dataset;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grafik);
+    public Grafik(LineChart mChart,
+                  float[] dataset,
+                  float[] data_sd0,
+                  float[] data_sd1_neg,
+                  float[] data_sd1,
+                  float[] data_sd2_neg,
+                  float[] data_sd2,
+                  float[] data_sd3_neg,
+                  float[] data_sd3){
 
-        mChart = findViewById(R.id.chart);
+        this.mChart = mChart;
 
-        LineDataSet line_sd3_neg = new LineDataSet(dataValues1(new float[]{30.7f, 33.8f, 35.6f, 37f, 38f, 38.9f, 39.7f, 40.3f, 40.8f, 41.2f, 41.6f, 41.9f, 42.2f, 42.5f, 42.7f, 42.9f, 43.1f, 43.2f, 43.4f, 43.5f, 43.7f, 43.8f, 43.9f, 44.1f, 44.2f}), "line_sd3_neg");
-        LineDataSet line_sd3 = new LineDataSet(dataValues1(new float[]{38.3f, 40.8f, 42.6f, 44.1f, 45.2f, 46.2f, 47f, 47.7f, 48.3f, 48.8f, 49.2f, 49.6f, 49.9f, 50.2f, 50.5f, 50.7f, 51f, 51.2f, 51.4f, 51.5f, 51.7f, 51.9f, 52f, 52.2f, 52.3f}), "line_sd3");
+        line_sd3_neg = new LineDataSet(dataValues1(data_sd3_neg), "line_sd3_neg");
+        line_sd3 = new LineDataSet(dataValues1(data_sd3), "line_sd3");
 
-        LineDataSet line_sd2_neg = new LineDataSet(dataValues1(new float[]{31.9f, 34.9f, 36.8f, 38.1f, 39.2f, 40.1f, 40.9f, 41.5f, 42f, 42.5f, 42.9f, 43.2f, 43.5f, 43.8f, 44f, 44.2f, 44.4f, 44.6f, 44.7f, 44.9f, 45f, 45.2f, 45.3f, 45.4f, 45.5f}), "line_sd2_neg");
-        LineDataSet line_sd2 = new LineDataSet(dataValues1(new float[]{37f, 39.6f, 41.5f, 42.9f, 44f, 45f, 45.8f, 46.4f, 47f, 47.5f, 47.9f, 48.3f, 48.6f, 48.9f, 49.2f, 49.4f, 49.6f, 49.8f, 50f, 50.2f, 50.4f, 50.5f, 50.7f, 50.8f, 51f}), "line_sd2");
+        line_sd2_neg = new LineDataSet(dataValues1(data_sd2_neg), "line_sd2_neg");
+        line_sd2 = new LineDataSet(dataValues1(data_sd2), "line_sd2");
 
-        LineDataSet line_sd1_neg = new LineDataSet(dataValues1(new float[]{33.2f, 36.1f, 38f, 39.3f, 40.4f, 41.4f, 42.1f, 42.7f, 43.3f, 43.7f, 44.1f, 44.5f, 44.8f, 45f, 45.3f, 45.5f, 45.7f, 45.9f, 46f, 46.2f, 46.4f, 46.5f, 46.6f, 46.8f, 46.9f}), "line_sd1_neg");
-        LineDataSet line_sd1 = new LineDataSet(dataValues1(new float[]{35.7f, 38.4f, 40.3f, 41.7f, 42.8f, 43.8f, 44.6f, 45.2f, 45.8f, 46.3f, 46.7f, 47f, 47.4f, 47.6f, 47.9f, 48.1f, 48.3f, 48.5f, 48.7f, 48.9f, 49f, 49.2f, 49.3f, 49.5f, 49.6f}), "line_sd1");
+        line_sd1_neg = new LineDataSet(dataValues1(data_sd1_neg), "line_sd1_neg");
+        line_sd1 = new LineDataSet(dataValues1(data_sd1), "line_sd1");
 
-        LineDataSet line_sd0 = new LineDataSet(dataValues1(new float[]{34.5f, 37.3f, 39.1f, 40.5f, 41.6f, 42.6f, 43.3f, 44f, 44.5f, 45f, 45.4f, 45.8f, 46.1f, 46.3f, 46.6f, 46.8f, 47f, 47.2f, 47.4f, 47.5f, 47.7f, 47.8f, 48f, 48.1f, 48.3f}), "line_sd0");
+        line_sd0 = new LineDataSet(dataValues1(data_sd0), "line_sd0");
 
-        LineDataSet dataset = new LineDataSet(dataValues1(new float[]{32f}), "Dataset");
+        line_dataset = new LineDataSet(dataValues1(dataset), "Dataset");
 
         line_sd3_neg.setColor(Color.RED);
         line_sd3_neg.setLineWidth(2);
@@ -104,11 +106,8 @@ public class grafik extends AppCompatActivity {
         datasets.add(line_sd1_neg);
         datasets.add(line_sd1);
         datasets.add(line_sd0);
-        datasets.add(dataset);
+        datasets.add(line_dataset);
 
-//        mChart.setBackgroundColor(Color.GREEN);
-//        mChart.setNoDataText("tidak ada data");
-//        mChart.setNoDataTextColor(Color.BLUE);
 
         mChart.setRenderer(new MyLineLegendRenderer(mChart, mChart.getAnimator(), mChart.getViewPortHandler()));
         mChart.setDrawGridBackground(true);
@@ -148,11 +147,14 @@ public class grafik extends AppCompatActivity {
 //        mChart.getXAxis().setla
 //        mChart.getXAxis().setDrawLabels(true);
 
-        LineData data = new LineData(datasets);
+
+        data = new LineData(datasets);
+    }
+
+    public void run(){
 
         mChart.setData(data);
         mChart.invalidate();
-
     }
 
     private ArrayList<Entry> dataValues1(float[] values){
@@ -163,6 +165,7 @@ public class grafik extends AppCompatActivity {
         }
 
         return dataVals;
+
     }
 
     public class MyFillFormatter implements IFillFormatter {
@@ -187,7 +190,7 @@ public class grafik extends AppCompatActivity {
                 return ((LineDataSet) boundaryDataSet).getValues();
             }
             return null;
-    }}
+        }}
 
     public class MyLineLegendRenderer extends LineChartRenderer {
 
@@ -271,7 +274,34 @@ public class grafik extends AppCompatActivity {
             }
 
             filled.close();
-        }}
+        }
+    }
 
+    public void setLine_sd0(LineDataSet line_sd0) {
+        this.line_sd0 = line_sd0;
+    }
 
+    public void setLine_sd1(LineDataSet line_sd1) {
+        this.line_sd1 = line_sd1;
+    }
+
+    public void setLine_sd1_neg(LineDataSet line_sd1_neg) {
+        this.line_sd1_neg = line_sd1_neg;
+    }
+
+    public void setLine_sd2(LineDataSet line_sd2) {
+        this.line_sd2 = line_sd2;
+    }
+
+    public void setLine_sd2_neg(LineDataSet line_sd2_neg) {
+        this.line_sd2_neg = line_sd2_neg;
+    }
+
+    public void setLine_sd3(LineDataSet line_sd3) {
+        this.line_sd3 = line_sd3;
+    }
+
+    public void setLine_sd3_neg(LineDataSet line_sd3_neg) {
+        this.line_sd3_neg = line_sd3_neg;
+    }
 }
