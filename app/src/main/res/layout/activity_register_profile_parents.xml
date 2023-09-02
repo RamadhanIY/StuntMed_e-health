@@ -259,8 +259,8 @@
                     app:boxBackgroundMode="outline"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+                    app:hintTextAppearance="@style/TextAppearance.AppCompat.Small">
+<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">-->
 
                     <AutoCompleteTextView
                         android:id="@+id/edit_gender"

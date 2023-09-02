@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -42,7 +43,7 @@ public class RegisterParents extends AppCompatActivity {
     EditText inputdatebirth;
 
     FloatingActionButton editpic;
-    CircleImageView profilepic;
+    ShapeableImageView profilepic;
 
     String[] country = {"Indonesia","Amerika", "Jepang"};
     String[] gender = {"Laki-laki","Perempuan"};
