@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.stuntmed.stuntmed.Registers.RegisterParents;
 import com.stuntmed.stuntmed.SignIn;
 
 public class Register extends AppCompatActivity {
@@ -86,6 +87,9 @@ public class Register extends AppCompatActivity {
             // When user already sign in redirect to profile activity
             startActivity(new Intent(this_activity, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
+        else{
+            startActivity(new Intent(this_activity, RegisterParents.class));
+        }
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -115,7 +119,7 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // Check condition
                                 if (task.isSuccessful()) {
-                                    User.writeNewUser();
+//                                    User.writeNewUser();
                                     // When task is successful redirect to profile activity display Toast
                                     startActivity(new Intent(Register.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     displayToast("Firebase authentication successful");

@@ -16,11 +16,8 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.stuntmed.stuntmed.Databases.Baby;
 import com.stuntmed.stuntmed.Databases.User;
-import com.stuntmed.stuntmed.Explorer.ParentAdapter;
-import com.stuntmed.stuntmed.Explorer.ParentModelClass;
 import com.stuntmed.stuntmed.Homepage.ChildAdapter;
 import com.stuntmed.stuntmed.Homepage.ChildModelClass;
-import com.stuntmed.stuntmed.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
@@ -43,7 +40,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_user_homepage);
 
 //        User.writeNewUser("benngki", "Benediktus Hengki Setiawan", "benediktushengkisetiawan@gmail.com", "laki-laki", "Bengkayang", "Indonesia", "081257522018", "6107041313130004", "01-01-1000");
-        User.writeNewUser();
+//        User.writeNewUser();
         Baby.writeNewBaby("123","rama","7 juli 2003","Indo","Lalaki",10.00,70.00,30.00);
 
         ImageSlider imageSlider = findViewById(R.id.imageSlider);

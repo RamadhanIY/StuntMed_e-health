@@ -18,7 +18,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.Profiles.EditProfileBaby;
 import com.stuntmed.stuntmed.Profiles.EditProfileParents;
 import com.stuntmed.stuntmed.Profiles.Settings;
@@ -26,7 +31,7 @@ import com.stuntmed.stuntmed.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView name, email;
+    TextView name, phone_number, country, address;
     Button log_out_btn;
 
     @Override
@@ -45,7 +50,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Assign variable
         name = findViewById(R.id.name);
+        phone_number = findViewById(R.id.phone_number);
+        country = findViewById(R.id.country);
+        address = findViewById(R.id.address);
+
         log_out_btn = findViewById(R.id.log_out);
+
+        getData();
 
         signOutEvent(log_out_btn);
     }
@@ -94,6 +105,29 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 }
             });
+        });
+    }
+
+    private void getData(){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/parents");
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                // tambahkan code di sini untuk mengambil data
+                name.setText(user.full_name.substring(0, 11)); // hanya 11 karakter agar tidak overflow
+                country.setText(user.country);
+                phone_number.setText(user.phone_number);
+                address.setText(user.address);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // tambahkan code ketika data gagal diambil
+            }
         });
     }
 }

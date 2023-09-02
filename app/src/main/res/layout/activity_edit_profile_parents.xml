@@ -32,228 +32,237 @@
             android:layout_centerVertical="true"/>
     </RelativeLayout>
 
-
-    <RelativeLayout
-        android:id="@+id/cons_edit_profiles"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="70dp">
+        android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profilepic_parents"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/profie_pictures">
-
-        </de.hdodenhof.circleimageview.CircleImageView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/NIK"
+        <RelativeLayout
+            android:id="@+id/cons_edit_profiles"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="8dp"
-            app:boxBackgroundMode="outline"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-            app:startIconDrawable="@drawable/parents_icons"
-            android:layout_below="@id/profilepic_parents">
+            android:layout_height="match_parent"
+            android:paddingTop="70dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_NIK_parents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_edittext"
-                android:hint="NIK"
-                tools:ignore="DuplicateClickableBoundsCheck">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilepic_parents"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/profie_pictures">
 
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fullnameparents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="8dp"
-            app:boxBackgroundMode="outline"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-            app:startIconDrawable="@drawable/parents_icons"
-            android:layout_below="@id/NIK">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_fullname_parents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_edittext"
-                android:hint="Full Name">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="8dp"
-            app:boxBackgroundMode="outline"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-            app:startIconDrawable="@drawable/baseline_email_24"
-            android:layout_below="@id/fullnameparents">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_edittext"
-                android:hint="Email">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phonenumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="8dp"
-            app:boxBackgroundMode="outline"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-            app:startIconDrawable="@drawable/baseline_local_phone_24"
-            android:layout_below="@id/email"
-            app:prefixText="+62"
-            android:hint="Phone Number">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_phonenumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_edittext"
-                >
-
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <LinearLayout
-            android:id="@+id/countryandgender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/phonenumber"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal">
+            </de.hdodenhof.circleimageview.CircleImageView>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/country"
-                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                android:layout_width="185dp"
-                android:layout_height="match_parent"
+                android:id="@+id/NIK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
-                android:hint="Country"
-                app:boxBackgroundMode="outline"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true">
-
-                <AutoCompleteTextView
-                    android:id="@+id/edit_country"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/custom_edittext"></AutoCompleteTextView>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                android:id="@+id/Gender"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="22dp"
-                android:layout_toRightOf="@id/country"
-                android:hint="Gender"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
                 app:boxBackgroundMode="outline"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small">
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:startIconDrawable="@drawable/parents_icons"
+                android:layout_below="@id/profilepic_parents">
 
-                <AutoCompleteTextView
-                    android:id="@+id/edit_gender"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_NIK_parents"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/custom_edittext">
-                </AutoCompleteTextView>
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="NIK"
+                    tools:ignore="DuplicateClickableBoundsCheck">
+
+                </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="8dp"
-            app:boxBackgroundMode="outline"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-            app:startIconDrawable="@drawable/baseline_edit_location_alt_24"
-            android:layout_below="@id/countryandgender">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_address"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fullnameparents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custom_edittext"
-                android:hint="Address">
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                app:boxBackgroundMode="outline"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:startIconDrawable="@drawable/parents_icons"
+                android:layout_below="@id/NIK">
 
-            </com.google.android.material.textfield.TextInputEditText>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_fullname_parents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="Full Name">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputEditText>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_below="@id/address"
-            android:padding="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_submit"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:text="Submit"
-                android:textSize="20sp"
-                android:background="@drawable/custom_button"
-                android:textColor="@color/white">
-            </androidx.appcompat.widget.AppCompatButton>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                app:boxBackgroundMode="outline"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:startIconDrawable="@drawable/baseline_email_24"
+                android:layout_below="@id/fullnameparents">
 
-        </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="Email">
 
-    </RelativeLayout>
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                app:boxBackgroundMode="outline"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:startIconDrawable="@drawable/baseline_local_phone_24"
+                android:layout_below="@id/email"
+                app:prefixText="+62"
+                android:hint="Phone Number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_phonenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edittext"
+                    >
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/countryandgender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phonenumber"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/country"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Country"
+                    app:boxBackgroundMode="outline"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edit_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_edittext"
+                        android:inputType="none">
+
+                    </AutoCompleteTextView>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_toRightOf="@id/country"
+                    android:hint="Gender"
+                    app:boxBackgroundMode="outline"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edit_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_edittext"
+                        android:inputType="none">
+                    </AutoCompleteTextView>
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                app:boxBackgroundMode="outline"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:startIconDrawable="@drawable/baseline_edit_location_alt_24"
+                android:layout_below="@id/countryandgender">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="Address">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_below="@id/address"
+                android:padding="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_submit"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:text="Submit"
+                    android:textSize="20sp"
+                    android:background="@drawable/custom_button"
+                    android:textColor="@color/white">
+                </androidx.appcompat.widget.AppCompatButton>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 
 

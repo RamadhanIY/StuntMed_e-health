@@ -9,9 +9,13 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.stuntmed.stuntmed.CheckStuntingActivity;
+import com.stuntmed.stuntmed.ExplorerActivity;
+import com.stuntmed.stuntmed.HomepageUser;
+import com.stuntmed.stuntmed.ProfileActivity;
 import com.stuntmed.stuntmed.R;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryActivity_2 extends AppCompatActivity {
 
 
     FloatingActionButton fab;
@@ -50,7 +54,7 @@ public class HistoryActivity extends AppCompatActivity {
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(HistoryActivity.this, CheckStuntingActivity.class);
+//                Intent intent = new Intent(HistoryActivity_2.this, CheckStuntingActivity.class);
 //                startActivity(intent);
 //            }
 //        });
