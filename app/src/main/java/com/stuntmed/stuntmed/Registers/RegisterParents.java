@@ -29,6 +29,8 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.stuntmed.stuntmed.HomepageUser;
@@ -145,11 +147,12 @@ public class RegisterParents extends AppCompatActivity {
         submitButton.setOnClickListener(view -> {
             // user bisa writeNewParents saat data yang dimasukkan lengkap
             if (checkInput() == true){
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 writeNewParents(
                         uri.toString(),
                         null,
-                        null,
-                        null,
+                        user.getDisplayName(),
+                        user.getEmail(),
                         inputgender.getText().toString(),
                         inputaddress.getText().toString(),
                         inputcountry.getText().toString(),

@@ -226,9 +226,27 @@ public class SignIn extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // Check condition
                                 if (task.isSuccessful()) {
-                                    // write new user based on google account
-                                    FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
-                                    User.writeNewUser(null,user.getDisplayName(), user.getEmail() );
+                                    // jika tidak ada data user
+                                    DatabaseReference mDatabase = FirebaseDatabase
+                                            .getInstance(Method.database_url)
+                                            .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/parents");
+
+                                    mDatabase.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            User user = snapshot.getValue(User.class);
+                                            if (user == null){
+                                                // write new user based on google account
+                                                FirebaseUser current_user = firebaseAuth.getInstance().getCurrentUser();
+                                                User.writeNewUser(null,current_user.getDisplayName(), current_user.getEmail() );
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            // tambahkan code ketika data gagal diambil
+                                        }
+                                    });
 
                                     // When task is successful redirect to profile activity display Toast
                                     checkData();

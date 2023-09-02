@@ -57,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         log_out_btn = findViewById(R.id.log_out);
 
         getData();
+        getData();
 
         signOutEvent(log_out_btn);
     }
