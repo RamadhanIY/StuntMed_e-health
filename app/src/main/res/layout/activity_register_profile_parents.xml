@@ -230,13 +230,13 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/country"
-                    style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="185dp"
                     android:layout_height="wrap_content"
                     android:hint="Country"
                     app:boxBackgroundMode="outline"
                     app:hintAnimationEnabled="true"
-                    app:hintEnabled="true">
+                    app:hintEnabled="true"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
                     <AutoCompleteTextView
                         android:id="@+id/edit_country"
@@ -259,8 +259,8 @@
                     app:boxBackgroundMode="outline"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    app:hintTextAppearance="@style/TextAppearance.AppCompat.Small">
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">-->
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small">
 
                     <AutoCompleteTextView
                         android:id="@+id/edit_gender"
