@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,13 +35,14 @@ import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
 import com.stuntmed.stuntmed.R;
 import com.stuntmed.stuntmed.Register;
+import com.stuntmed.stuntmed.Validator;
 
 import java.text.SimpleDateFormat;
 
 
 public class RegisterParents extends AppCompatActivity {
 
-    TextInputEditText inputfullnama, inputnik, inputemail, inputphonenumber,inputaddress;
+    TextInputEditText inputnik, inputphonenumber,inputaddress;
     AutoCompleteTextView inputcountry,inputgender;
 
     EditText inputdatebirth;
@@ -68,8 +70,6 @@ public class RegisterParents extends AppCompatActivity {
         setContentView(R.layout.activity_register_profile_parents);
 
         inputnik = findViewById(R.id.edit_NIK_parents);
-        inputfullnama = findViewById(R.id.edit_fullname_parents);
-        inputemail = findViewById(R.id.edit_email);
         inputphonenumber = findViewById(R.id.edit_phonenumber);
         inputcountry = findViewById(R.id.edit_country);
         inputgender = findViewById(R.id.edit_gender);
@@ -143,11 +143,109 @@ public class RegisterParents extends AppCompatActivity {
         });
 
         submitButton.setOnClickListener(view -> {
-            writeNewParents(uri.toString(),null,inputfullnama.getText().toString(),inputemail.getText().toString(),inputgender.getText().toString(),inputaddress.getText().toString(),inputcountry.getText().toString(),inputphonenumber.getText().toString(),inputnik.getText().toString(),inputdatebirth.getText().toString());
-            Intent intent = new Intent(this, HomepageUser.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            // user bisa writeNewParents saat data yang dimasukkan lengkap
+            if (checkInput() == true){
+                writeNewParents(
+                        uri.toString(),
+                        null,
+                        null,
+                        null,
+                        inputgender.getText().toString(),
+                        inputaddress.getText().toString(),
+                        inputcountry.getText().toString(),
+                        inputphonenumber.getText().toString(),
+                        inputnik.getText().toString(),
+                        inputdatebirth.getText().toString());
+                // debug
+//                Toast.makeText(getApplicationContext(),
+//                                "asasdaddadda!",
+//                                Toast.LENGTH_LONG)
+//                        .show();
+                //
+//                Intent intent = new Intent(RegisterParents.this, HomepageUser.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+            }
         });
+    }
+
+    private boolean checkInput() {
+        if (uri == null) {
+            Toast.makeText(getApplicationContext(),
+                            "Please set your image!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputnik.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your NIK!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidNIK(inputnik.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid NIK!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputdatebirth.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your date of birth!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidDate(inputdatebirth.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid date of birth!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputphonenumber.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your phone number!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidPhoneNumber(inputphonenumber.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid phone number!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputcountry.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your country!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputgender.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your gender!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputaddress.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your address!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -81,7 +81,7 @@ public class User {
     }
     public static void writeNewParents(String uri,String username, String full_name, String email, String gender, String address, String country, String phone_number, String nik, String date_of_birth) {
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
-        User user = new User(uri,username, full_name, email, gender, address, country,phone_number, nik, date_of_birth);
+        User user = new User(uri,username, full_name, email, gender, address, country, phone_number, nik, date_of_birth);
 
         mDatabase = FirebaseDatabase.getInstance(Method.database_url).getReference();
         mDatabase.child("Users").child(current_user.getUid()).child("parents").setValue(user);
