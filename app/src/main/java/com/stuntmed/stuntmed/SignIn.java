@@ -31,6 +31,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.stuntmed.stuntmed.Databases.User;
+import com.stuntmed.stuntmed.Registers.RegisterParents;
+
 
 public class SignIn extends AppCompatActivity {
 
@@ -59,7 +67,7 @@ public class SignIn extends AppCompatActivity {
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignIn.this, MainActivity.class);
+                Intent intent = new Intent(SignIn.this, Register.class);
                 startActivity(intent);
             }
         });
@@ -95,8 +103,37 @@ public class SignIn extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(SignIn.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            checkData();
+
         }
+
+    }
+    private void checkData(){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/parents");
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if(user != null){
+                    if(user.nik == null){
+                        startActivity(new Intent(SignIn.this, RegisterParents.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    }
+                    else{
+                        startActivity(new Intent(SignIn.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    }
+                    // tambahkan code di sini untuk mengambil data
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // tambahkan code ketika data gagal diambil
+            }
+        });
     }
 
     void loginUserAccount(){
@@ -141,7 +178,7 @@ public class SignIn extends AppCompatActivity {
                                     // intent to home activity
                                     Intent intent
                                             = new Intent(SignIn.this,
-                                            MainActivity.class);
+                                            HomepageUser.class);
                                     startActivity(intent);
                                 }
 
@@ -186,7 +223,7 @@ public class SignIn extends AppCompatActivity {
                                 // Check condition
                                 if (task.isSuccessful()) {
                                     // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(SignIn.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    startActivity(new Intent(SignIn.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     displayToast("Firebase authentication successful");
                                 } else {
                                     // When task is unsuccessful display Toast

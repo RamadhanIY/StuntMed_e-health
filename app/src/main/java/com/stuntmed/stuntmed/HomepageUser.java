@@ -41,7 +41,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
 //        User.writeNewUser("benngki", "Benediktus Hengki Setiawan", "benediktushengkisetiawan@gmail.com", "laki-laki", "Bengkayang", "Indonesia", "081257522018", "6107041313130004", "01-01-1000");
 //        User.writeNewUser();
-        Baby.writeNewBaby("123","rama","7 juli 2003","Indo","Lalaki",10.00,70.00,30.00);
+        Baby.writeNewBaby("123","rama","7 juli 2003","Indo","Lalaki","10.00","70.00","30.00");
 
         ImageSlider imageSlider = findViewById(R.id.imageSlider);
         //ArrayList buat nyimpen foto (sementara, blm pake database)

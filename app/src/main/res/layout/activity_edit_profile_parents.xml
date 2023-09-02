@@ -42,21 +42,52 @@
             android:layout_height="match_parent"
             android:paddingTop="70dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profilepic_parents"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/profie_pictures">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_profilepic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </de.hdodenhof.circleimageview.CircleImageView>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profilepic_parents"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/parents_icons"
+                    app:shapeAppearanceOverlay="@style/circular"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.google.android.material.imageview.ShapeableImageView>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/edit_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:src="@drawable/camera_svgrepo_com"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/profilepic_parents"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/profilepic_parents"
+                    app:layout_constraintTop_toTopOf="@+id/profilepic_parents"
+                    android:background="@drawable/rounded_4"
+                    android:contentDescription="TODO"
+                    android:clickable="true">
+
+                </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/NIK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="8dp"
                 app:boxBackgroundMode="outline"
@@ -64,7 +95,7 @@
                 app:hintEnabled="true"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:startIconDrawable="@drawable/parents_icons"
-                android:layout_below="@id/profilepic_parents">
+                android:layout_below="@id/layout_profilepic">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_NIK_parents"
@@ -91,7 +122,8 @@
                 app:hintEnabled="true"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:startIconDrawable="@drawable/parents_icons"
-                android:layout_below="@id/NIK">
+                android:layout_below="@id/NIK"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_fullname_parents"
@@ -101,6 +133,35 @@
                     android:hint="Full Name">
 
                 </com.google.android.material.textfield.TextInputEditText>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/date_birth_parents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                app:boxBackgroundMode="outline"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:startIconDrawable="@drawable/baseline_calendar_month_24"
+                android:layout_below="@id/fullnameparents">
+
+                <EditText
+                    android:id="@+id/edit_date_birth_parents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="Date birth"
+                    android:clickable="true">
+
+                </EditText>
+
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -116,7 +177,7 @@
                 app:hintEnabled="true"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:startIconDrawable="@drawable/baseline_email_24"
-                android:layout_below="@id/fullnameparents">
+                android:layout_below="@id/date_birth_parents">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_email"
@@ -262,9 +323,5 @@
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

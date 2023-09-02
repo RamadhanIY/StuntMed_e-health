@@ -122,7 +122,8 @@
                 app:hintEnabled="true"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:startIconDrawable="@drawable/parents_icons"
-                android:layout_below="@id/NIK">
+                android:layout_below="@id/NIK"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_fullname_parents"
@@ -237,6 +238,7 @@
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
 
                     <AutoCompleteTextView
                         android:id="@+id/edit_country"

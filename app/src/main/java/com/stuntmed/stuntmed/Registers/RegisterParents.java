@@ -1,5 +1,6 @@
 package com.stuntmed.stuntmed.Registers;
 
+import static com.stuntmed.stuntmed.Databases.User.writeNewParents;
 import static com.stuntmed.stuntmed.Databases.User.writeNewUser;
 
 import androidx.annotation.Nullable;
@@ -21,7 +22,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import com.github.dhaval2404.imagepicker.ImagePicker;
+//
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -33,7 +36,6 @@ import com.stuntmed.stuntmed.R;
 
 import java.text.SimpleDateFormat;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterParents extends AppCompatActivity {
 
@@ -42,11 +44,13 @@ public class RegisterParents extends AppCompatActivity {
 
     EditText inputdatebirth;
 
-    FloatingActionButton editpic;
+    ImageButton editpic;
     ShapeableImageView profilepic;
 
     String[] country = {"Indonesia","Amerika", "Jepang"};
     String[] gender = {"Laki-laki","Perempuan"};
+
+    Uri uri;
 
     ArrayAdapter<String> adaptercountry, adaptergender;
 
@@ -138,7 +142,7 @@ public class RegisterParents extends AppCompatActivity {
         });
 
         submitButton.setOnClickListener(view -> {
-            writeNewUser(null,inputfullnama.getText().toString(),inputemail.getText().toString(),inputgender.getText().toString(),inputaddress.getText().toString(),inputcountry.getText().toString(),inputphonenumber.getText().toString(),inputnik.getText().toString(),null);
+            writeNewParents(uri.toString(),null,inputfullnama.getText().toString(),inputemail.getText().toString(),inputgender.getText().toString(),inputaddress.getText().toString(),inputcountry.getText().toString(),inputphonenumber.getText().toString(),inputnik.getText().toString(),inputdatebirth.getText().toString());
             Intent intent = new Intent(this, HomepageUser.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -148,7 +152,7 @@ public class RegisterParents extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Uri uri = data.getData();
+        uri = data.getData();
         profilepic.setImageURI(uri);
     }
 

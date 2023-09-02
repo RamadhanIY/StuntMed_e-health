@@ -85,11 +85,9 @@ public class Register extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(this_activity, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            startActivity(new Intent(this_activity, SignIn.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
-        else{
-            startActivity(new Intent(this_activity, RegisterParents.class));
-        }
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -121,7 +119,7 @@ public class Register extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 //                                    User.writeNewUser();
                                     // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(Register.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    startActivity(new Intent(Register.this, HomepageUser.class));
                                     displayToast("Firebase authentication successful");
                                 } else {
                                     // When task is unsuccessful display Toast
@@ -178,6 +176,9 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+
+                            User.writeNewUser(null,name,email);
+
                             Toast.makeText(getApplicationContext(),
                                             "Registration succesful!",
                                             Toast.LENGTH_SHORT)
