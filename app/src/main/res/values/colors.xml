@@ -5,6 +5,7 @@
     <color name ="bluemaincolor">#5A74FF</color>
     <color name="bluebuttoncolor">#ABC7FF</color>
     <color name="darkerbluehistory">#ABB6DF</color>
+    <color name="pagecolor">#E9E9E9</color>
 </resources>
 
 <!--homepage-->

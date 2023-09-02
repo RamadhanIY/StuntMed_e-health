@@ -39,4 +39,9 @@
 
     <string name="Register">Hello! Register to get started</string>
 
+    <!--    Page Add Child-->
+    <string name="Page_add_child">Add Child</string>
+    <string name="name_child">Name </string>
+    <string name="umur_bayi">3 Months 1 day</string>
+
 </resources>
