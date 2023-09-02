@@ -102,6 +102,11 @@ public class SignIn extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         // Check condition
         if (firebaseUser != null) {
+            Toast.makeText(getApplicationContext(),
+                            "Login successful!!",
+                            Toast.LENGTH_LONG)
+                    .show();
+
             // When user already sign in redirect to profile activity
             checkData();
 
@@ -124,7 +129,6 @@ public class SignIn extends AppCompatActivity {
                     else{
                         startActivity(new Intent(SignIn.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     }
-                    // tambahkan code di sini untuk mengambil data
                 }
 
             }
@@ -222,9 +226,14 @@ public class SignIn extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // Check condition
                                 if (task.isSuccessful()) {
+                                    // write new user based on google account
+                                    FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
+                                    User.writeNewUser(null,user.getDisplayName(), user.getEmail() );
+
                                     // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(SignIn.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    checkData();
                                     displayToast("Firebase authentication successful");
+
                                 } else {
                                     // When task is unsuccessful display Toast
                                     displayToast("Authentication Failed :" + task.getException().getMessage());
