@@ -1,6 +1,7 @@
 package com.stuntmed.stuntmed;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,11 +36,19 @@ public class CheckStuntingActivity extends AppCompatActivity {
         tinggi = findViewById(R.id.input_tinggi);
         lk = findViewById(R.id.input_lingkarkepala);
 
+        AppCompatButton submitButton = (AppCompatButton) findViewById(R.id.button_submit);
         ImageView backButton = (ImageView) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
