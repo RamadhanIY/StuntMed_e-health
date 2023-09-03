@@ -58,6 +58,14 @@ public class Baby {
                                     baby);
 
     }
+    public static void updateBaby(String uri, String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk, String kategori) {
+        FirebaseUser current_user = Method.getCurrentUser();
+        Baby baby = new Baby(uri, nik, name, date_of_birth, country, gender, berat, tinggi, lk, kategori);
+
+        // Menggunakan referensi yang sama tetapi kali ini untuk memperbarui data
+        Method.setValueOnDatabase("Users/" + current_user.getUid() + "/babies/" + nik,
+                baby);
+    }
 
     private static void setBaby(Baby baby) {
         Baby.baby = baby;
