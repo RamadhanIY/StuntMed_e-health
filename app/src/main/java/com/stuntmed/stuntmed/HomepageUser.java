@@ -40,9 +40,8 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
     RecyclerView recyclerView;
 
-    List<ChildModelClass> childModelClassList = new ArrayList<>();
+    List<Baby> childModelClassList = new ArrayList<>();
 
-    ChildAdapter childAdapter;
 
     FloatingActionButton fab;
 
@@ -108,32 +107,28 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
-
+        try {
         getAllBabyNiks();
-//        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
-        add_babies();
-        getDataUser();
-    }
-
-    protected void add_babies(){
+//        childModelClassList.add(new Baby(null,"Yanto","Laki","Tidak Stunting","10","19","20",null,null,null));
         checkDataAndDisplay(childModelClassList);
-
-
-//        ListBabies.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
-        childAdapter = new ChildAdapter(childModelClassList,HomepageUser.this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        recyclerView.setAdapter(childAdapter);
-        childAdapter.notifyDataSetChanged();
-
-
+        getDataUser();
+        }catch (Exception e){}
 
     }
+
+
     private void checkDataAndDisplay(List<?> dataList) {
+
         if (dataList.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
         } else {
+            ChildAdapter childAdapter;
             recyclerView.setVisibility(View.VISIBLE);
+            childAdapter = new ChildAdapter(childModelClassList,HomepageUser.this);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+            recyclerView.setAdapter(childAdapter);
+            childAdapter.notifyDataSetChanged();
             emptyLayout.setVisibility(View.GONE);
         }
     }
@@ -170,6 +165,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 for (DataSnapshot babySnapshot : snapshot.getChildren()) {
                     Baby baby = babySnapshot.getValue(Baby.class);
                     babies.add(baby);
+
                 }
                 HomepageUser.this.onItemsObtained(babies);
             }
@@ -183,13 +179,12 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
     public void onItemsObtained(List<Baby> babies) {
         this.babies = babies;
         for (Baby baby : babies) {
-            Log.d("Ada nama bro",baby.name);
-            childModelClassList.add(new ChildModelClass(R.drawable.image2,baby.name,R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,
-                    baby.berat,
-                    baby.tinggi,
-                    baby.lk));
+
+            childModelClassList.add(baby);
+            Log.d("Ada nama bro",childModelClassList.get(0).name);
+
         }
-        add_babies();
+        checkDataAndDisplay(childModelClassList);
     }
 
     private void getDataUser(){
