@@ -6,6 +6,7 @@
     <color name="bluebuttoncolor">#ABC7FF</color>
     <color name="darkerbluehistory">#ABB6DF</color>
     <color name="pagecolor">#E9E9E9</color>
+    <color name="ColorWriting">#464444</color>
 </resources>
 
 <!--homepage-->
