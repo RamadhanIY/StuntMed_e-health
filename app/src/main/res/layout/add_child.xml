@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/Page_add_child"
+            android:textColor="@color/ColorWriting"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -45,13 +46,13 @@
 
     <Button
         android:id="@+id/AddButton"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/ListView"
         android:layout_centerHorizontal="true"
         android:text="Add Another Child"
         android:textStyle="bold"
-        android:background="@drawable/rounded_2"
+        android:background="@drawable/rounded_3"
         android:layout_marginTop="20dp" ></Button>
 
 </RelativeLayout>
