@@ -68,6 +68,9 @@
             android:name=".Registers.RegisterParents"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".Registers.RegisterBaby"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".HasilStuntingActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
