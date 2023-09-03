@@ -55,6 +55,8 @@ public class ProfileActivity extends AppCompatActivity {
         address = findViewById(R.id.address);
 
         log_out_btn = findViewById(R.id.log_out);
+        findViewById(R.id.edit_profile_parent).setOnClickListener(this::handleButtonClick);
+        findViewById(R.id.edit_profile_baby).setOnClickListener(this::handleButtonClick);
 
         getData();
         getData();
@@ -119,7 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 // tambahkan code di sini untuk mengambil data
-                name.setText(user.full_name.substring(0, 11)); // hanya 11 karakter agar tidak overflow
+                name.setText(user.full_name); // hanya 11 karakter agar tidak overflow
                 country.setText(user.country);
                 phone_number.setText(user.phone_number);
                 address.setText(user.address);

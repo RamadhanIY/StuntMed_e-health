@@ -94,7 +94,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="50dp"
                     android:hint="Berat Badan (Kg)"
-                    android:textSize="20sp">
+                    android:textSize="20sp"
+                    android:inputType="numberDecimal">
                 </com.google.android.material.textfield.TextInputEditText>
 
             </androidx.cardview.widget.CardView>
@@ -121,7 +122,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="50dp"
                     android:hint="Tinggi badan (cm)"
-                    android:textSize="20sp">
+                    android:textSize="20sp"
+                    android:inputType="numberDecimal">
                 </com.google.android.material.textfield.TextInputEditText>
 
             </androidx.cardview.widget.CardView>
@@ -148,7 +150,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="50dp"
                     android:hint="Lingkar kepala (cm)"
-                    android:textSize="20sp">
+                    android:textSize="20sp"
+                    android:inputType="numberDecimal">
                 </com.google.android.material.textfield.TextInputEditText>
 
             </androidx.cardview.widget.CardView>

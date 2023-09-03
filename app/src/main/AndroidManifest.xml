@@ -20,7 +20,8 @@
             android:exported="false" />
         <activity
             android:name=".Profiles.EditProfileBaby"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".Profiles.EditProfileParents"
             android:exported="false"
@@ -40,14 +41,16 @@
 
         <activity
             android:name=".ProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".HistoryActivity"
             android:exported="false" />
 
         <activity
             android:name=".HistoryActivity_2"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".ExplorerActivity"
             android:exported="false" />
