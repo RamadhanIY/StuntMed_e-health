@@ -146,7 +146,11 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 String name = user.full_name;
-                username.setText(name);
+                try {
+                    username.setText(name);
+                }catch (Exception e){
+
+                }
                 // Tampilkan nama ke dalam TextView atau widget lainnya
 
             }
