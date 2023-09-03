@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Profiles.EditProfileParents">
+    tools:context=".Profiles.EditProfileBaby">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:id="@+id/topbar_profileparents">
+        android:id="@+id/topbar_profilebaby">
 
         <TextView
             android:id="@+id/checkStuntingText"
@@ -39,14 +39,43 @@
         android:layout_height="match_parent"
         android:paddingTop="70dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profilepic_baby"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/profie_pictures">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_profilepicbaby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        </de.hdodenhof.circleimageview.CircleImageView>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profilepic_baby"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/baby_icons"
+                app:shapeAppearanceOverlay="@style/circular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/edit_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/camera_svgrepo_com"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/profilepic_baby"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/profilepic_baby"
+                app:layout_constraintTop_toTopOf="@+id/profilepic_baby"
+                android:background="@drawable/rounded_4"
+                android:contentDescription="TODO"
+                android:clickable="true">
+
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/NIK"
@@ -61,10 +90,10 @@
             app:hintEnabled="true"
             app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:startIconDrawable="@drawable/baby_icons"
-            android:layout_below="@id/profilepic_baby">
+            android:layout_below="@id/layout_profilepicbaby">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_NIK_parents"
+                android:id="@+id/edit_NIK_baby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext"
@@ -76,7 +105,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fullnameparents"
+            android:id="@+id/fullnamebaby"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -91,7 +120,7 @@
             android:layout_below="@id/NIK">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_fullname_parents"
+                android:id="@+id/edit_fullname_baby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_edittext"
@@ -113,26 +142,17 @@
             app:hintEnabled="true"
             app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:startIconDrawable="@drawable/baseline_calendar_month_24"
-            android:layout_below="@id/fullnameparents"
-            style="@style/ShapeAppearanceOverlay.Material3.Button">
+            android:layout_below="@id/fullnamebaby">
 
-            <ImageButton
-                android:id="@+id/calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/calendar_checkmark">
+        <EditText
+            android:id="@+id/edit_date_birth_baby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_edittext"
+            android:hint="Date birth"
+            android:clickable="true">
 
-            </ImageButton>
-
-            <AutoCompleteTextView
-                android:id="@+id/dateAutoCompletes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_edittext"
-                android:hint="Date birth">
-
-            </AutoCompleteTextView>
-
+        </EditText>
         </com.google.android.material.textfield.TextInputLayout>
 
 

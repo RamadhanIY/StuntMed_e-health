@@ -33,6 +33,7 @@
         android:text="@string/Register"
         android:textSize="37sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         />
 
     <!--  EditText : Email  -->
@@ -48,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
+            android:textColorHint="@color/black"
             android:inputType="textEmailAddress"
             android:background="@drawable/custom_edittext"/>
 

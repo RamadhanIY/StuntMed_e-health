@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppThemesMain" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppThemesMain" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">#ABC7FF</item>
         <item name="colorPrimaryVariant">#000000</item>
         <item name="colorSecondary">#2962FF</item>
@@ -32,5 +32,19 @@
     <style name="ProfilePageFontStyle">
         <item name="android:fontFamily">@font/roboto_reguler</item> <!-- Jika Anda menggunakan font kustom -->
         <item name="android:textColor">#FFFFFF</item> <!-- Warna teks, misalnya orange -->
+    </style>
+    
+    //Circular
+    <style name="circular">
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="AppThemeHomepage" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#ABC7FF</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorSecondary">#2962FF</item>
+        <item name="colorSecondaryVariant">#718CD1</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorError">#F44336</item>
+        <item name="colorOnError">#FFFFFF</item>
     </style>
 </resources>

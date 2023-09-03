@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.stuntmed.stuntmed.R;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         grafikBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, grafik.class);
+                Intent intent = new Intent(MainActivity.this, testGrafik.class);
                 startActivity(intent);
 
             }

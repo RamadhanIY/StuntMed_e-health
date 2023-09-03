@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -22,10 +24,16 @@ public class CheckStuntingActivity extends AppCompatActivity {
     TextView tv;
     ImageView iv;
 
+    TextInputEditText berat,tinggi,lk;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkstunting);
+
+        berat = findViewById(R.id.input_berat);
+        tinggi = findViewById(R.id.input_tinggi);
+        lk = findViewById(R.id.input_lingkarkepala);
 
         ImageView backButton = (ImageView) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

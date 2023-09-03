@@ -15,16 +15,19 @@ public class Baby {
     public String date_of_birth;
     public String country;
     public String gender;
-    public double berat;
-    public  double tinggi;
-    public double lk;
+    public String berat;
+    public  String tinggi;
+    public String lk;
+
+    public String uri;
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance(Method.database_url).getReference();
 
     public Baby(){
 
     }
 
-    public Baby(String nik, String name, String date_of_birth, String country, String gender, double berat, double tinggi, double lk){
+    public Baby(String uri,String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk){
+        this.uri = uri;
         this.nik = nik;
         this.name = name;
         this.date_of_birth = date_of_birth;
@@ -35,10 +38,10 @@ public class Baby {
         this.lk = lk;
     }
 
-    public static void writeNewBaby(String nik, String name, String date_of_birth, String country, String gender, double berat, double tinggi, double lk) {
+    public static void writeNewBaby(String uri,String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk) {
 
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
-        Baby baby = new Baby(nik, name, date_of_birth,country,gender,berat,tinggi,lk);
+        Baby baby = new Baby(uri,nik, name, date_of_birth,country,gender,berat,tinggi,lk);
 
         mDatabase.child("Users").child(current_user.getUid()).child("babies").child(nik).child("dataset").setValue(baby);
     }
