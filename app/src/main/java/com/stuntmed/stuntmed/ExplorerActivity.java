@@ -62,7 +62,7 @@ public class ExplorerActivity extends AppCompatActivity implements ExplorerActiv
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 finish();
             } else if (id == R.id.button_history) {
-                startActivity(new Intent(getApplicationContext(), HistoryActivity.class ));
+                startActivity(new Intent(getApplicationContext(), HistoryActivity_2.class ));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
                 return true;
