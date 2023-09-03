@@ -27,6 +27,7 @@ public class Baby {
     public String berat;
     public  String tinggi;
     public String lk;
+    public String kategori;
 
     public String uri;
     private static Baby baby;
@@ -36,7 +37,7 @@ public class Baby {
 
     }
 
-    public Baby(String uri,String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk){
+    public Baby(String uri,String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk, String kategori){
         this.uri = uri;
         this.nik = nik;
         this.name = name;
@@ -46,15 +47,24 @@ public class Baby {
         this.berat = berat;
         this.tinggi = tinggi;
         this.lk = lk;
+        this.kategori = kategori;
     }
 
-    public static void writeNewBaby(String uri,String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk) {
+    public static void writeNewBaby(String uri,String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk,String kategori) {
         FirebaseUser current_user = Method.getCurrentUser();
-        Baby baby = new Baby(uri,nik, name, date_of_birth,country,gender,berat,tinggi,lk);
+        Baby baby = new Baby(uri,nik, name, date_of_birth,country,gender,berat,tinggi,lk,kategori);
 
         Method.setValueOnDatabase("Users/"+current_user.getUid()+"/babies/"+nik,
                                     baby);
 
+    }
+    public static void updateBaby(String uri, String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk, String kategori) {
+        FirebaseUser current_user = Method.getCurrentUser();
+        Baby baby = new Baby(uri, nik, name, date_of_birth, country, gender, berat, tinggi, lk, kategori);
+
+        // Menggunakan referensi yang sama tetapi kali ini untuk memperbarui data
+        Method.setValueOnDatabase("Users/" + current_user.getUid() + "/babies/" + nik,
+                baby);
     }
 
     private static void setBaby(Baby baby) {
@@ -84,6 +94,15 @@ public class Baby {
         updateBaby(nik);
         return Baby.baby;
     };
+
+    public String getNik() {
+        return nik;
+    }
+
+    // Jika Anda belum memiliki setter, tambahkan juga:
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
 
 //    private static String checkNik(String nik){
 //        return .child();

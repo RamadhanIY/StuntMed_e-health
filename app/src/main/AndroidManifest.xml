@@ -15,6 +15,9 @@
         android:theme="@style/AppThemesMain"
         tools:targetApi="31">
         <activity
+            android:name=".ListChild"
+            android:exported="false" />
+        <activity
             android:name=".ShowGrafik"
             android:exported="false" />
         <activity
@@ -64,12 +67,13 @@
         <activity
             android:name=".Registers.RegisterParents"
             android:theme="@style/AppTheme" />
-
+        <activity
+            android:name=".Registers.RegisterBaby"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".HasilStuntingActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
-
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">

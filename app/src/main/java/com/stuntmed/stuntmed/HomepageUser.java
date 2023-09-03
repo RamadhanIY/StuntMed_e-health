@@ -3,6 +3,7 @@ package com.stuntmed.stuntmed;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -39,15 +40,15 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
     RecyclerView recyclerView;
 
-    List<ChildModelClass> childModelClassList = new ArrayList<>();
+    List<Baby> childModelClassList = new ArrayList<>();
 
-    ChildAdapter childAdapter;
 
     FloatingActionButton fab;
 
     View emptyLayout;
 
     TextView username;
+    List<Baby> babies = new ArrayList<>();
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -106,35 +107,85 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
-        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
-        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
-        add_babies();
-        getDataUser();
-    }
-
-    protected void add_babies(){
+        try {
+        getAllBabyNiks();
+//        childModelClassList.add(new Baby(null,"Yanto","Laki","Tidak Stunting","10","19","20",null,null,null));
         checkDataAndDisplay(childModelClassList);
-
-
-//        ListBabies.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
-        childAdapter = new ChildAdapter(childModelClassList,HomepageUser.this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        recyclerView.setAdapter(childAdapter);
-        childAdapter.notifyDataSetChanged();
-
-
+        getDataUser();
+        }catch (Exception e){}
 
     }
+
+
     private void checkDataAndDisplay(List<?> dataList) {
+
         if (dataList.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             emptyLayout.setVisibility(View.VISIBLE);
         } else {
+            ChildAdapter childAdapter;
             recyclerView.setVisibility(View.VISIBLE);
+            childAdapter = new ChildAdapter(childModelClassList,HomepageUser.this);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+            recyclerView.setAdapter(childAdapter);
+            childAdapter.notifyDataSetChanged();
             emptyLayout.setVisibility(View.GONE);
         }
     }
 
+    private void getDataBabyByNik(final String nik){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies/" + nik);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Baby baby = snapshot.getValue(Baby.class);
+//                HomepageUser.this.onItemsObtained(baby);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void getAllBabyNiks(){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies");
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                babies = new ArrayList<>();
+
+                for (DataSnapshot babySnapshot : snapshot.getChildren()) {
+                    Baby baby = babySnapshot.getValue(Baby.class);
+                    babies.add(baby);
+
+                }
+                HomepageUser.this.onItemsObtained(babies);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public void onItemsObtained(List<Baby> babies) {
+        this.babies = babies;
+        for (Baby baby : babies) {
+
+            childModelClassList.add(baby);
+            Log.d("Ada nama bro",childModelClassList.get(0).name);
+
+        }
+        checkDataAndDisplay(childModelClassList);
+    }
 
     private void getDataUser(){
         DatabaseReference mDatabase = FirebaseDatabase
@@ -146,11 +197,6 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 String name = user.full_name;
-                try {
-                    username.setText(name);
-                }catch (Exception e){
-
-                }
                 // Tampilkan nama ke dalam TextView atau widget lainnya
 
             }
@@ -161,6 +207,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;

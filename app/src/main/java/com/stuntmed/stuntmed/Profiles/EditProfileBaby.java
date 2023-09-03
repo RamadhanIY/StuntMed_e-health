@@ -1,5 +1,6 @@
 package com.stuntmed.stuntmed.Profiles;
 
+import static com.stuntmed.stuntmed.Databases.Baby.updateBaby;
 import static com.stuntmed.stuntmed.Databases.Baby.writeNewBaby;
 import static com.stuntmed.stuntmed.Databases.User.writeNewUser;
 
@@ -144,7 +145,7 @@ public class EditProfileBaby extends AppCompatActivity {
         });
 
         submitButton.setOnClickListener(view -> {
-            writeNewBaby(uri.toString(),inputnik.getText().toString(),inputfullnama.getText().toString(),inputdatebirth.getText().toString(),inputcountry.getText().toString(),inputgender.getText().toString(),null,null,null);
+            updateBaby(uri.toString(),inputnik.getText().toString(),inputfullnama.getText().toString(),inputdatebirth.getText().toString(),inputcountry.getText().toString(),inputgender.getText().toString(),null,null,null,null);
             Intent intent = new Intent(this, HomepageUser.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

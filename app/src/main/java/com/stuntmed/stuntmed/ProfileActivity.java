@@ -72,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
             intent = new Intent(this, EditProfileParents.class);
             startActivity(intent);
         } else if (id == R.id.edit_profile_baby) {
-            intent = new Intent(this, EditProfileBaby.class);
+            intent = new Intent(this, ListChild.class);
             startActivity(intent);
         }
 
