@@ -66,7 +66,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_user_homepage);
 
         image_profile = findViewById(R.id.circleImageView);
-        updateProfileImage(image_profile);
+        Method.updateProfileImage(image_profile);
 
         ImageSlider imageSlider = findViewById(R.id.imageSlider);
         username = findViewById(R.id.nameuser_homepage);
@@ -123,27 +123,6 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         getDataUser();
         }catch (Exception e){}
 
-    }
-
-    void updateProfileImage(CircleImageView image_profile){
-        FirebaseStorage
-                .getInstance("gs://stuntmed.appspot.com")
-                .getReference(Method.getCurrentUser().getUid()+"/profile_image/IMG_20230903_222941353.png")
-                .getDownloadUrl()
-                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-//                        image_profile.setImageURI(uri);
-                        Picasso.get().load(uri).into(image_profile);
-                        Log.d("debuging", "Berhasil update profile image");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("debuging", "gagal update profile image");
-                        Log.d("debuging", e.toString());
-                    }
-                });
     }
 
 

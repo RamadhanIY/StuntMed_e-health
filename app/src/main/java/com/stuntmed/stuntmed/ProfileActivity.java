@@ -29,15 +29,21 @@ import com.stuntmed.stuntmed.Profiles.EditProfileParents;
 import com.stuntmed.stuntmed.Profiles.Settings;
 import com.stuntmed.stuntmed.R;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
 
     TextView name, phone_number, country, address;
     Button log_out_btn;
+    CircleImageView profile_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_2);
+
+        profile_image = findViewById(R.id.profile_image);
+        Method.updateProfileImage(profile_image);
 
         ImageView backButton = (ImageView) findViewById(R.id.backButtonprofiles);
         backButton.setOnClickListener(new View.OnClickListener() {

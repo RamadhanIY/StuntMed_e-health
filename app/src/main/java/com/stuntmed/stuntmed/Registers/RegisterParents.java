@@ -169,7 +169,7 @@ public class RegisterParents extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         User current_user = snapshot.getValue(User.class);
 
-                        uploadPict(uri);
+                        Method.uploadPict(uri);
 
                         writeNewParents(
                                 uri.toString(),
@@ -194,33 +194,6 @@ public class RegisterParents extends AppCompatActivity {
         });
 
         checkData();
-    }
-
-    void uploadPict (Uri file){
-        //      FIREBASE STORAGE
-        StorageReference storage = FirebaseStorage.getInstance("gs://stuntmed.appspot.com").getReference();
-
-        UploadTask uploadTask = storage
-                .child(Method.getCurrentUser().getUid())
-                .child("profile_image/"+file.getLastPathSegment())
-                .putFile(file);
-
-        // Register observers to listen for when the download is done or if it fails
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-                Log.d("debuging", "tidak sukses upload"+file.getLastPathSegment());
-                Log.d("debuging", exception.toString());
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                // ...
-                Log.d("debuging", "sukses upload"+file.getLastPathSegment());
-            }
-        });
     }
 
     private void checkData(){
