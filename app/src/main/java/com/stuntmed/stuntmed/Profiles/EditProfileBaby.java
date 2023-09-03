@@ -24,15 +24,18 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
 import com.stuntmed.stuntmed.R;
+import com.stuntmed.stuntmed.Validator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,8 +50,10 @@ public class EditProfileBaby extends AppCompatActivity {
 
     EditText inputdatebirth;
 
+    Uri uri;
+
     ImageButton editpic;
-    CircleImageView profilepic;
+    ShapeableImageView profilepic;
 
     String[] country = {"Indonesia","Amerika", "Jepang"};
     String[] gender = {"Laki-laki","Perempuan"};
@@ -65,13 +70,13 @@ public class EditProfileBaby extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile_parents);
+        setContentView(R.layout.activity_edit_profile_baby_remake);
 
-        inputnik = findViewById(R.id.edit_NIK_parents);
-        inputfullnama = findViewById(R.id.edit_fullname_parents);
+        inputnik = findViewById(R.id.edit_NIK_baby);
+        inputfullnama = findViewById(R.id.edit_fullname_baby);
         inputcountry = findViewById(R.id.edit_country);
         inputgender = findViewById(R.id.edit_gender);
-        inputdatebirth = findViewById(R.id.edit_date_birth_parents);
+        inputdatebirth = findViewById(R.id.edit_date_birth_baby);
 
         adaptercountry = new ArrayAdapter<>(this,R.layout.list_country,country);
         adaptergender = new ArrayAdapter<>(this,R.layout.list_gender,gender);
@@ -79,13 +84,12 @@ public class EditProfileBaby extends AppCompatActivity {
         Button submitButton = (Button) findViewById(R.id.button_submit);
         ImageView backButton = (ImageView) findViewById(R.id.backButton_profiles);
         editpic = findViewById(R.id.edit_pic);
-        profilepic = findViewById(R.id.profilepic_parents);
+        profilepic = findViewById(R.id.profilepic_baby);
 
         editpic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ImagePicker.with(EditProfileBaby.this)
-                        .crop()	    			//Crop image(Optional), Check Customization for more option
                         .compress(1024)			//Final image size will be less than 1 MB(Optional)
                         .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                         .start();
@@ -140,7 +144,7 @@ public class EditProfileBaby extends AppCompatActivity {
         });
 
         submitButton.setOnClickListener(view -> {
-            writeNewBaby(inputnik.getText().toString(),inputfullnama.getText().toString(),inputdatebirth.getText().toString(),inputcountry.getText().toString(),inputgender.getText().toString(),null,null,null);
+            writeNewBaby(uri.toString(),inputnik.getText().toString(),inputfullnama.getText().toString(),inputdatebirth.getText().toString(),inputcountry.getText().toString(),inputgender.getText().toString(),null,null,null);
             Intent intent = new Intent(this, HomepageUser.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -150,7 +154,7 @@ public class EditProfileBaby extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Uri uri = data.getData();
+        uri = data.getData();
         profilepic.setImageURI(uri);
     }
 
@@ -160,6 +164,64 @@ public class EditProfileBaby extends AppCompatActivity {
         startActivity(intent);
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    //Checker
+    private boolean checkInput() {
+        if (uri == null) {
+            Toast.makeText(getApplicationContext(),
+                            "Please set your image!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputnik.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your NIK!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidNIK(inputnik.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid NIK!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputdatebirth.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your date of birth!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidDate(inputdatebirth.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid date of birth!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputcountry.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your country!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputgender.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your gender!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+
+        return true;
     }
 
 

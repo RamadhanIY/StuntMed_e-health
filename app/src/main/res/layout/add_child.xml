@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pagecolor">
+
+
+    <RelativeLayout
+        android:id="@+id/Topbar_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/Page_add_child"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/back_button_text"
+            android:src="@drawable/back_button" />
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/ListView"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginTop="80dp"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/list_child"></ListView>
+
+    <Button
+        android:id="@+id/AddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ListView"
+        android:layout_centerHorizontal="true"
+        android:text="Add Another Child"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_2"
+        android:layout_marginTop="20dp" ></Button>
+
+</RelativeLayout>

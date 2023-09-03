@@ -55,6 +55,8 @@ public class ProfileActivity extends AppCompatActivity {
         address = findViewById(R.id.address);
 
         log_out_btn = findViewById(R.id.log_out);
+        findViewById(R.id.edit_profile_parent).setOnClickListener(this::handleButtonClick);
+        findViewById(R.id.edit_profile_baby).setOnClickListener(this::handleButtonClick);
 
         getData();
         getData();

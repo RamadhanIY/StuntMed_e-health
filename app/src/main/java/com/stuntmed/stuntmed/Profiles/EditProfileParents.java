@@ -26,12 +26,15 @@ import android.widget.Toast;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 //
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
+import com.stuntmed.stuntmed.ProfileActivity;
 import com.stuntmed.stuntmed.R;
+import com.stuntmed.stuntmed.Validator;
 
 import java.text.SimpleDateFormat;
 
@@ -45,7 +48,7 @@ public class EditProfileParents extends AppCompatActivity {
     EditText inputdatebirth;
 
     ImageButton editpic;
-    CircleImageView profilepic;
+    ShapeableImageView profilepic;
 
     String[] country = {"Indonesia","Amerika", "Jepang"};
     String[] gender = {"Laki-laki","Perempuan"};
@@ -158,9 +161,86 @@ public class EditProfileParents extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, HomepageUser.class);
+        Intent intent = new Intent(EditProfileParents.this, ProfileActivity.class);
         startActivity(intent);
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+    private boolean checkInput() {
+        if (uri == null) {
+            Toast.makeText(getApplicationContext(),
+                            "Please set your image!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputnik.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your NIK!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidNIK(inputnik.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid NIK!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputdatebirth.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your date of birth!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidDate(inputdatebirth.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid date of birth!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputphonenumber.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your phone number!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        } else if (Validator.isValidPhoneNumber(inputphonenumber.getText().toString()) == false) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your valid phone number!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputcountry.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your country!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputgender.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your gender!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        if (inputaddress.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                            "Please enter your address!",
+                            Toast.LENGTH_LONG)
+                    .show();
+            return false;
+        }
+
+        return true;
     }
 }
