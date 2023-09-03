@@ -3,7 +3,10 @@ package com.stuntmed.stuntmed;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +19,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.stuntmed.stuntmed.Databases.Baby;
 import com.stuntmed.stuntmed.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -100,6 +108,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+//        Baby
+
+        TextView bebas = findViewById(R.id.bebas);
+//        Baby baby = (Baby) Method.getValueOnDatabase("Users/"+Method.getCurrentUser().getUid()+"/babies/1111111111111111");
+
+        Baby baby = Baby.getData("1111111111111111");
+
+        Log.d("testttttasdasd", "gender");
+//        bebas.setText(baby.lk);
+//        bebas.setText(Method.getCurrentUser().getUid());
+        // writeNewBaby
+//        Baby.writeNewBaby(
+//                null,
+//                "1111111111111111",
+//                "beng",
+//                "13-13-1313",
+//                "Malay",
+//                "cwk",
+//                "5",
+//                "50",
+//                "30"
+//        );
     }
 
 }

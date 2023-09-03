@@ -3,6 +3,7 @@ package com.stuntmed.stuntmed.Registers;
 import static com.stuntmed.stuntmed.Databases.User.writeNewParents;
 import static com.stuntmed.stuntmed.Databases.User.writeNewUser;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,12 +32,17 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
 import com.stuntmed.stuntmed.R;
 import com.stuntmed.stuntmed.Register;
+import com.stuntmed.stuntmed.SignIn;
 import com.stuntmed.stuntmed.Validator;
 
 import java.text.SimpleDateFormat;
@@ -147,27 +153,61 @@ public class RegisterParents extends AppCompatActivity {
             // user bisa writeNewParents saat data yang dimasukkan lengkap
             if (checkInput() == true){
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                writeNewParents(
-                        uri.toString(),
-                        null,
-                        user.getDisplayName(),
-                        user.getEmail(),
-                        inputgender.getText().toString(),
-                        inputaddress.getText().toString(),
-                        inputcountry.getText().toString(),
-                        inputphonenumber.getText().toString(),
-                        inputnik.getText().toString(),
-                        inputdatebirth.getText().toString());
-                // debug
-//                Toast.makeText(getApplicationContext(),
-//                                "asasdaddadda!",
-//                                Toast.LENGTH_LONG)
-//                        .show();
-                //
-//                Intent intent = new Intent(RegisterParents.this, HomepageUser.class);
-//                startActivity(intent);
-//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                DatabaseReference mDatabase = FirebaseDatabase
+                        .getInstance(Method.database_url)
+                                .getReference("Users/"+user.getUid()+"/parents");
 
+                mDatabase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User current_user = snapshot.getValue(User.class);
+
+                        writeNewParents(
+                                uri.toString(),
+                                null,
+                                current_user.full_name,
+                                current_user.email,
+                                inputgender.getText().toString(),
+                                inputaddress.getText().toString(),
+                                inputcountry.getText().toString(),
+                                inputphonenumber.getText().toString(),
+                                inputnik.getText().toString(),
+                                inputdatebirth.getText().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+//                        User current_user
+                    }
+                });
+
+            }
+        });
+
+        checkData();
+    }
+
+    private void checkData(){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/parents");
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if(user != null){
+                    if(user.nik != null){
+                        startActivity(new Intent(RegisterParents.this, HomepageUser.class));
+                        finish();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // tambahkan code ketika data gagal diambil
             }
         });
     }
@@ -257,11 +297,11 @@ public class RegisterParents extends AppCompatActivity {
         profilepic.setImageURI(uri);
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(RegisterParents.this, Register.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Intent intent = new Intent(RegisterParents.this, Register.class);
+//        startActivity(intent);
+//        finish();
+//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//    }
 }

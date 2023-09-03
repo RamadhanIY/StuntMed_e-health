@@ -1,6 +1,6 @@
 package com.stuntmed.stuntmed;
 
-public class DataAddChild {
+public class DataAddChild  {
     String NameChild, umur;
     int photo;
 

@@ -1,9 +1,18 @@
 package com.stuntmed.stuntmed.Databases;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.stuntmed.stuntmed.Method;
 
 import java.util.HashMap;
@@ -20,7 +29,8 @@ public class Baby {
     public String lk;
 
     public String uri;
-    private static DatabaseReference mDatabase = FirebaseDatabase.getInstance(Method.database_url).getReference();
+    private static Baby baby;
+
 
     public Baby(){
 
@@ -39,11 +49,43 @@ public class Baby {
     }
 
     public static void writeNewBaby(String uri,String nik, String name, String date_of_birth, String country, String gender, String berat, String tinggi, String lk) {
-
-        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser current_user = Method.getCurrentUser();
         Baby baby = new Baby(uri,nik, name, date_of_birth,country,gender,berat,tinggi,lk);
 
-        mDatabase.child("Users").child(current_user.getUid()).child("babies").child(nik).child("dataset").setValue(baby);
+        Method.setValueOnDatabase("Users/"+current_user.getUid()+"/babies/"+nik,
+                                    baby);
+
     }
 
+    private static void setBaby(Baby baby) {
+        Baby.baby = baby;
+    }
+
+    private static void updateBaby(String nik){
+        DatabaseReference mDatabase = Method.getDatabaseReference("Users/"+Method.getCurrentUser().getUid()+"/babies/"+nik);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Method.setObj(snapshot.getValue(Baby.class));
+                setBaby(snapshot.getValue(Baby.class));
+                Log.d("testttttasdasd", "berhasil");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("testttttasdasd", "gagal")       ;
+
+            }
+        });
+    }
+
+    public static Baby getData(String nik){
+        updateBaby(nik);
+        return Baby.baby;
+    };
+
+//    private static String checkNik(String nik){
+//        return .child();
+//    }
 }

@@ -69,6 +69,7 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SignIn.this, Register.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -124,11 +125,12 @@ public class SignIn extends AppCompatActivity {
                 User user = snapshot.getValue(User.class);
                 if(user != null){
                     if(user.nik == null){
-                        startActivity(new Intent(SignIn.this, RegisterParents.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        startActivity(new Intent(SignIn.this, RegisterParents.class));
                     }
                     else{
-                        startActivity(new Intent(SignIn.this, HomepageUser.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        startActivity(new Intent(SignIn.this, HomepageUser.class));
                     }
+                    finish();
                 }
 
             }
@@ -184,6 +186,7 @@ public class SignIn extends AppCompatActivity {
                                             = new Intent(SignIn.this,
                                             HomepageUser.class);
                                     startActivity(intent);
+                                    finish();
                                 }
 
                                 else {
