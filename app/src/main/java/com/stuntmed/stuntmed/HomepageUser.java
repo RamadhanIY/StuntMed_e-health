@@ -2,6 +2,7 @@ package com.stuntmed.stuntmed;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +27,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 import com.stuntmed.stuntmed.Databases.Baby;
 import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.Homepage.ChildAdapter;
@@ -34,6 +40,8 @@ import com.stuntmed.stuntmed.Registers.RegisterParents;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class HomepageUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,6 +57,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
     TextView username;
     List<Baby> babies = new ArrayList<>();
+    CircleImageView image_profile;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -56,8 +65,8 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_homepage);
 
-//        User.writeNewUser("benngki", "Benediktus Hengki Setiawan", "benediktushengkisetiawan@gmail.com", "laki-laki", "Bengkayang", "Indonesia", "081257522018", "6107041313130004", "01-01-1000");
-//        User.writeNewUser();
+        image_profile = findViewById(R.id.circleImageView);
+        updateProfileImage(image_profile);
 
         ImageSlider imageSlider = findViewById(R.id.imageSlider);
         username = findViewById(R.id.nameuser_homepage);
@@ -114,6 +123,27 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         getDataUser();
         }catch (Exception e){}
 
+    }
+
+    void updateProfileImage(CircleImageView image_profile){
+        FirebaseStorage
+                .getInstance("gs://stuntmed.appspot.com")
+                .getReference(Method.getCurrentUser().getUid()+"/profile_image/IMG_20230903_222941353.png")
+                .getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+//                        image_profile.setImageURI(uri);
+                        Picasso.get().load(uri).into(image_profile);
+                        Log.d("debuging", "Berhasil update profile image");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("debuging", "gagal update profile image");
+                        Log.d("debuging", e.toString());
+                    }
+                });
     }
 
 

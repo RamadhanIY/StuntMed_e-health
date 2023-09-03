@@ -27,16 +27,22 @@ import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 //
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
@@ -45,6 +51,7 @@ import com.stuntmed.stuntmed.Register;
 import com.stuntmed.stuntmed.SignIn;
 import com.stuntmed.stuntmed.Validator;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 
 
@@ -162,6 +169,8 @@ public class RegisterParents extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         User current_user = snapshot.getValue(User.class);
 
+                        uploadPict(uri);
+
                         writeNewParents(
                                 uri.toString(),
                                 null,
@@ -185,6 +194,33 @@ public class RegisterParents extends AppCompatActivity {
         });
 
         checkData();
+    }
+
+    void uploadPict (Uri file){
+        //      FIREBASE STORAGE
+        StorageReference storage = FirebaseStorage.getInstance("gs://stuntmed.appspot.com").getReference();
+
+        UploadTask uploadTask = storage
+                .child(Method.getCurrentUser().getUid())
+                .child("profile_image/"+file.getLastPathSegment())
+                .putFile(file);
+
+        // Register observers to listen for when the download is done or if it fails
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+                Log.d("debuging", "tidak sukses upload"+file.getLastPathSegment());
+                Log.d("debuging", exception.toString());
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                // ...
+                Log.d("debuging", "sukses upload"+file.getLastPathSegment());
+            }
+        });
     }
 
     private void checkData(){
