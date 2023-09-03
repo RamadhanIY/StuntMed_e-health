@@ -3,6 +3,7 @@ package com.stuntmed.stuntmed;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -48,6 +49,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
     View emptyLayout;
 
     TextView username;
+    List<Baby> babies = new ArrayList<>();
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -106,8 +108,9 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
-        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
-        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
+
+        getAllBabyNiks();
+//        childModelClassList.add(new ChildModelClass(R.drawable.image2,"Yanto",R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,"10","19","20"));
         add_babies();
         getDataUser();
     }
@@ -135,6 +138,59 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void getDataBabyByNik(final String nik){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies/" + nik);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Baby baby = snapshot.getValue(Baby.class);
+//                HomepageUser.this.onItemsObtained(baby);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void getAllBabyNiks(){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies");
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                babies = new ArrayList<>();
+
+                for (DataSnapshot babySnapshot : snapshot.getChildren()) {
+                    Baby baby = babySnapshot.getValue(Baby.class);
+                    babies.add(baby);
+                }
+                HomepageUser.this.onItemsObtained(babies);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public void onItemsObtained(List<Baby> babies) {
+        this.babies = babies;
+        for (Baby baby : babies) {
+            Log.d("Ada nama bro",baby.name);
+            childModelClassList.add(new ChildModelClass(R.drawable.image2,baby.name,R.drawable.woman_gender,"Tidak Stunting",R.drawable.baby_icons,
+                    baby.berat,
+                    baby.tinggi,
+                    baby.lk));
+        }
+        add_babies();
+    }
 
     private void getDataUser(){
         DatabaseReference mDatabase = FirebaseDatabase
@@ -146,11 +202,6 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 String name = user.full_name;
-                try {
-                    username.setText(name);
-                }catch (Exception e){
-
-                }
                 // Tampilkan nama ke dalam TextView atau widget lainnya
 
             }
@@ -161,6 +212,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;
