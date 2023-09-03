@@ -6,6 +6,7 @@
     android:padding="16dp">
 
     <LinearLayout
+        android:id="@+id/babies"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/rounded_3"
@@ -48,4 +49,6 @@
             android:textColor="#484C52"
             android:textSize="15sp"></TextView>
     </LinearLayout>
+</LinearLayout>
+
 </LinearLayout>

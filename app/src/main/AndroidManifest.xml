@@ -14,14 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemesMain"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ShowGrafik"
+            android:exported="false" />
         <activity
             android:name=".Profiles.Settings"
             android:exported="false" />
         <activity
             android:name=".Profiles.EditProfileBaby"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Profiles.EditProfileParents"
             android:exported="false"
@@ -30,57 +32,50 @@
         <activity
             android:name=".Register"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SignIn"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
-
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
-
-
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".HistoryActivity_2"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ExplorerActivity"
             android:exported="false" />
         <activity
             android:name=".HomepageUser"
             android:exported="false"
-            android:theme="@style/AppThemeHomepage"/>
+            android:theme="@style/AppThemeHomepage" />
         <activity
             android:name=".CheckStuntingActivity"
             android:exported="false" />
         <activity
             android:name=".testGrafik"
             android:exported="false" />
-
-        <activity android:name=".Registers.RegisterParents"
-            android:theme="@style/AppTheme">
-
-        </activity>
+        <activity
+            android:name=".Registers.RegisterParents"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SplashScreen_UpdateSuccess_Register"
-            android:exported="true">
-        </activity>
-
+            android:exported="true" />
     </application>
 
 </manifest>
