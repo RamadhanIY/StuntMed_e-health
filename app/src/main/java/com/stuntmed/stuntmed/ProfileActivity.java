@@ -102,6 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
                         // Display Toast
                         Toast.makeText(getApplicationContext(), "Logout successful", Toast.LENGTH_SHORT).show();
                         // Finish activity
+                        startActivity(new Intent(ProfileActivity.this, SignIn.class));
                         finish();
                     }
                 }
@@ -119,10 +120,29 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 // tambahkan code di sini untuk mengambil data
-                name.setText(user.full_name.substring(0, 11)); // hanya 11 karakter agar tidak overflow
-                country.setText(user.country);
+                try {
+                    name.setText(user.full_name.substring(0, 11)); // hanya 11 karakter agar tidak overflow
+                }catch (Exception e){
+                    name.setText(user.full_name);
+                }
+
+                try {
+                    country.setText(user.country);
+                }catch (Exception e){
+
+                }
+
+                try {
                 phone_number.setText(user.phone_number);
+                }catch (Exception e){
+
+                }
+
+                try {
                 address.setText(user.address);
+                }catch (Exception e){
+
+                }
             }
 
             @Override

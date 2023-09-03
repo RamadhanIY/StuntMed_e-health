@@ -119,8 +119,6 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;

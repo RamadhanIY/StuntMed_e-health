@@ -85,7 +85,8 @@ public class Register extends AppCompatActivity {
         // Check condition
         if (firebaseUser != null) {
             // When user already sign in redirect to profile activity
-            startActivity(new Intent(this_activity, SignIn.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            startActivity(new Intent(this_activity, RegisterParents.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
         }
 
     }
@@ -185,13 +186,15 @@ public class Register extends AppCompatActivity {
                                     .show();
 
                             // if the user created intent to login activity
-                            Intent intent = new Intent(Register.this, SignIn.class);
+                            Intent intent = new Intent(Register.this, RegisterParents.class);
                             startActivity(intent);
+                            finish();
                         }
                         else {
                             // Registration failed
                             Toast.makeText(getApplicationContext(),
-                                    "Registration failed!",
+//                                    "Registration failed!",
+                                    task.getException().getLocalizedMessage(),
                                     Toast.LENGTH_SHORT)
                                     .show();
                         }
