@@ -5,7 +5,7 @@ public class DataAddChild {
     int photo;
 
     public DataAddChild(String nameChild, String umur) {
-        NameChild = nameChild;
+        this.NameChild = NameChild;
         this.umur = umur;
         this.photo = photo;
     }
