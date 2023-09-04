@@ -47,6 +47,7 @@ public class Method {
     private static String result = " ";
 
 
+
 //  FIREBASE STORAGE
 public static void updateProfileImage(CircleImageView image_profile){
     FirebaseStorage
@@ -94,6 +95,53 @@ public static void updateProfileImage(CircleImageView image_profile){
             }
         });
     }
+
+//    public static void updateBabyImage(CircleImageView image_profile){
+//        FirebaseStorage
+//                .getInstance("gs://stuntmed.appspot.com")
+//                .getReference(Method.getCurrentUser().getUid()+"/profile_image.jpg")+"babies"+nik
+//                .getDownloadUrl()
+//                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                    @Override
+//                    public void onSuccess(Uri uri) {
+////                        image_profile.setImageURI(uri);
+//                        Picasso.get().load(uri).into(image_profile);
+//                        Log.d("debuging", "Berhasil update profile image");
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.d("debuging", "gagal update profile image");
+//                        Log.d("debuging", e.toString());
+//                    }
+//                });
+//    }
+//    public static void uploadPictBaby (Uri file){
+//        //      FIREBASE STORAGE
+//        StorageReference storage = FirebaseStorage.getInstance("gs://stuntmed.appspot.com").getReference();
+//
+//        UploadTask uploadTask = storage
+//                .child(Method.getCurrentUser().getUid())
+//                .child("profile_image.jpg")
+//                .putFile(file);
+//
+//        // Register observers to listen for when the download is done or if it fails
+//        uploadTask.addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle unsuccessful uploads
+//                Log.d("debuging", "gagal upload profile image");
+//                Log.d("debuging", exception.toString());
+//            }
+//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+//                // ...
+//                Log.d("debuging", "sukses upload profile image");
+//            }
+//        });
+//    }
 
 //    END OF FIREBASE STORAGE
 
@@ -255,7 +303,4 @@ public static void updateProfileImage(CircleImageView image_profile){
         }
     }
 
-
-
 }
-

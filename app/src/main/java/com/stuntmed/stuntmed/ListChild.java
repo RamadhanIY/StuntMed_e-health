@@ -109,7 +109,7 @@ public class ListChild extends AppCompatActivity {
         this.babies = babies;
         for (Baby baby : babies) {
             listnamedatebaby.add(new DataAddChild(baby.name,AgeCalculator.calculateAgeInMonthsAndDays(baby.date_of_birth),baby.nik));
-            Log.d("Ada nama bro",listnamedatebaby.get(0).NameChild);
+            Log.d("Ada tanggal lahir bro",baby.date_of_birth);
         }
         checkDataAndDisplay(listnamedatebaby);
 

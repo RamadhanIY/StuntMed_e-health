@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.stuntmed.stuntmed.CheckStuntingActivity;
-import com.stuntmed.stuntmed.ExplorerActivity;
+//import com.stuntmed.stuntmed.ExplorerActivity;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.ProfileActivity;
 import com.stuntmed.stuntmed.R;
@@ -36,6 +37,14 @@ public class HistoryActivity_2 extends AppCompatActivity {
         dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 1","12-09-08","Tidak stunting","Anjay Mabar"));
         dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 2","12-09-08","Tidak stunting","Anjay Mabar"));
 
+        ImageView backButton = (ImageView) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         // Inisialisasi adapter dan set ke ListView
         History_adapter adapter = new History_adapter(this, dataHistoryArrayList);
         historyListView.setAdapter(adapter);
@@ -44,6 +53,13 @@ public class HistoryActivity_2 extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, HomepageUser.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
 }

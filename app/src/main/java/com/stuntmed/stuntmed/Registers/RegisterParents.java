@@ -46,6 +46,7 @@ import com.google.firebase.storage.UploadTask;
 import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
+import com.stuntmed.stuntmed.Profiles.EditProfileBaby;
 import com.stuntmed.stuntmed.R;
 import com.stuntmed.stuntmed.Register;
 import com.stuntmed.stuntmed.SignIn;
@@ -121,10 +122,10 @@ public class RegisterParents extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterParents.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        calendar.set(i, i1, i2);  // Set calendar dengan tanggal yang dipilih
                         inputdatebirth.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
-
                     }
-                },year,month,day);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });

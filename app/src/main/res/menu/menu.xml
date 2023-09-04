@@ -7,9 +7,8 @@
         android:icon="@drawable/li_home"
         />
     <item
-        android:id="@+id/button_explore"
-        android:title="Explore"
-        android:icon="@drawable/li_search"/>
+        android:title=""
+        android:enabled="true"/>
     <item
         android:title=""
         android:enabled="true"/>

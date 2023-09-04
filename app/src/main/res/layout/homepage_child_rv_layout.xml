@@ -52,7 +52,7 @@
                                 android:text="Nama Anak"
                                 style="@style/HomePageFontStyle"
                                 android:textColor="@color/white"
-                                android:textSize="25sp">
+                                android:textSize="20sp">
                             </TextView>
                             <TextView
                                 android:id="@+id/gender_anak"

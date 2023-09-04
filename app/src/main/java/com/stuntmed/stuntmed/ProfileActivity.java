@@ -129,7 +129,8 @@ public class ProfileActivity extends AppCompatActivity {
                 User user = snapshot.getValue(User.class);
                 // tambahkan code di sini untuk mengambil data
                 try {
-                    name.setText(user.full_name.substring(0, 11)); // hanya 11 karakter agar tidak overflow
+                    String nameuser = getFirstThreeWords(user.full_name);
+                    name.setText(nameuser);
                 }catch (Exception e){
                     name.setText(user.full_name);
                 }
@@ -158,5 +159,12 @@ public class ProfileActivity extends AppCompatActivity {
                 // tambahkan code ketika data gagal diambil
             }
         });
+    }
+    public String getFirstThreeWords(String fullName) {
+        String[] words = fullName.split(" ");
+        if (words.length < 3) {
+            return String.join(" ", words);
+        }
+        return words[0] + " " + words[1] + " " + words[2];
     }
 }
