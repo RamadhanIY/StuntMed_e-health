@@ -46,10 +46,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
 
 
         Baby currentbaby = babyList.get(position);
+        String firstName = currentbaby.name.split(" ")[0];
 
 //        if(currentbaby != null) {
 //        holder.pic_baby.setImageResource(currentbaby.name);
-        holder.nama_anak.setText(currentbaby.name);
+        holder.nama_anak.setText(firstName);
         holder.gender.setText(currentbaby.gender);
 //        holder.pic_category.setImageResource(currentbaby.kategori);
         holder.kategori.setText(currentbaby.kategori);

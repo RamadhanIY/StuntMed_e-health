@@ -31,6 +31,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.stuntmed.stuntmed.HomepageUser;
@@ -55,6 +56,8 @@ public class EditProfileBaby extends AppCompatActivity {
 
     ImageButton editpic;
     ShapeableImageView profilepic;
+
+    TextInputLayout inputdatebirths;
 
     String[] country = {"Indonesia","Amerika", "Jepang"};
     String[] gender = {"Laki-laki","Perempuan"};
@@ -109,10 +112,10 @@ public class EditProfileBaby extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditProfileBaby.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        calendar.set(i, i1, i2);  // Set calendar dengan tanggal yang dipilih
                         inputdatebirth.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
-
                     }
-                },year,month,day);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });

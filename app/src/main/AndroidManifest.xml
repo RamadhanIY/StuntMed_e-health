@@ -51,9 +51,9 @@
             android:name=".HistoryActivity_2"
             android:exported="false"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".ExplorerActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ExplorerActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".HomepageUser"
             android:exported="false"

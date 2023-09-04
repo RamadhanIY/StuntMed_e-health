@@ -161,7 +161,9 @@
                     android:background="@drawable/custom_edittext"
                     android:hint="Date birth"
                     android:clickable="true"
-                    android:inputType="text">
+                    android:inputType="none"
+                    android:editable="false"
+                    android:focusable="false"">
 
                 </EditText>
 

@@ -90,10 +90,10 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             int id = item.getItemId();
             if (id == R.id.button_home) {
                 return true;
-            } else if (id == R.id.button_explore) {
-                startActivity(new Intent(getApplicationContext(), ExplorerActivity.class ));
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                finish();
+//            } else if (id == R.id.button_explore) {
+//                startActivity(new Intent(getApplicationContext(), ExplorerActivity.class ));
+//                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+//                finish();
             } else if (id == R.id.button_history) {
                 startActivity(new Intent(getApplicationContext(), HistoryActivity_2.class ));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -205,7 +205,8 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                String name = user.full_name;
+                String name = getFirstName(user.full_name);
+                username.setText(name);
                 // Tampilkan nama ke dalam TextView atau widget lainnya
 
             }
@@ -215,6 +216,10 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                 // tambahkan code ketika data gagal diambil
             }
         });
+    }
+
+    public String getFirstName(String fullName) {
+        return fullName.split(" ")[0];
     }
 
     @Override

@@ -112,7 +112,8 @@
                                 android:text="Tidak ada data anak!"
                                 android:textColor="@color/white"
                                 android:textSize="50sp"
-                                android:textAlignment="center"></TextView>
+                                android:textAlignment="center"
+                                style="@style/ProfilePageFontStyle"></TextView>
 
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
