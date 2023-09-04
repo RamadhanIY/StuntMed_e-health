@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -91,14 +92,24 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setSelectedItemId(R.id.button_home);
 
-//        feature1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(HomepageUser.this, CheckStuntingListChild.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        feature1 = findViewById(R.id.feature1);
+        feature2 = findViewById(R.id.feature2);
+        feature1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomepageUser.this, CheckStuntingListChild.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        feature2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomepageUser.this, Imunisasi.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();

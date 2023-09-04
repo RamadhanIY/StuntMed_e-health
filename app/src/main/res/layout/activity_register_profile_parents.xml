@@ -235,13 +235,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/country"
-                    android:layout_width="185dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="Country"
                     app:boxBackgroundMode="outline"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_weight="1">
 
 
                     <AutoCompleteTextView
@@ -257,7 +258,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/Gender"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="22dp"
                     android:layout_toRightOf="@id/country"
@@ -265,7 +266,8 @@
                     app:boxBackgroundMode="outline"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_weight="1">
 
                     <AutoCompleteTextView
                         android:id="@+id/edit_gender"

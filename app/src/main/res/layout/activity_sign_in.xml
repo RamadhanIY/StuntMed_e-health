@@ -40,6 +40,7 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/username"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email or Phone Number"
@@ -62,6 +63,7 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
+            android:textColor="@color/black"
             android:background="@drawable/custom_edittext"/>
 
     </com.google.android.material.textfield.TextInputLayout>

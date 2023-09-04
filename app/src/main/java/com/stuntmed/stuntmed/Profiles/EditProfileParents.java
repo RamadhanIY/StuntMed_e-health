@@ -30,6 +30,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.Method;
 import com.stuntmed.stuntmed.ProfileActivity;
@@ -69,9 +70,10 @@ public class EditProfileParents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_parents);
 
+
 //        inputnik = findViewById(R.id.edit_NIK_parents);
         inputfullnama = findViewById(R.id.edit_fullname_parents);
-        inputemail = findViewById(R.id.edit_email);
+//        inputemail = findViewById(R.id.edit_email);
         inputphonenumber = findViewById(R.id.edit_phonenumber);
         inputcountry = findViewById(R.id.edit_country);
         inputgender = findViewById(R.id.edit_gender);
@@ -85,6 +87,8 @@ public class EditProfileParents extends AppCompatActivity {
         ImageView backButton = (ImageView) findViewById(R.id.backButton_profiles);
         editpic = findViewById(R.id.edit_pic);
         profilepic = findViewById(R.id.profilepic_parents);
+
+        autocompleteuser();
 
         editpic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +157,26 @@ public class EditProfileParents extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+    }
+
+    public void autocompleteuser(){
+        User.getData(new Method.VolleyCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                User user = (User)result;
+                inputfullnama.setText(user.full_name);
+                inputaddress.setText(user.address);
+                inputcountry.setText(user.country);
+                inputdatebirth.setText(user.date_of_birth);
+                inputgender.setText(user.gender);
+                inputphonenumber.setText(user.phone_number);
+            }
+
+            @Override
+            public void onError(Object error) {
+
             }
         });
     }

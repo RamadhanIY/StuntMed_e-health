@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
+            android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:inputType="textEmailAddress"
             android:background="@drawable/custom_edittext"/>
@@ -60,15 +61,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_text_input"
-        android:layout_margin="15dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_edittext"
             android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:background="@drawable/custom_edittext"/>
+            android:textColor="@color/black"
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,17 +82,21 @@
         android:id="@+id/layout_password_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
         android:layout_below="@id/layout_email_input"
-        android:layout_margin="15dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        app:passwordToggleEnabled="true">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_edittext"
             android:hint="Password"
-            android:inputType="textPassword"
-            android:background="@drawable/custom_edittext"/>
+            android:textColor="@color/black"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

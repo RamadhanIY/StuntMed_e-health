@@ -34,6 +34,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.stuntmed.stuntmed.Databases.Baby;
+import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.HomepageUser;
 import com.stuntmed.stuntmed.ListChild;
 import com.stuntmed.stuntmed.Method;
@@ -92,6 +94,8 @@ public class EditProfileBaby extends AppCompatActivity {
         editpic = findViewById(R.id.edit_pic);
         profilepic = findViewById(R.id.profilepic_baby);
 
+        String nik = getIntent().getStringExtra("NIK");
+        autocompletebaby(nik);
         editpic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +155,7 @@ public class EditProfileBaby extends AppCompatActivity {
 
         submitButton.setOnClickListener(view -> {
             if (checkInput()){
-                String nik = getIntent().getStringExtra("NIK");
+
                 updateBaby(nik,uri.toString().toString(),inputfullnama.getText().toString(),inputdatebirth.getText().toString(),inputcountry.getText().toString(),inputgender.getText().toString(),null,null,null,null);
 
                 Method.uploadPictBaby(uri, nik);
@@ -178,6 +182,26 @@ public class EditProfileBaby extends AppCompatActivity {
         super.onBackPressed();
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    public void autocompletebaby(String nik){
+        Baby.getBabyByNik(nik,new Method.VolleyCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                Baby user = (Baby) result;
+                inputnik.setText(user.nik);
+                inputfullnama.setText(user.name);
+                inputcountry.setText(user.country);
+                inputdatebirth.setText(user.date_of_birth);
+                inputgender.setText(user.gender);
+
+            }
+
+            @Override
+            public void onError(Object error) {
+
+            }
+        });
     }
 
     //Checker

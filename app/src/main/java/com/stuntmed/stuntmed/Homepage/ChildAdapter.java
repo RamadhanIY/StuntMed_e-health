@@ -67,7 +67,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
             @Override
             public void onSuccess(Object result) {
                 Baby baby = (Baby) result;
-                holder.kategori.setText(getFirstTwoWords(baby.label_stunting));
+
+
+                try{
+                    holder.kategori.setText(getFirstTwoWords(baby.label_stunting));
+                }catch (NullPointerException e){}
             }
 
             @Override

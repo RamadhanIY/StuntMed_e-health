@@ -72,7 +72,7 @@ public class RegisterBaby extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile_baby_remake);
+        setContentView(R.layout.activity_register_baby_remake);
 
         inputnik = findViewById(R.id.edit_NIK_baby);
         inputfullnama = findViewById(R.id.edit_fullname_baby);

@@ -12,20 +12,28 @@
         android:label="StuntMed"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppThemesMain"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".Imunisasi"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
+        <activity
             android:name=".CheckStuntingListChild"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".ListChild"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".ShowGrafik"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".Profiles.Settings"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".Profiles.EditProfileBaby"
             android:exported="false"
@@ -63,7 +71,7 @@
         <activity
             android:name=".CheckStuntingActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".testGrafik"
             android:exported="false" />

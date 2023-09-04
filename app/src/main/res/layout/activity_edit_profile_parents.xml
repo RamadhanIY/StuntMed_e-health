@@ -167,31 +167,7 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="8dp"
-                app:boxBackgroundMode="outline"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-                app:startIconDrawable="@drawable/baseline_email_24"
-                android:layout_below="@id/date_birth_parents">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custom_edittext"
-                    android:hint="Email">
-
-                </com.google.android.material.textfield.TextInputEditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phonenumber"
@@ -206,7 +182,7 @@
                 app:hintEnabled="true"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:startIconDrawable="@drawable/baseline_local_phone_24"
-                android:layout_below="@id/email"
+                android:layout_below="@id/date_birth_parents"
                 android:hint="Phone Number">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -233,13 +209,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/country"
-                    android:layout_width="185dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="Country"
                     app:boxBackgroundMode="outline"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_weight="1">
 
 
                     <AutoCompleteTextView
@@ -255,7 +232,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/Gender"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="22dp"
                     android:layout_toRightOf="@id/country"
@@ -263,7 +240,8 @@
                     app:boxBackgroundMode="outline"
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_weight="1">
 
                     <AutoCompleteTextView
                         android:id="@+id/edit_gender"
