@@ -292,10 +292,17 @@ public static void updateProfileImage(CircleImageView image_profile){
         void onError(Object error);
     }
 
-    public static void loadViewGender(ImageView img){
+    public static void loadViewGender(ImageView img, String mode){
+        String val;
+        if (mode.equals("Laki-laki")){
+            val = "m";
+        }else {
+            val = "w";
+        }
+
         FirebaseStorage
                 .getInstance("gs://stuntmed.appspot.com")
-                .getReference("gender_image/")
+                .getReference("gender_image/"+val+".png")
                 .getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
