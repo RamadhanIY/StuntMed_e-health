@@ -13,7 +13,7 @@ public class BeratTinggiLKBulanan {
     public String bulan;
     public String berat;
     public  String tinggi;
-    public String label1,label2,label3;
+    public String label_berat,label_tinggi,label_lk, label_stunting;
     public String lk;
 
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance(Method.database_url).getReference();
@@ -22,19 +22,20 @@ public class BeratTinggiLKBulanan {
 
     }
 
-    public BeratTinggiLKBulanan(String berat, String tinggi, String lk,String label1,String label2,String label3){
+    public BeratTinggiLKBulanan(String berat, String tinggi, String lk,String label_berat,String label_tinggi,String label_lk, String label_stunting){
         this.berat = berat;
         this.tinggi = tinggi;
         this.lk = lk;
-        this.label1 = label1;
-        this.label2 = label2;
-        this.label3 = label3;
+        this.label_berat = label_berat;
+        this.label_tinggi = label_tinggi;
+        this.label_lk = label_lk;
+        this.label_stunting = label_stunting;
     }
 
-    public static  void writenewBeratTinggiLKBulanan(String bulan,String nik, String berat, String tinggi, String lk,String label1,String label2,String label3){
+    public static  void writenewBeratTinggiLKBulanan(String bulan,String nik, String berat, String tinggi, String lk,String label_berat,String label_tinggi,String label_lk, String label_stunting){
 
         FirebaseUser current_user = Method.getCurrentUser();
-        BeratTinggiLKBulanan beratTinggiLKBulanan = new BeratTinggiLKBulanan(berat,tinggi,lk,label1,label2,label3);
+        BeratTinggiLKBulanan beratTinggiLKBulanan = new BeratTinggiLKBulanan(berat,tinggi,lk,label_berat,label_tinggi,label_lk, label_stunting);
         mDatabase.child("databulanan").child(nik).child(bulan).setValue(beratTinggiLKBulanan);
     }
     public String getBerat() {

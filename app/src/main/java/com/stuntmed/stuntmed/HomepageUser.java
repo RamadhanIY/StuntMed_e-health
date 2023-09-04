@@ -118,7 +118,6 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         });
         try {
         getAllBabyNiks();
-//        childModelClassList.add(new Baby(null,"Yanto","Laki","Tidak Stunting","10","19","20",null,null,null));
         checkDataAndDisplay(childModelClassList);
         getDataUser();
         }catch (Exception e){}

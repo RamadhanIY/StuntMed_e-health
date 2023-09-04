@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.se.omapi.Session;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -290,6 +291,28 @@ public static void updateProfileImage(CircleImageView image_profile){
         void onSuccess(Object result);
         void onError(Object error);
     }
+
+    public static void loadViewGender(ImageView img){
+        FirebaseStorage
+                .getInstance("gs://stuntmed.appspot.com")
+                .getReference("gender_image/")
+                .getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+//                        image_profile.setImageURI(uri);
+                        Picasso.get().load(uri).into(img);
+                        Log.d("debuging", "Berhasil update profile image");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("debuging", "gagal update profile image");
+                        Log.d("debuging", e.toString());
+                    }
+                });
+    }
+
 
     public static DatabaseReference getDatabaseReference(String reference_path){
       return FirebaseDatabase.getInstance(Method.database_url).getReference(reference_path);

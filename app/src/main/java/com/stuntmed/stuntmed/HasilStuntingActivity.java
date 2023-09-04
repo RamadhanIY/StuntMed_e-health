@@ -40,6 +40,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.stuntmed.stuntmed.Databases.Baby;
+import com.stuntmed.stuntmed.Databases.BeratTinggiLK;
 import com.stuntmed.stuntmed.Databases.BeratTinggiLKBulanan;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
 
 
     AppCompatRadioButton viewberat,viewtinggi,viewlk;
-    TextView deskripsi,names,infoberats,infotinggis,infolks;
+    TextView deskripsi,names,infoberats,infotinggis,infolks, status_stunting;
     private String nik,gender,umur,databerat,datatinggi,datalk;
 
     ArrayList<BeratTinggiLKBulanan> laporanpengecekananak;
@@ -77,7 +78,10 @@ public class HasilStuntingActivity extends AppCompatActivity {
         infoberats = findViewById(R.id.info_berat);
         infotinggis = findViewById(R.id.info_tinggi);
         infolks = findViewById(R.id.info_lk);
+        status_stunting = findViewById(R.id.status_stunting);
         AndroidThreeTen.init(this);
+
+
 
         //Method predict
 
@@ -86,6 +90,19 @@ public class HasilStuntingActivity extends AppCompatActivity {
 
 
         nik = getIntent().getStringExtra("NIK");
+
+        Baby.getBabyByNik(nik, new Method.VolleyCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                Baby baby = (Baby) result;
+                status_stunting.setText(baby.label_stunting);
+            }
+
+            @Override
+            public void onError(Object error) {
+                deskripsi.setText("error");
+            }
+        });
 
         // Menggunakan NIK untuk mengambil data dari Firebase
         fetchBabyDetails(nik);
@@ -106,15 +123,16 @@ public class HasilStuntingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 onRadioButtonClicked(v);
 
-                Method.predict_weight(HasilStuntingActivity.this, gender, umur, databerat, new Method.VolleyCallback() {
+                Baby.getBabyByNik(nik, new Method.VolleyCallback() {
                     @Override
                     public void onSuccess(Object result) {
-                        deskripsi.setText(result.toString());
+                        Baby baby = (Baby) result;
+                        deskripsi.setText(baby.label_tinggi);
                     }
 
                     @Override
                     public void onError(Object error) {
-                        deskripsi.setText("Error");
+                        deskripsi.setText("error");
                     }
                 });
 
@@ -145,15 +163,16 @@ public class HasilStuntingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 onRadioButtonClicked(v);
 
-                Method.predict_height(HasilStuntingActivity.this, gender, umur, datatinggi, new Method.VolleyCallback() {
+                Baby.getBabyByNik(nik, new Method.VolleyCallback() {
                     @Override
                     public void onSuccess(Object result) {
-                        deskripsi.setText(result.toString());
+                        Baby baby = (Baby) result;
+                        deskripsi.setText(baby.label_berat);
                     }
 
                     @Override
                     public void onError(Object error) {
-                        deskripsi.setText("Error");
+                        deskripsi.setText("error");
                     }
                 });
 
@@ -182,15 +201,16 @@ public class HasilStuntingActivity extends AppCompatActivity {
         viewlk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Method.predict_hc(HasilStuntingActivity.this, gender, umur, datalk, new Method.VolleyCallback() {
+                Baby.getBabyByNik(nik, new Method.VolleyCallback() {
                     @Override
                     public void onSuccess(Object result) {
-                        deskripsi.setText(result.toString());
+                        Baby baby = (Baby) result;
+                        deskripsi.setText(baby.label_lk);
                     }
 
                     @Override
                     public void onError(Object error) {
-                        deskripsi.setText("Error");
+                        deskripsi.setText("error");
                     }
                 });
                 onRadioButtonClicked(v);

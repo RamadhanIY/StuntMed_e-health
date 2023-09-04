@@ -28,6 +28,7 @@ public class Baby {
     public  String tinggi;
     public String lk;
     public String kategori;
+    public String label_berat,label_tinggi,label_lk, label_stunting;
 
     public String uri;
     private static Baby baby;
@@ -66,6 +67,31 @@ public class Baby {
         Method.setValueOnDatabase("Users/" + current_user.getUid() + "/babies/" + nik,
                 baby);
     }
+
+//    public static void getAllBabies(Method.VolleyCallback callback){
+//        DatabaseReference mDatabase = FirebaseDatabase
+//                .getInstance(Method.database_url)
+//                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies");
+//
+//        mDatabase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Baby baby = snapshot.getValue(Baby.class);
+//                for (Baby baby:snapshot.getChildren()
+//                     ) {
+//
+//                }
+//                // tambahkan code di sini untuk mengambil data
+//                callback.onSuccess(baby);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                // tambahkan code ketika data gagal diambil
+//                callback.onError(null);
+//            }
+//        });
+//    }
 
     public static void getBabyByNik(String nik, Method.VolleyCallback callback){
         DatabaseReference mDatabase = FirebaseDatabase

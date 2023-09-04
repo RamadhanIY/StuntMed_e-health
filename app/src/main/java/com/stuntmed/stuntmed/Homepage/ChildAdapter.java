@@ -58,6 +58,8 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
         holder.tinggi.setText(currentbaby.tinggi);
         holder.lk.setText(currentbaby.lk);
 
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
