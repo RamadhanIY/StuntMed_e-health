@@ -58,6 +58,7 @@ public class CheckStuntingActivity extends AppCompatActivity {
                 writenewBeratTinggiLK(NIK,berat.getText().toString(),tinggi.getText().toString(),lk.getText().toString());
                 writenewBeratTinggiLKBulanan(tanggalpengisian,NIK,berat.getText().toString(),tinggi.getText().toString(),lk.getText().toString(),"test","test12","test123");
                 Intent intent = new Intent(CheckStuntingActivity.this, HasilStuntingActivity.class);
+                intent.putExtra("NIK", NIK); // Asumsi DataAddChild memiliki method getNik()
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
