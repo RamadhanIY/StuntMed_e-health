@@ -77,32 +77,32 @@
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/NIK"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:layout_marginBottom="8dp"-->
-<!--            app:boxBackgroundMode="outline"-->
-<!--            app:hintAnimationEnabled="true"-->
-<!--            app:hintEnabled="true"-->
-<!--            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"-->
-<!--            app:startIconDrawable="@drawable/baby_icons"-->
-<!--            android:layout_below="@id/layout_profilepicbaby">-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/NIK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="8dp"
+            app:boxBackgroundMode="outline"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+            app:startIconDrawable="@drawable/baby_icons"
+            android:layout_below="@id/layout_profilepicbaby">
 
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/edit_NIK_baby"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/custom_edittext"-->
-<!--                android:hint="NIK"-->
-<!--                tools:ignore="DuplicateClickableBoundsCheck">-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_NIK_baby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_edittext"
+                android:hint="NIK"
+                tools:ignore="DuplicateClickableBoundsCheck">
 
-<!--            </com.google.android.material.textfield.TextInputEditText>-->
+            </com.google.android.material.textfield.TextInputEditText>
 
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fullnamebaby"
@@ -117,7 +117,7 @@
             app:hintEnabled="true"
             app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:startIconDrawable="@drawable/baby_icons"
-            android:layout_below="@id/layout_profilepicbaby">
+            android:layout_below="@id/NIK">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_fullname_baby"

@@ -78,7 +78,7 @@ public class EditProfileBaby extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile_baby_remake);
 
 
-//        inputnik = findViewById(R.id.edit_NIK_baby);
+        inputnik = findViewById(R.id.edit_NIK_baby);
         inputfullnama = findViewById(R.id.edit_fullname_baby);
         inputcountry = findViewById(R.id.edit_country);
         inputgender = findViewById(R.id.edit_gender);
