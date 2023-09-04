@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/child_item"
-            android:backgroundTint="@color/bluebuttoncolor"
+            android:backgroundTint="@color/bluemain2"
             app:cardCornerRadius="30dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,103 +97,115 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
                     <RelativeLayout
                         android:id="@+id/layout_berat"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/circle_berat"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             app:cardCornerRadius="100dp">
+
                             <TextView
                                 android:id="@+id/info_berat"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:text="3"
-                                android:textAlignment="center"
-                                android:gravity="center">
+                                android:textAlignment="center">
 
                             </TextView>
 
                         </androidx.cardview.widget.CardView>
+
                         <TextView
                             style="@style/ProfilePageFontStyle"
-                            android:layout_below="@id/circle_berat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/circle_berat"
                             android:text="Berat Badan"
-                            android:textSize="13sp"
-                            android:textAlignment="center">
+                            android:textAlignment="center"
+                            android:textSize="13sp">
 
                         </TextView>
 
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:id="@+id/layout_tinggi"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/circle_tinggi"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             app:cardCornerRadius="100dp">
+
                             <TextView
                                 android:id="@+id/info_tinggi"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:text="3"
-                                android:textAlignment="center"
-                                android:gravity="center">
+                                android:textAlignment="center">
 
                             </TextView>
 
                         </androidx.cardview.widget.CardView>
+
                         <TextView
                             style="@style/ProfilePageFontStyle"
-                            android:layout_below="@id/circle_tinggi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/circle_tinggi"
                             android:text="Tinggi Badan"
-                            android:textSize="13sp"
-                            android:textAlignment="center">
+                            android:textAlignment="center"
+                            android:textSize="13sp">
 
                         </TextView>
 
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:id="@+id/layout_lk"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp">
+
                         <androidx.cardview.widget.CardView
                             android:id="@+id/circle_lk"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             app:cardCornerRadius="100dp">
+
                             <TextView
                                 android:id="@+id/info_lk"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:text="3"
-                                android:textAlignment="center"
-                                android:gravity="center">
+                                android:textAlignment="center">
 
                             </TextView>
 
                         </androidx.cardview.widget.CardView>
+
                         <TextView
                             style="@style/ProfilePageFontStyle"
-                            android:layout_below="@id/circle_lk"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/circle_lk"
                             android:text="Lingkar Kepala"
-                            android:textSize="13sp"
-                            android:textAlignment="center">
+                            android:textAlignment="center"
+                            android:textSize="13sp">
 
                         </TextView>
 
