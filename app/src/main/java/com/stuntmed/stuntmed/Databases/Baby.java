@@ -103,7 +103,7 @@ public class Baby {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Baby baby = snapshot.getValue(Baby.class);
                 // tambahkan code di sini untuk mengambil data
-                callback.onSuccess(baby);
+                callback. onSuccess(baby);
             }
 
             @Override

@@ -48,8 +48,11 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
     RecyclerView recyclerView;
 
+    View feature1, feature2;
+
     List<Baby> childModelClassList = new ArrayList<>();
 
+    ArrayList<String> allNikList = new ArrayList<>();
 
     FloatingActionButton fab;
 
@@ -57,6 +60,8 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
     TextView username;
     List<Baby> babies = new ArrayList<>();
+    private ArrayList<String> listOfNik;
+
     CircleImageView image_profile;
 
     @Override
@@ -80,8 +85,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
         recyclerView = findViewById(R.id.baby_profiles);
         emptyLayout = findViewById(R.id.empty_layout);
-
-
+        
         //Bottom Navbar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setSelectedItemId(R.id.button_home);
@@ -95,6 +99,32 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 //                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 //                finish();
             } else if (id == R.id.button_history) {
+
+
+                DatabaseReference mDatabase = FirebaseDatabase
+                        .getInstance(Method.database_url)
+                        .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies");
+
+                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        allNikList.clear(); // Bersihkan list sebelum memasukkan data baru
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            String nik = childSnapshot.getKey();
+                            allNikList.add(nik);
+                        }
+                        sendListOfNikToHistoryActivity(allNikList);
+
+
+                        // Setelah mendapatkan semua nik, Anda bisa melakukan operasi lain,
+                        // misalnya memperbarui UI atau mengirim list tersebut ke activity lain.
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.e("FirebaseError", "Error fetching data: ", databaseError.toException());
+                    }
+                });
                 startActivity(new Intent(getApplicationContext(), HistoryActivity_2.class ));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
@@ -133,6 +163,8 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         } else {
             ChildAdapter childAdapter;
             recyclerView.setVisibility(View.VISIBLE);
+
+
             childAdapter = new ChildAdapter(childModelClassList,HomepageUser.this);
             recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
             recyclerView.setAdapter(childAdapter);
@@ -207,5 +239,11 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;
     }
+    private void sendListOfNikToHistoryActivity(ArrayList<String> nikList) {
+        Intent intent = new Intent(this, HistoryActivity_2.class);
+        intent.putStringArrayListExtra("nikList", nikList);
+        startActivity(intent);
+    }
+
 
 }

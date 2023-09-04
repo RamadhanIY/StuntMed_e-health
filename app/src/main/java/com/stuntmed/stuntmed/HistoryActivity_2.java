@@ -28,28 +28,37 @@ import com.stuntmed.stuntmed.ProfileActivity;
 import com.stuntmed.stuntmed.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class HistoryActivity_2 extends AppCompatActivity {
 
 
     History_adapter history_adapter;
+    private DatabaseReference mDatabase;
 
+    private HashMap<String, ArrayList<BeratTinggiLKBulanan>> laporanPerTanggal = new HashMap<>();
 
     private ArrayList<BeratTinggiLKBulanan> laporanpengecekananak =new ArrayList<>();
     private ListView historyListView;
+    private ArrayList<String> listOfNik;
+
     private ArrayList<ListData_History> dataHistoryArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_2);
-
         historyListView = findViewById(R.id.ListView);
+        listOfNik = getIntent().getStringArrayListExtra("nikList");
 
-        // Contoh data (Anda dapat menggantinya dengan data asli Anda)
+        ArrayList<String> listOfNik = getIntent().getStringArrayListExtra("nikList");
+        for (String nik : listOfNik) {
+            getDataBabyByNik(nik);
+        }
+
         dataHistoryArrayList = new ArrayList<>();
         dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 1","12-09-08","Tidak stunting","Anjay Mabar"));
-        dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 2","12-09-08","Tidak stunting","Anjay Mabar"));
+//        dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 2","12-09-08","Tidak stunting","Anjay Mabar"));
 
         ImageView backButton = (ImageView) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +69,8 @@ public class HistoryActivity_2 extends AppCompatActivity {
         });
 
         // Inisialisasi adapter dan set ke ListView
-        History_adapter adapter = new History_adapter(this, dataHistoryArrayList);
-        historyListView.setAdapter(adapter);
-        getAllBabyNiks();
+
+
 
     }
     @Override
@@ -72,38 +80,9 @@ public class HistoryActivity_2 extends AppCompatActivity {
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-    private void getAllBabyNiks(){
-        DatabaseReference mDatabase = FirebaseDatabase
-                .getInstance(Method.database_url)
-                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies");
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<String> niks = new ArrayList<>();
-                for (DataSnapshot babySnapshot : snapshot.getChildren()) {
-                    // Ambil nik dari key child
-                    String nik = babySnapshot.getKey();
-                    niks.add(nik);
-                }
 
-                // Dari sini, Anda bisa memanfaatkan list niks sesuai kebutuhan Anda
-                // Misalnya mencetak semua niks
-                 for (String nik : niks) {
-                                    getDataBabyByNik(nik);
-                                    Log.d("Ada nik bro",nik);
-                                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // tambahkan code ketika data gagal diambil
-            }
-        });
-    }
-
-    private void getDataBabyByNik(final String nik){
+    private void getDataBabyByNik(final String nik) {
         DatabaseReference mDatabase = FirebaseDatabase
                 .getInstance(Method.database_url)
                 .getReference("databulanan/"  + nik );
@@ -112,12 +91,36 @@ public class HistoryActivity_2 extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                dataHistoryArrayList = new ArrayList<>();
+
                 for (DataSnapshot babySnapshot : snapshot.getChildren()) {
+                    String tanggal = babySnapshot.getKey();
+
                     BeratTinggiLKBulanan baby = babySnapshot.getValue(BeratTinggiLKBulanan.class);
-                    laporanpengecekananak.add(baby);
+                    String nama;
+                    Baby.getBabyByNik(nik, new Method.VolleyCallback() {
+                        @Override
+                        public void onSuccess(Object result) {
+                            Baby baby = (Baby) result;
+                            dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures,baby.name ,tanggal,"Tidak stunting","Anjay Mabar"));
+                            History_adapter adapter = new History_adapter(HistoryActivity_2.this, dataHistoryArrayList);
+                            historyListView.setAdapter(adapter);
+                        }
 
+                        @Override
+                        public void onError(Object error) {
+
+                        }
+                    });
+
+
+
+
+
+
+
+                    // Cek jika tanggal sudah ada di hashmap
                 }
-
             }
 
             @Override
@@ -126,11 +129,8 @@ public class HistoryActivity_2 extends AppCompatActivity {
             }
         });
     }
-//    public void onItemsObtained(laporanpengecekananak) {
-//
-//        laporanpengecekan.add(laporanpengecekananak);
-//
-//    }
+
+
 
 
 }

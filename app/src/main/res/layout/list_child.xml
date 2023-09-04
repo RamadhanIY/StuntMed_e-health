@@ -9,7 +9,7 @@
         android:id="@+id/babies"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/rounded_3"
+        android:background="@drawable/gradient_blue_grey"
         android:orientation="horizontal">
 
         <LinearLayout
