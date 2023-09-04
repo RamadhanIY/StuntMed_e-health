@@ -110,4 +110,8 @@ dependencies {
 
     // PICASSO
     implementation 'com.squareup.picasso:picasso:2.8'
+
+    // Library HTTP
+    implementation 'com.android.volley:volley:1.2.1'
+
 }
