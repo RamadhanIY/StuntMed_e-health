@@ -256,7 +256,6 @@
                 android:id="@+id/deskripsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Anak anda tidak termasuk stunting dan tumbuh dengan kondisi yang sehat."
                 android:gravity="center"
                 android:background="@drawable/white_radius"
                 android:layout_marginVertical="10dp"

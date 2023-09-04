@@ -48,12 +48,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class HasilStuntingActivity extends AppCompatActivity {
 
 
     AppCompatRadioButton viewberat,viewtinggi,viewlk;
     TextView deskripsi,names,infoberats,infotinggis,infolks, status_stunting;
     private String nik,gender,umur,databerat,datatinggi,datalk;
+    CircleImageView img_profile;
 
     ArrayList<BeratTinggiLKBulanan> laporanpengecekananak;
 
@@ -73,6 +76,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
         viewtinggi = findViewById(R.id.view_tinggi);
         viewlk = findViewById(R.id.view_lk);
         deskripsi = findViewById(R.id.deskripsi);
+        img_profile = findViewById(R.id.profile_pict) ;
 
         names = findViewById(R.id.name);
         infoberats = findViewById(R.id.info_berat);
@@ -81,15 +85,9 @@ public class HasilStuntingActivity extends AppCompatActivity {
         status_stunting = findViewById(R.id.status_stunting);
         AndroidThreeTen.init(this);
 
-
-
-        //Method predict
-
-
-
-
-
         nik = getIntent().getStringExtra("NIK");
+
+        Method.loadImageBaby(img_profile, nik);
 
         Baby.getBabyByNik(nik, new Method.VolleyCallback() {
             @Override

@@ -137,6 +137,10 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                         sendListOfNikToHistoryActivity(allNikList);
 
 
+
+
+
+
                         // Setelah mendapatkan semua nik, Anda bisa melakukan operasi lain,
                         // misalnya memperbarui UI atau mengirim list tersebut ke activity lain.
                     }
@@ -146,9 +150,10 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
                         Log.e("FirebaseError", "Error fetching data: ", databaseError.toException());
                     }
                 });
+
                 startActivity(new Intent(getApplicationContext(), HistoryActivity_2.class ));
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             } else if (id == R.id.button_profile) {
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class ));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

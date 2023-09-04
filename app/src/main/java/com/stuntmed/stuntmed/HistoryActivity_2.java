@@ -52,9 +52,11 @@ public class HistoryActivity_2 extends AppCompatActivity {
         listOfNik = getIntent().getStringArrayListExtra("nikList");
 
         ArrayList<String> listOfNik = getIntent().getStringArrayListExtra("nikList");
-        for (String nik : listOfNik) {
-            getDataBabyByNik(nik);
-        }
+        try{
+            for (String nik : listOfNik) {
+                getDataBabyByNik(nik);
+            }
+        }catch (NullPointerException e){}
 //        dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 2","12-09-08","Tidak stunting","Anjay Mabar"));
 
         ImageView backButton = (ImageView) findViewById(R.id.backButton);

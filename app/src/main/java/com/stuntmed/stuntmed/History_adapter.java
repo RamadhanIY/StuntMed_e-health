@@ -46,27 +46,30 @@ public class History_adapter extends ArrayAdapter<ListData_History>{
             @Override
             public void onSuccess(Object result) {
                 Baby baby = (Baby)result;
-                if(baby.label_stunting.equals("Tidak Stunting") ){
-                    descrip = "Anak ibu sehat dan memiliki berat, tinggi, dan lingkar kepala yang normal";
-                    listdesc.setText(descrip);
-                    Method.loadImageBaby(listpic,listDataHistory.nik);
-                    listName.setText(listDataHistory.NamaHistory);
-                    listdate.setText(listDataHistory.tanggal);
-                }
-                else if(baby.label_stunting.equals("Stunting")){
-                    descrip = "Sang anak mengalami Stunting! sebaiknya konsultasikan dengan dokter anak untuk memastikan potensi stunting dan mendapatkan saran perawatan yang tepat.";
-                    listdesc.setText(descrip);
-                    Method.loadImageBaby(listpic,listDataHistory.nik);
-                    listName.setText(listDataHistory.NamaHistory);
-                    listdate.setText(listDataHistory.tanggal);
-                }
-                else{
-                    descrip = baby.label_stunting;
-                    listdesc.setText(descrip);
-                    Method.loadImageBaby(listpic,listDataHistory.nik);
-                    listName.setText(listDataHistory.NamaHistory);
-                    listdate.setText(listDataHistory.tanggal);
-                }
+
+                try {
+                    if(baby.label_stunting.equals("Tidak Stunting") ){
+                        descrip = "Anak ibu sehat dan memiliki berat, tinggi, dan lingkar kepala yang normal";
+                        listdesc.setText(descrip);
+                        Method.loadImageBaby(listpic,listDataHistory.nik);
+                        listName.setText(listDataHistory.NamaHistory);
+                        listdate.setText(listDataHistory.tanggal);
+                    }
+                    else if(baby.label_stunting.equals("Stunting")){
+                        descrip = "Sang anak mengalami Stunting! sebaiknya konsultasikan dengan dokter anak untuk memastikan potensi stunting dan mendapatkan saran perawatan yang tepat.";
+                        listdesc.setText(descrip);
+                        Method.loadImageBaby(listpic,listDataHistory.nik);
+                        listName.setText(listDataHistory.NamaHistory);
+                        listdate.setText(listDataHistory.tanggal);
+                    }
+                    else{
+                        descrip = baby.label_stunting;
+                        listdesc.setText(descrip);
+                        Method.loadImageBaby(listpic,listDataHistory.nik);
+                        listName.setText(listDataHistory.NamaHistory);
+                        listdate.setText(listDataHistory.tanggal);
+                    }
+                }catch (NullPointerException e){}
 
             }
 
