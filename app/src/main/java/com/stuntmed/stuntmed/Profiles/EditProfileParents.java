@@ -1,5 +1,6 @@
 package com.stuntmed.stuntmed.Profiles;
 
+import static com.stuntmed.stuntmed.Databases.User.user;
 import static com.stuntmed.stuntmed.Databases.User.writeNewParents;
 import static com.stuntmed.stuntmed.Databases.User.writeNewUser;
 
@@ -151,12 +152,32 @@ public class EditProfileParents extends AppCompatActivity {
         submitButton.setOnClickListener(view -> {
 
             if (checkInput()){
-//                writeNewParents(uri.toString(),null,inputfullnama.getText().toString(),inputemail.getText().toString(),inputgender.getText().toString(),inputaddress.getText().toString(),inputcountry.getText().toString(),inputphonenumber.getText().toString(),inputnik.getText().toString(),null);
-                Toast.makeText(this, "Berhasil update profile!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, HomepageUser.class);
-                startActivity(intent);
-                finish();
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                User.getData(new Method.VolleyCallback() {
+                    @Override
+                    public void onSuccess(Object result) {
+                        User user = (User) result;
+
+                        Method.uploadPict(uri);
+                        writeNewParents(uri.toString(),
+                                null,inputfullnama.getText().toString(),
+                                user.email,
+                                inputgender.getText().toString(),
+                                inputaddress.getText().toString(),
+                                inputcountry.getText().toString(),
+                                inputphonenumber.getText().toString(),
+                                user.nik, inputdatebirth.getText().toString());
+                        Toast.makeText(EditProfileParents.this, "Berhasil update profile!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(EditProfileParents.this, HomepageUser.class);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                    }
+
+                    @Override
+                    public void onError(Object error) {
+
+                    }
+                });
             }
         });
     }
