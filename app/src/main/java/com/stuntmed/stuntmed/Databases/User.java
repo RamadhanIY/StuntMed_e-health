@@ -53,7 +53,7 @@ public class User {
 
 
 
-    private void getData(){
+    public static void getData(Method.VolleyCallback callback){
         DatabaseReference mDatabase = FirebaseDatabase
                 .getInstance(Method.database_url)
                 .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/parents");
@@ -63,11 +63,13 @@ public class User {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 // tambahkan code di sini untuk mengambil data
+                callback.onSuccess(user);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // tambahkan code ketika data gagal diambil
+                callback.onError(null);
             }
         });
     }

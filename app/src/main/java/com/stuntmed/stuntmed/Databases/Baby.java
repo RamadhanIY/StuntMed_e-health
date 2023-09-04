@@ -67,6 +67,27 @@ public class Baby {
                 baby);
     }
 
+    public static void getBabyByNik(String nik, Method.VolleyCallback callback){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies/"+nik);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Baby baby = snapshot.getValue(Baby.class);
+                // tambahkan code di sini untuk mengambil data
+                callback.onSuccess(baby);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // tambahkan code ketika data gagal diambil
+                callback.onError(null);
+            }
+        });
+    }
+
     private static void setBaby(Baby baby) {
         Baby.baby = baby;
     }

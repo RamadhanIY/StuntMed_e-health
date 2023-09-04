@@ -42,7 +42,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileParents extends AppCompatActivity {
 
-    TextInputEditText inputfullnama, inputnik, inputemail, inputphonenumber,inputaddress;
+    TextInputEditText inputfullnama, inputemail, inputphonenumber,inputaddress;
     AutoCompleteTextView inputcountry,inputgender;
 
     EditText inputdatebirth;
@@ -69,7 +69,7 @@ public class EditProfileParents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_parents);
 
-        inputnik = findViewById(R.id.edit_NIK_parents);
+//        inputnik = findViewById(R.id.edit_NIK_parents);
         inputfullnama = findViewById(R.id.edit_fullname_parents);
         inputemail = findViewById(R.id.edit_email);
         inputphonenumber = findViewById(R.id.edit_phonenumber);
@@ -145,10 +145,15 @@ public class EditProfileParents extends AppCompatActivity {
         });
 
         submitButton.setOnClickListener(view -> {
-            writeNewParents(uri.toString(),null,inputfullnama.getText().toString(),inputemail.getText().toString(),inputgender.getText().toString(),inputaddress.getText().toString(),inputcountry.getText().toString(),inputphonenumber.getText().toString(),inputnik.getText().toString(),null);
-            Intent intent = new Intent(this, HomepageUser.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+            if (checkInput()){
+//                writeNewParents(uri.toString(),null,inputfullnama.getText().toString(),inputemail.getText().toString(),inputgender.getText().toString(),inputaddress.getText().toString(),inputcountry.getText().toString(),inputphonenumber.getText().toString(),inputnik.getText().toString(),null);
+                Toast.makeText(this, "Berhasil update profile!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, HomepageUser.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
         });
     }
 
@@ -170,20 +175,6 @@ public class EditProfileParents extends AppCompatActivity {
         if (uri == null) {
             Toast.makeText(getApplicationContext(),
                             "Please set your image!",
-                            Toast.LENGTH_LONG)
-                    .show();
-            return false;
-        }
-
-        if (inputnik.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(),
-                            "Please enter your NIK!",
-                            Toast.LENGTH_LONG)
-                    .show();
-            return false;
-        } else if (Validator.isValidNIK(inputnik.getText().toString()) == false) {
-            Toast.makeText(getApplicationContext(),
-                            "Please enter your valid NIK!",
                             Toast.LENGTH_LONG)
                     .show();
             return false;

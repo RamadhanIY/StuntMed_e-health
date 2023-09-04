@@ -147,7 +147,7 @@ public static void updateProfileImage(CircleImageView image_profile){
 //    END OF FIREBASE STORAGE
 
 //    Requests HTML
-    public static void predict_hc(Context this_activity, TextView text_view, String gender, String age, String hc){
+    public static void predict_hc(Context this_activity, String gender, String age, String hc, VolleyCallback callback){
         String url = "https://benngki.pythonanywhere.com/predict-hc";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -157,8 +157,9 @@ public static void updateProfileImage(CircleImageView image_profile){
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String data = jsonObject.getString("result");
-                            text_view.setText(data);
                             Log.d("debuging", data);
+
+                            callback.onSuccess(data);
                         } catch (JSONException e) {
                             Log.d("debuging", "JSON exception");
                             Log.d("debuging", e.toString());
@@ -170,6 +171,8 @@ public static void updateProfileImage(CircleImageView image_profile){
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        callback.onError(error.getMessage());
+
                         Log.d("debuging", error.toString());
                         Toast.makeText(this_activity, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -178,9 +181,6 @@ public static void updateProfileImage(CircleImageView image_profile){
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String,String>();
-//                params.put("cgpa",cgpa.getText().toString());
-//                params.put("iq",iq.getText().toString());
-//                params.put("profile_score",profile_score.getText().toString());
                 params.put("gender", gender);
                 params.put("hc", hc);
                 params.put("age", age);
@@ -193,7 +193,7 @@ public static void updateProfileImage(CircleImageView image_profile){
         queue.add(stringRequest);
     }
 
-    public static void predict_weight(Context this_activity, TextView text_view, String gender, String age, String weight){
+    public static void predict_weight(Context this_activity, String gender, String age, String weight, VolleyCallback callback){
         String url = "https://benngki.pythonanywhere.com/predict-weight";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -203,8 +203,9 @@ public static void updateProfileImage(CircleImageView image_profile){
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String data = jsonObject.getString("result");
-                            text_view.setText(data);
                             Log.d("debuging", data);
+
+                            callback.onSuccess(data);
                         } catch (JSONException e) {
                             Log.d("debuging", "JSON exception");
                             Log.d("debuging", e.toString());
@@ -216,6 +217,8 @@ public static void updateProfileImage(CircleImageView image_profile){
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        callback.onError(error.getMessage());
+
                         Log.d("debuging", error.toString());
                         Toast.makeText(this_activity, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -224,9 +227,6 @@ public static void updateProfileImage(CircleImageView image_profile){
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String,String>();
-//                params.put("cgpa",cgpa.getText().toString());
-//                params.put("iq",iq.getText().toString());
-//                params.put("profile_score",profile_score.getText().toString());
                 params.put("gender", gender);
                 params.put("weight", weight);
                 params.put("age", age);
@@ -239,7 +239,7 @@ public static void updateProfileImage(CircleImageView image_profile){
         queue.add(stringRequest);
     }
 
-    public static void predict_height(Context this_activity, TextView text_view, String gender, String age, String height){
+    public static void predict_height(Context this_activity, String gender, String age, String height, VolleyCallback callback){
         String url = "https://benngki.pythonanywhere.com/predict-height";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -249,8 +249,9 @@ public static void updateProfileImage(CircleImageView image_profile){
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String data = jsonObject.getString("result");
-                            text_view.setText(data);
                             Log.d("debuging", data);
+
+                            callback.onSuccess(data);
                         } catch (JSONException e) {
                             Log.d("debuging", "JSON exception");
                             Log.d("debuging", e.toString());
@@ -262,6 +263,8 @@ public static void updateProfileImage(CircleImageView image_profile){
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        callback.onError(error.getMessage());
+
                         Log.d("debuging", error.toString());
                         Toast.makeText(this_activity, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -270,9 +273,6 @@ public static void updateProfileImage(CircleImageView image_profile){
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String,String>();
-//                params.put("cgpa",cgpa.getText().toString());
-//                params.put("iq",iq.getText().toString());
-//                params.put("profile_score",profile_score.getText().toString());
                 params.put("gender", gender);
                 params.put("height", height);
                 params.put("age", age);
@@ -285,6 +285,11 @@ public static void updateProfileImage(CircleImageView image_profile){
         queue.add(stringRequest);
     }
 //    End of Requests HTML
+
+    public interface VolleyCallback {
+        void onSuccess(Object result);
+        void onError(Object error);
+    }
 
     public static DatabaseReference getDatabaseReference(String reference_path){
       return FirebaseDatabase.getInstance(Method.database_url).getReference(reference_path);

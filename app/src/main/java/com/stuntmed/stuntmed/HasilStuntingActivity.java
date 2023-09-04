@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.charts.LineChart;
@@ -104,7 +105,19 @@ public class HasilStuntingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onRadioButtonClicked(v);
-                Method.predict_weight(HasilStuntingActivity.this,deskripsi,gender,umur,databerat);
+
+                Method.predict_weight(HasilStuntingActivity.this, gender, umur, databerat, new Method.VolleyCallback() {
+                    @Override
+                    public void onSuccess(Object result) {
+                        deskripsi.setText(result.toString());
+                    }
+
+                    @Override
+                    public void onError(Object error) {
+                        deskripsi.setText("Error");
+                    }
+                });
+
                 LineChart mChart = findViewById(R.id.chart);
                 float[] data_sd3_neg = {30.7f, 33.8f, 35.6f, 37f, 38f, 38.9f, 39.7f, 40.3f, 40.8f, 41.2f, 41.6f, 41.9f, 42.2f, 42.5f, 42.7f, 42.9f, 43.1f, 43.2f, 43.4f, 43.5f, 43.7f, 43.8f, 43.9f, 44.1f, 44.2f};
                 float[] data_sd3 = {38.3f, 40.8f, 42.6f, 44.1f, 45.2f, 46.2f, 47f, 47.7f, 48.3f, 48.8f, 49.2f, 49.6f, 49.9f, 50.2f, 50.5f, 50.7f, 51f, 51.2f, 51.4f, 51.5f, 51.7f, 51.9f, 52f, 52.2f, 52.3f};
@@ -131,7 +144,18 @@ public class HasilStuntingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onRadioButtonClicked(v);
-                Method.predict_height(HasilStuntingActivity.this,deskripsi,gender,umur,datatinggi);
+
+                Method.predict_height(HasilStuntingActivity.this, gender, umur, datatinggi, new Method.VolleyCallback() {
+                    @Override
+                    public void onSuccess(Object result) {
+                        deskripsi.setText(result.toString());
+                    }
+
+                    @Override
+                    public void onError(Object error) {
+                        deskripsi.setText("Error");
+                    }
+                });
 
                 LineChart mChart = findViewById(R.id.chart);
                 float[] data_sd3_neg = {30.7f, 33.8f, 35.6f, 37f, 38f, 38.9f, 39.7f, 40.3f, 40.8f, 41.2f, 41.6f, 41.9f, 42.2f, 42.5f, 42.7f, 42.9f, 43.1f, 43.2f, 43.4f, 43.5f, 43.7f, 43.8f, 43.9f, 44.1f, 44.2f};
@@ -158,7 +182,17 @@ public class HasilStuntingActivity extends AppCompatActivity {
         viewlk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Method.predict_hc(HasilStuntingActivity.this,deskripsi,gender,umur,datalk);
+                Method.predict_hc(HasilStuntingActivity.this, gender, umur, datalk, new Method.VolleyCallback() {
+                    @Override
+                    public void onSuccess(Object result) {
+                        deskripsi.setText(result.toString());
+                    }
+
+                    @Override
+                    public void onError(Object error) {
+                        deskripsi.setText("Error");
+                    }
+                });
                 onRadioButtonClicked(v);
 
                 LineChart mChart = findViewById(R.id.chart);

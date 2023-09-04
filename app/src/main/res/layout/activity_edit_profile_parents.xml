@@ -83,32 +83,32 @@
 
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/NIK"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="8dp"
-                app:boxBackgroundMode="outline"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
-                app:startIconDrawable="@drawable/parents_icons"
-                android:layout_below="@id/layout_profilepic">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/NIK"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="40dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                app:boxBackgroundMode="outline"-->
+<!--                app:hintAnimationEnabled="true"-->
+<!--                app:hintEnabled="true"-->
+<!--                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--                app:startIconDrawable="@drawable/parents_icons"-->
+<!--                android:layout_below="@id/layout_profilepic">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_NIK_parents"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custom_edittext"
-                    android:hint="NIK"
-                    tools:ignore="DuplicateClickableBoundsCheck">
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/edit_NIK_parents"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/custom_edittext"-->
+<!--                    android:hint="NIK"-->
+<!--                    tools:ignore="DuplicateClickableBoundsCheck">-->
 
-                </com.google.android.material.textfield.TextInputEditText>
+<!--                </com.google.android.material.textfield.TextInputEditText>-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fullnameparents"
@@ -123,8 +123,7 @@
                 app:hintEnabled="true"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:startIconDrawable="@drawable/parents_icons"
-                android:layout_below="@id/NIK"
-                >
+                android:layout_below="@id/layout_profilepic">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_fullname_parents"

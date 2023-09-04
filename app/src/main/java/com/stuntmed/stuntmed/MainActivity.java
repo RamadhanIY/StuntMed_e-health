@@ -36,6 +36,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.stuntmed.stuntmed.Databases.Baby;
+import com.stuntmed.stuntmed.Databases.User;
 import com.stuntmed.stuntmed.databinding.ActivityMainBinding;
 
 import org.json.JSONException;
@@ -135,7 +136,17 @@ public class MainActivity extends AppCompatActivity {
 
 //      request HTML
         TextView bebas = findViewById(R.id.bebas);
-        Method.predict_hc(MainActivity.this, bebas, "1", "1", "27");
-        Method.predict_weight(MainActivity.this, bebas, "1", "1", "27");
+        Baby.getBabyByNik("1111111111111111", new Method.VolleyCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                Baby baby = (Baby) result;
+//                bebas.setText(baby.);
+            }
+
+            @Override
+            public void onError(Object error) {
+
+            }
+        });
     }
 }
