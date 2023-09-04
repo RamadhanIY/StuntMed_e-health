@@ -54,7 +54,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
         holder.nama_anak.setText(firstName);
 //        holder.gender.setText(currentbaby.gender);
 //        holder.pic_category.setImageResource(currentbaby.kategori);
-        holder.kategori.setText(currentbaby.kategori);
+//        holder.kategori.setText(currentbaby.kategori);
         holder.berat.setText(currentbaby.berat);
         holder.tinggi.setText(currentbaby.tinggi);
         holder.lk.setText(currentbaby.lk);
@@ -62,6 +62,19 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
 
         Method.loadViewGender(holder.gender_view, currentbaby.gender);
         Method.loadImageBaby(holder.pic_baby,currentbaby.nik);
+        // load stunting status
+        Baby.getBabyByNik(currentbaby.nik, new Method.VolleyCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                Baby baby = (Baby) result;
+                holder.kategori.setText(getFirstTwoWords(baby.label_stunting));
+            }
+
+            @Override
+            public void onError(Object error) {
+
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,14 +84,17 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
                 context.startActivity(intent);
             }
         });
-//        }else{
-//            Intent intent = new Intent(context, HasilStuntingActivity.class);
-//            context.startActivity(intent);
-//        }
 
 
     }
 
+    public String getFirstTwoWords(String fullName) {
+        String[] words = fullName.split(" ");
+        if (words.length < 2) {
+            return String.join(" ", words);
+        }
+        return words[0] + " " + words[1];
+    }
     @Override
     public int getItemCount() {
         return babyList.size();

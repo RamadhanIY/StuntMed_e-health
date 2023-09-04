@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,7 +49,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
 
     RecyclerView recyclerView;
 
-    View feature1, feature2;
+    LinearLayout feature1, feature2;
 
     List<Baby> childModelClassList = new ArrayList<>();
 
@@ -89,6 +90,15 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         //Bottom Navbar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setSelectedItemId(R.id.button_home);
+
+//        feature1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomepageUser.this, CheckStuntingListChild.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -144,6 +154,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent intent = new Intent(HomepageUser.this, CheckStuntingListChild.class);
                 startActivity(intent);
+                finish();
             }
         });
         try {
