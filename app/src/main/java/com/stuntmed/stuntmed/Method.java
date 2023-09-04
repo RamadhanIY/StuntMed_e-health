@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -300,6 +301,16 @@ public static void updateProfileImage(CircleImageView image_profile){
             return FirebaseAuth.getInstance().getCurrentUser();
         }catch (Exception e){
             return null;
+        }
+    }
+
+    //convert gender
+    public static String convertgender(String gender){
+        if(gender.equals("Laki-laki")){
+            return "1";
+        }
+        else{
+            return "0";
         }
     }
 

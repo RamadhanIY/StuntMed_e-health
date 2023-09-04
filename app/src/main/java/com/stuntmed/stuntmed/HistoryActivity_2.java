@@ -35,7 +35,7 @@ public class HistoryActivity_2 extends AppCompatActivity {
 
     History_adapter history_adapter;
 
-    private ArrayList<BeratTinggiLKBulanan> laporanpengecekan =new ArrayList<>();
+
     private ArrayList<BeratTinggiLKBulanan> laporanpengecekananak =new ArrayList<>();
     private ListView historyListView;
     private ArrayList<ListData_History> dataHistoryArrayList;

@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.stuntmed.stuntmed.Databases.Baby;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
 
     AppCompatRadioButton viewberat,viewtinggi,viewlk;
     TextView deskripsi,names,infoberats,infotinggis,infolks;
-    private String nik;
+    private String nik,gender,umur,databerat,datatinggi,datalk;
 
 
     @Override
@@ -64,6 +65,12 @@ public class HasilStuntingActivity extends AppCompatActivity {
         infoberats = findViewById(R.id.info_berat);
         infotinggis = findViewById(R.id.info_tinggi);
         infolks = findViewById(R.id.info_lk);
+        AndroidThreeTen.init(this);
+
+        //Method predict
+
+
+
 
 
         nik = getIntent().getStringExtra("NIK");
@@ -85,6 +92,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onRadioButtonClicked(v);
+                Method.predict_weight(HasilStuntingActivity.this,deskripsi,gender,umur,databerat);
                 LineChart mChart = findViewById(R.id.chart);
                 float[] data_sd3_neg = {30.7f, 33.8f, 35.6f, 37f, 38f, 38.9f, 39.7f, 40.3f, 40.8f, 41.2f, 41.6f, 41.9f, 42.2f, 42.5f, 42.7f, 42.9f, 43.1f, 43.2f, 43.4f, 43.5f, 43.7f, 43.8f, 43.9f, 44.1f, 44.2f};
                 float[] data_sd3 = {38.3f, 40.8f, 42.6f, 44.1f, 45.2f, 46.2f, 47f, 47.7f, 48.3f, 48.8f, 49.2f, 49.6f, 49.9f, 50.2f, 50.5f, 50.7f, 51f, 51.2f, 51.4f, 51.5f, 51.7f, 51.9f, 52f, 52.2f, 52.3f};
@@ -104,13 +112,14 @@ public class HasilStuntingActivity extends AppCompatActivity {
                         data_sd3_neg, data_sd3
                 );
                 graf.run();
-                deskripsi.setText("Anjay GagaMabar");
+
             }
         });
         viewtinggi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRadioButtonClicked(v);
+                Method.predict_height(HasilStuntingActivity.this,deskripsi,gender,umur,datatinggi);
 
                 LineChart mChart = findViewById(R.id.chart);
                 float[] data_sd3_neg = {30.7f, 33.8f, 35.6f, 37f, 38f, 38.9f, 39.7f, 40.3f, 40.8f, 41.2f, 41.6f, 41.9f, 42.2f, 42.5f, 42.7f, 42.9f, 43.1f, 43.2f, 43.4f, 43.5f, 43.7f, 43.8f, 43.9f, 44.1f, 44.2f};
@@ -131,12 +140,13 @@ public class HasilStuntingActivity extends AppCompatActivity {
                         data_sd3_neg, data_sd3
                 );
                 graf.run();
-                deskripsi.setText("Anjay GaaMabar");
+
             }
         });
         viewlk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Method.predict_hc(HasilStuntingActivity.this,deskripsi,gender,umur,datalk);
                 onRadioButtonClicked(v);
 
                 LineChart mChart = findViewById(R.id.chart);
@@ -158,7 +168,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
                         data_sd3_neg, data_sd3
                 );
                 graf.run();
-                deskripsi.setText("Anjay Mabar");
+
 
             }
         });
@@ -197,6 +207,15 @@ public class HasilStuntingActivity extends AppCompatActivity {
                 String infoberat = baby.berat;
                 String infotinggi = baby.tinggi;
                 String infolk = baby.lk;
+                String infogender = Method.convertgender(baby.gender);
+                Integer umurs = AgeCalculator.calculateAgeInMonths(baby.date_of_birth);
+
+                umur = umurs.toString();
+
+                gender = infogender;
+                databerat = infoberat;
+                datatinggi = infotinggi;
+                datalk = infolk;
 
                 names.setText(name);
                 infoberats.setText(infoberat);
