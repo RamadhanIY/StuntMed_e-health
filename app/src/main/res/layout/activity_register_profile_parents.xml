@@ -163,7 +163,7 @@
                     android:clickable="true"
                     android:inputType="none"
                     android:editable="false"
-                    android:focusable="false"">
+                    android:focusable="false">
 
                 </EditText>
 

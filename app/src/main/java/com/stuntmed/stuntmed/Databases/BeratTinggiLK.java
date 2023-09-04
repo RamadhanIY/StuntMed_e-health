@@ -27,9 +27,10 @@ public class BeratTinggiLK {
 
     public static  void writenewBeratTinggiLK(String nik, String berat, String tinggi, String lk){
 
-        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
-        BeratTinggiLK beratTinggiLK = new BeratTinggiLK(berat,tinggi,lk);
-        mDatabase.child("Users").child(current_user.getUid()).child("babies").child(nik).child("infobayi").setValue(beratTinggiLK);
+        Method.setValueOnDatabase("Users/"+Method.getCurrentUser().getUid()+"/babies/"+ nik + "/berat",berat);
+        Method.setValueOnDatabase("Users/"+Method.getCurrentUser().getUid()+"/babies/"+ nik + "/tinggi",tinggi);
+        Method.setValueOnDatabase("Users/"+Method.getCurrentUser().getUid()+"/babies/"+ nik + "/lk",lk);
+
     }
 
 }

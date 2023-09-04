@@ -33,7 +33,7 @@ public class BeratTinggiLKBulanan {
 
     public static  void writenewBeratTinggiLKBulanan(String bulan,String nik, String berat, String tinggi, String lk,String label1,String label2,String label3){
 
-        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser current_user = Method.getCurrentUser();
         BeratTinggiLKBulanan beratTinggiLKBulanan = new BeratTinggiLKBulanan(berat,tinggi,lk,label1,label2,label3);
         mDatabase.child("databulanan").child(nik).child(bulan).setValue(beratTinggiLKBulanan);
     }
