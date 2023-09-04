@@ -1,10 +1,21 @@
 package com.stuntmed.stuntmed;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.se.omapi.Session;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,11 +35,18 @@ import com.squareup.picasso.Picasso;
 import com.stuntmed.stuntmed.Databases.Baby;
 import com.stuntmed.stuntmed.Databases.User;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Method {
     public static String database_url = "https://stuntmed-default-rtdb.asia-southeast1.firebasedatabase.app";
-    private static Object obj;
+    private static String result = " ";
+
 
 
 //  FIREBASE STORAGE
@@ -128,6 +146,146 @@ public static void updateProfileImage(CircleImageView image_profile){
 
 //    END OF FIREBASE STORAGE
 
+//    Requests HTML
+    public static void predict_hc(Context this_activity, TextView text_view, String gender, String age, String hc){
+        String url = "https://benngki.pythonanywhere.com/predict-hc";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String data = jsonObject.getString("result");
+                            text_view.setText(data);
+                            Log.d("debuging", data);
+                        } catch (JSONException e) {
+                            Log.d("debuging", "JSON exception");
+                            Log.d("debuging", e.toString());
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("debuging", error.toString());
+                        Toast.makeText(this_activity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String,String>();
+//                params.put("cgpa",cgpa.getText().toString());
+//                params.put("iq",iq.getText().toString());
+//                params.put("profile_score",profile_score.getText().toString());
+                params.put("gender", gender);
+                params.put("hc", hc);
+                params.put("age", age);
+
+                return params;
+            }
+
+        };
+        RequestQueue queue = Volley.newRequestQueue(this_activity);
+        queue.add(stringRequest);
+    }
+
+    public static void predict_weight(Context this_activity, TextView text_view, String gender, String age, String weight){
+        String url = "https://benngki.pythonanywhere.com/predict-weight";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String data = jsonObject.getString("result");
+                            text_view.setText(data);
+                            Log.d("debuging", data);
+                        } catch (JSONException e) {
+                            Log.d("debuging", "JSON exception");
+                            Log.d("debuging", e.toString());
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("debuging", error.toString());
+                        Toast.makeText(this_activity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String,String>();
+//                params.put("cgpa",cgpa.getText().toString());
+//                params.put("iq",iq.getText().toString());
+//                params.put("profile_score",profile_score.getText().toString());
+                params.put("gender", gender);
+                params.put("weight", weight);
+                params.put("age", age);
+
+                return params;
+            }
+
+        };
+        RequestQueue queue = Volley.newRequestQueue(this_activity);
+        queue.add(stringRequest);
+    }
+
+    public static void predict_height(Context this_activity, TextView text_view, String gender, String age, String height){
+        String url = "https://benngki.pythonanywhere.com/predict-height";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String data = jsonObject.getString("result");
+                            text_view.setText(data);
+                            Log.d("debuging", data);
+                        } catch (JSONException e) {
+                            Log.d("debuging", "JSON exception");
+                            Log.d("debuging", e.toString());
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("debuging", error.toString());
+                        Toast.makeText(this_activity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String,String>();
+//                params.put("cgpa",cgpa.getText().toString());
+//                params.put("iq",iq.getText().toString());
+//                params.put("profile_score",profile_score.getText().toString());
+                params.put("gender", gender);
+                params.put("height", height);
+                params.put("age", age);
+
+                return params;
+            }
+
+        };
+        RequestQueue queue = Volley.newRequestQueue(this_activity);
+        queue.add(stringRequest);
+    }
+//    End of Requests HTML
+
     public static DatabaseReference getDatabaseReference(String reference_path){
       return FirebaseDatabase.getInstance(Method.database_url).getReference(reference_path);
     };
@@ -143,6 +301,16 @@ public static void updateProfileImage(CircleImageView image_profile){
             return FirebaseAuth.getInstance().getCurrentUser();
         }catch (Exception e){
             return null;
+        }
+    }
+
+    //convert gender
+    public static String convertgender(String gender){
+        if(gender.equals("Laki-laki")){
+            return "1";
+        }
+        else{
+            return "0";
         }
     }
 

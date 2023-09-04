@@ -1,5 +1,9 @@
 package com.stuntmed.stuntmed;
 
+import static com.stuntmed.stuntmed.Databases.BeratTinggiLK.writenewBeratTinggiLK;
+import static com.stuntmed.stuntmed.Databases.BeratTinggiLKBulanan.writenewBeratTinggiLKBulanan;
+import static com.stuntmed.stuntmed.DateHelper.getTodayDate;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -35,6 +39,9 @@ public class CheckStuntingActivity extends AppCompatActivity {
         berat = findViewById(R.id.input_berat);
         tinggi = findViewById(R.id.input_tinggi);
         lk = findViewById(R.id.input_lingkarkepala);
+        String tanggalpengisian = getTodayDate();
+
+        String NIK = getIntent().getStringExtra("NIK");
 
         AppCompatButton submitButton = (AppCompatButton) findViewById(R.id.button_submit);
         ImageView backButton = (ImageView) findViewById(R.id.backButton);
@@ -48,27 +55,15 @@ public class CheckStuntingActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                writenewBeratTinggiLK(NIK,berat.getText().toString(),tinggi.getText().toString(),lk.getText().toString());
+                writenewBeratTinggiLKBulanan(tanggalpengisian,NIK,berat.getText().toString(),tinggi.getText().toString(),lk.getText().toString(),"test","test12","test123");
+                Intent intent = new Intent(CheckStuntingActivity.this, HasilStuntingActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
 
-//        OrtEnvironment ortEnvironment;
-//
-//        private OrtSession createORTSession(OrtEnvironment ortEnvironment) {
-//            try {
-//                // Reading model bytes from the resource
-//                InputStream is = getResources().openRawResource(R.raw.sklearn_model_with_runtime_opt_ort);
-//                byte[] modelBytes = new byte[is.available()];
-//                is.read(modelBytes);
-//                is.close();
-//
-//                // Creating the ORT Session
-//                return ortEnvironment.createSession(modelBytes);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                return null;  // Handle the exception as you deem fit
-//            }
-//        }
+
 
         // Add other methods or members of the class below
     }
@@ -79,4 +74,5 @@ public class CheckStuntingActivity extends AppCompatActivity {
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
 }

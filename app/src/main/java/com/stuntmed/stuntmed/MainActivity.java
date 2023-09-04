@@ -13,6 +13,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -32,8 +38,19 @@ import com.google.firebase.storage.UploadTask;
 import com.stuntmed.stuntmed.Databases.Baby;
 import com.stuntmed.stuntmed.databinding.ActivityMainBinding;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -116,32 +133,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//      FIREBASE STORAGE
-        StorageReference storage = FirebaseStorage.getInstance("gs://stuntmed.appspot.com").getReference();
-        Uri file = Uri.fromFile(new File("file:///storage/emulated/0/Android/data/com.stuntmed.stuntmed/files/DCIM/IMG_20230903_135103925.png"));
-
-        UploadTask uploadTask = storage
-                .child(Method.getCurrentUser().getUid())
-                .child("profile_image/"+file.getLastPathSegment())
-                .putFile(file);
-
-        // Register observers to listen for when the download is done or if it fails
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-                Log.d("debuging", "tidak sukses upload"+file.getLastPathSegment());
-                Log.d("debuging", exception.toString());
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                // ...
-                Log.d("debuging", "sukses upload"+file.getLastPathSegment());
-            }
-        });
-
+//      request HTML
+        TextView bebas = findViewById(R.id.bebas);
+        Method.predict_hc(MainActivity.this, bebas, "1", "1", "27");
+        Method.predict_weight(MainActivity.this, bebas, "1", "1", "27");
     }
-
 }

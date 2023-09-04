@@ -112,7 +112,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomepageUser.this, CheckStuntingActivity.class);
+                Intent intent = new Intent(HomepageUser.this, CheckStuntingListChild.class);
                 startActivity(intent);
             }
         });
@@ -142,25 +142,7 @@ public class HomepageUser extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void getDataBabyByNik(final String nik){
-        DatabaseReference mDatabase = FirebaseDatabase
-                .getInstance(Method.database_url)
-                .getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/babies/" + nik);
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Baby baby = snapshot.getValue(Baby.class);
-//                HomepageUser.this.onItemsObtained(baby);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
     private void getAllBabyNiks(){
         DatabaseReference mDatabase = FirebaseDatabase
                 .getInstance(Method.database_url)
