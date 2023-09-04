@@ -15,7 +15,7 @@ public class Validator {
 
     // Validasi tanggal dengan format "Sep 2, 2020"
     public static boolean isValidDate(String date) {
-        String regex = "^[A-Z][a-z]{2} [1-3][0-9]?, \\d{4}$";
+        String regex = "^[A-Z][a-z]{2} [1-3]?[0-9]?, \\d{4}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();

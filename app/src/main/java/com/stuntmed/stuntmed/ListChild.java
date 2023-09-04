@@ -55,6 +55,7 @@ public class ListChild extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListChild.this, RegisterBaby.class);
+                intent.putExtra("mode", "1"); // 1 create ; 2 update
                 ListChild.this.startActivity(intent);
             }
         });
@@ -70,14 +71,13 @@ public class ListChild extends AppCompatActivity {
         } else {
             listView.setVisibility(View.VISIBLE);
             addChild_adapter = new AddChild_Adapter(this, listnamedatebaby);
+
             listView.setAdapter(addChild_adapter);
             addChild_adapter.notifyDataSetChanged();
+
             emptyLayout.setVisibility(View.GONE);
         }
     }
-
-
-
     private void getAllBabyNiks(){
         DatabaseReference mDatabase = FirebaseDatabase
                 .getInstance(Method.database_url)
@@ -107,12 +107,20 @@ public class ListChild extends AppCompatActivity {
     }
     public void onItemsObtained(List<Baby> babies) {
         this.babies = babies;
+        this.listnamedatebaby.clear();
         for (Baby baby : babies) {
             listnamedatebaby.add(new DataAddChild(baby.name,AgeCalculator.calculateAgeInMonthsAndDays(baby.date_of_birth),baby.nik));
             Log.d("Ada tanggal lahir bro",baby.date_of_birth);
         }
         checkDataAndDisplay(listnamedatebaby);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        getAllBabyNiks();
     }
 }
 

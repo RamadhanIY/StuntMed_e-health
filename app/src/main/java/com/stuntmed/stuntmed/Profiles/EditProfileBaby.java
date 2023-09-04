@@ -35,6 +35,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.stuntmed.stuntmed.HomepageUser;
+import com.stuntmed.stuntmed.ListChild;
 import com.stuntmed.stuntmed.Method;
 import com.stuntmed.stuntmed.R;
 import com.stuntmed.stuntmed.Validator;
@@ -76,7 +77,8 @@ public class EditProfileBaby extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_baby_remake);
 
-        inputnik = findViewById(R.id.edit_NIK_baby);
+
+//        inputnik = findViewById(R.id.edit_NIK_baby);
         inputfullnama = findViewById(R.id.edit_fullname_baby);
         inputcountry = findViewById(R.id.edit_country);
         inputgender = findViewById(R.id.edit_gender);
@@ -148,10 +150,19 @@ public class EditProfileBaby extends AppCompatActivity {
         });
 
         submitButton.setOnClickListener(view -> {
-            updateBaby(uri.toString(),inputnik.getText().toString(),inputfullnama.getText().toString(),inputdatebirth.getText().toString(),inputcountry.getText().toString(),inputgender.getText().toString(),null,null,null,null);
-            Intent intent = new Intent(this, HomepageUser.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            if (checkInput()){
+                String nik = getIntent().getStringExtra("NIK");
+                updateBaby(nik,uri.toString().toString(),inputfullnama.getText().toString(),inputdatebirth.getText().toString(),inputcountry.getText().toString(),inputgender.getText().toString(),null,null,null,null);
+
+                Method.uploadPictBaby(uri, nik);
+
+                Toast.makeText(this, "Berhasil update data!", Toast.LENGTH_SHORT).show();
+                Log.d("debuging", "Berhasil update data!");
+                finish();
+//                Intent intent = new Intent(this, HomepageUser.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
         });
     }
 
@@ -164,8 +175,7 @@ public class EditProfileBaby extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, HomepageUser.class);
-        startActivity(intent);
+        super.onBackPressed();
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
@@ -174,21 +184,15 @@ public class EditProfileBaby extends AppCompatActivity {
     private boolean checkInput() {
         if (uri == null) {
             Toast.makeText(getApplicationContext(),
-                            "Please set your image!",
+                            "Please set your baby image!",
                             Toast.LENGTH_LONG)
                     .show();
             return false;
         }
 
-        if (inputnik.getText().toString().isEmpty()){
+        if (inputfullnama.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(),
-                            "Please enter your NIK!",
-                            Toast.LENGTH_LONG)
-                    .show();
-            return false;
-        } else if (Validator.isValidNIK(inputnik.getText().toString()) == false) {
-            Toast.makeText(getApplicationContext(),
-                            "Please enter your valid NIK!",
+                            "Please enter your baby fullname!",
                             Toast.LENGTH_LONG)
                     .show();
             return false;
@@ -196,13 +200,13 @@ public class EditProfileBaby extends AppCompatActivity {
 
         if (inputdatebirth.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(),
-                            "Please enter your date of birth!",
+                            "Please enter your baby date of birth!",
                             Toast.LENGTH_LONG)
                     .show();
             return false;
         } else if (Validator.isValidDate(inputdatebirth.getText().toString()) == false) {
             Toast.makeText(getApplicationContext(),
-                            "Please enter your valid date of birth!",
+                            "Please enter your valid baby date of birth!",
                             Toast.LENGTH_LONG)
                     .show();
             return false;
@@ -210,7 +214,7 @@ public class EditProfileBaby extends AppCompatActivity {
 
         if (inputcountry.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(),
-                            "Please enter your country!",
+                            "Please enter your baby country!",
                             Toast.LENGTH_LONG)
                     .show();
             return false;
@@ -218,7 +222,7 @@ public class EditProfileBaby extends AppCompatActivity {
 
         if (inputgender.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(),
-                            "Please enter your gender!",
+                            "Please enter your baby gender!",
                             Toast.LENGTH_LONG)
                     .show();
             return false;
