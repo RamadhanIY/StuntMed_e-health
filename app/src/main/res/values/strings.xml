@@ -43,4 +43,9 @@
     <string name="name_child">Name </string>
     <string name="umur_bayi">3 Months 1 day</string>
 
+    <!--    Page Imunisasi -->
+    <string name="page_imunisasi">Imunisasi</string>
+    <string name="bulan">1 Month</string>
+    <string name="vaksin1">Hepatitis B  dosis 0 bulan</string>
+    <string name="satu_dosis">Satu Dosis</string>
 </resources>
