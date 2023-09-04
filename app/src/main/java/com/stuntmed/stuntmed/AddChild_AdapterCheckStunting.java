@@ -15,6 +15,8 @@ import com.stuntmed.stuntmed.Profiles.EditProfileBaby;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AddChild_AdapterCheckStunting extends ArrayAdapter<DataAddChild> {
     private Context context;
 
@@ -35,6 +37,8 @@ public class AddChild_AdapterCheckStunting extends ArrayAdapter<DataAddChild> {
         // Inisialisasi komponen view
         TextView NameChild = view.findViewById(R.id.NameChild);
         TextView umur = view.findViewById(R.id.umur);
+        CircleImageView pic =  view.findViewById(R.id.photo);
+        Method.loadImageBaby(pic,dataAddChild.nik);
 
         NameChild.setText(dataAddChild.NameChild);
         umur.setText(dataAddChild.umur);

@@ -61,6 +61,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
 
 
         Method.loadViewGender(holder.gender_view, currentbaby.gender);
+        Method.loadImageBaby(holder.pic_baby,currentbaby.nik);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +89,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
 //        CircleImageView pic_baby;
         TextView nama_anak,kategori,berat,tinggi,lk,gender;
         ImageView gender_view;
+        CircleImageView pic_baby;
 //        ImageView pic_gender;
 //        ImageView pic_category;
 
@@ -102,6 +104,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
             tinggi = itemView.findViewById(R.id.info_tinggi);
             lk =  itemView.findViewById(R.id.info_lk);
             gender_view = itemView.findViewById(R.id.gender_anak);
+            pic_baby = itemView.findViewById(R.id.pic_baby);
         }
     }
 }

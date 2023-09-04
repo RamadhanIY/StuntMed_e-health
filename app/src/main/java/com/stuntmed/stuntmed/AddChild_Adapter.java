@@ -48,6 +48,8 @@ public class AddChild_Adapter extends ArrayAdapter<DataAddChild> {
 
         NameChild.setText(dataAddChild.NameChild);
         umur.setText(dataAddChild.umur);
+        CircleImageView pic =  view.findViewById(R.id.photo);
+        Method.loadImageBaby(pic,dataAddChild.nik);
 
         // Menambahkan OnClickListener
         view.setOnClickListener(new View.OnClickListener() {

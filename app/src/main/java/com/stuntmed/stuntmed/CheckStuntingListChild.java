@@ -11,6 +11,7 @@ import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,6 +57,13 @@ public class CheckStuntingListChild extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(CheckStuntingListChild.this,RegisterBaby.class);
                 CheckStuntingListChild.this.startActivity(intent);
+            }
+        });
+        ImageView backButton = (ImageView) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
@@ -113,5 +121,12 @@ public class CheckStuntingListChild extends AppCompatActivity {
         }
         checkDataAndDisplay(listnamedatebaby);
 
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

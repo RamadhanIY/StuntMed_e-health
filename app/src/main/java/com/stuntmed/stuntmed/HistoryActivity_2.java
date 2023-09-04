@@ -55,9 +55,6 @@ public class HistoryActivity_2 extends AppCompatActivity {
         for (String nik : listOfNik) {
             getDataBabyByNik(nik);
         }
-
-        dataHistoryArrayList = new ArrayList<>();
-        dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 1","12-09-08","Tidak stunting","Anjay Mabar"));
 //        dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures, "Deskripsi 2","12-09-08","Tidak stunting","Anjay Mabar"));
 
         ImageView backButton = (ImageView) findViewById(R.id.backButton);
@@ -102,7 +99,7 @@ public class HistoryActivity_2 extends AppCompatActivity {
                         @Override
                         public void onSuccess(Object result) {
                             Baby baby = (Baby) result;
-                            dataHistoryArrayList.add(new ListData_History(R.drawable.profie_pictures,baby.name ,tanggal,"Tidak stunting","Anjay Mabar"));
+                            dataHistoryArrayList.add(new ListData_History(baby.nik,baby.name ,tanggal));
                             History_adapter adapter = new History_adapter(HistoryActivity_2.this, dataHistoryArrayList);
                             historyListView.setAdapter(adapter);
                         }

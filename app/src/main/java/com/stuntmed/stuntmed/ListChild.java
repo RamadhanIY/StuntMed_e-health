@@ -11,6 +11,7 @@ import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,6 +51,7 @@ public class ListChild extends AppCompatActivity {
         emptyLayout = findViewById(R.id.empty_layout);
         addbutton =  findViewById(R.id.AddButton);
 
+
         getAllBabyNiks();
         addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +59,14 @@ public class ListChild extends AppCompatActivity {
                 Intent intent = new Intent(ListChild.this, RegisterBaby.class);
                 intent.putExtra("mode", "1"); // 1 create ; 2 update
                 ListChild.this.startActivity(intent);
+            }
+        });
+
+        ImageView backButton = (ImageView) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
@@ -121,6 +131,13 @@ public class ListChild extends AppCompatActivity {
         super.onResume();
 
         getAllBabyNiks();
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
 

@@ -10,12 +10,11 @@ public class ListData_History {
     String desc;
 
     String tanggal;
+    String nik;
 
-    public ListData_History(int photo, String namaHistory, String tanggal, String hasil_desc, String desc) {
-        this.Photo = photo;
+    public ListData_History(String nik, String namaHistory, String tanggal) {
         this.NamaHistory = namaHistory;
-        this.hasil_desc = hasil_desc;
-        this.desc = desc;
         this.tanggal = tanggal;
+        this.nik = nik;
     }
 }
