@@ -120,7 +120,7 @@ public class Register extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 //                                    User.writeNewUser();
                                     // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(Register.this, HomepageUser.class));
+                                    startActivity(new Intent(Register.this, RegisterParents.class));
                                     displayToast("Firebase authentication successful");
                                 } else {
                                     // When task is unsuccessful display Toast
