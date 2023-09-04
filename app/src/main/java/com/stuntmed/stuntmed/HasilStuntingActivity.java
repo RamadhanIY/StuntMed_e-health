@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -38,9 +39,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.stuntmed.stuntmed.Databases.Baby;
+import com.stuntmed.stuntmed.Databases.BeratTinggiLKBulanan;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class HasilStuntingActivity extends AppCompatActivity {
 
@@ -48,6 +52,13 @@ public class HasilStuntingActivity extends AppCompatActivity {
     AppCompatRadioButton viewberat,viewtinggi,viewlk;
     TextView deskripsi,names,infoberats,infotinggis,infolks;
     private String nik,gender,umur,databerat,datatinggi,datalk;
+
+    ArrayList<BeratTinggiLKBulanan> laporanpengecekananak;
+
+    private TreeMap<String, BeratTinggiLKBulanan> sortedData = new TreeMap<>();
+    private ArrayList<Float> listBerat = new ArrayList<>();
+    private ArrayList<Float> listTinggi = new ArrayList<>();
+    private ArrayList<Float> listLK = new ArrayList<>();
 
 
     @Override
@@ -77,6 +88,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
 
         // Menggunakan NIK untuk mengambil data dari Firebase
         fetchBabyDetails(nik);
+        getDataBabyByNik(nik);
 
         ImageView backButton = (ImageView) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +113,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
                 float[] data_sd1_neg = {33.2f, 36.1f, 38f, 39.3f, 40.4f, 41.4f, 42.1f, 42.7f, 43.3f, 43.7f, 44.1f, 44.5f, 44.8f, 45f, 45.3f, 45.5f, 45.7f, 45.9f, 46f, 46.2f, 46.4f, 46.5f, 46.6f, 46.8f, 46.9f};
                 float[] data_sd1 = {35.7f, 38.4f, 40.3f, 41.7f, 42.8f, 43.8f, 44.6f, 45.2f, 45.8f, 46.3f, 46.7f, 47f, 47.4f, 47.6f, 47.9f, 48.1f, 48.3f, 48.5f, 48.7f, 48.9f, 49f, 49.2f, 49.3f, 49.5f, 49.6f};
                 float[] data_sd0 = {34.5f, 37.3f, 39.1f, 40.5f, 41.6f, 42.6f, 43.3f, 44f, 44.5f, 45f, 45.4f, 45.8f, 46.1f, 46.3f, 46.6f, 46.8f, 47f, 47.2f, 47.4f, 47.5f, 47.7f, 47.8f, 48f, 48.1f, 48.3f};
-                float[] dataset = {59f, 39f};
+                float [] dataset = convertArrayListToFloatArray(listBerat);
 
                 Grafik graf = new Grafik(
                         mChart,
@@ -129,7 +141,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
                 float[] data_sd1_neg = {33.2f, 36.1f, 38f, 39.3f, 40.4f, 41.4f, 42.1f, 42.7f, 43.3f, 43.7f, 44.1f, 44.5f, 44.8f, 45f, 45.3f, 45.5f, 45.7f, 45.9f, 46f, 46.2f, 46.4f, 46.5f, 46.6f, 46.8f, 46.9f};
                 float[] data_sd1 = {35.7f, 38.4f, 40.3f, 41.7f, 42.8f, 43.8f, 44.6f, 45.2f, 45.8f, 46.3f, 46.7f, 47f, 47.4f, 47.6f, 47.9f, 48.1f, 48.3f, 48.5f, 48.7f, 48.9f, 49f, 49.2f, 49.3f, 49.5f, 49.6f};
                 float[] data_sd0 = {34.5f, 37.3f, 39.1f, 40.5f, 41.6f, 42.6f, 43.3f, 44f, 44.5f, 45f, 45.4f, 45.8f, 46.1f, 46.3f, 46.6f, 46.8f, 47f, 47.2f, 47.4f, 47.5f, 47.7f, 47.8f, 48f, 48.1f, 48.3f};
-                float[] dataset = {39f, 39f};
+                float [] dataset = convertArrayListToFloatArray(listTinggi);
 
                 Grafik graf = new Grafik(
                         mChart,
@@ -157,7 +169,7 @@ public class HasilStuntingActivity extends AppCompatActivity {
                 float[] data_sd1_neg = {33.2f, 36.1f, 38f, 39.3f, 40.4f, 41.4f, 42.1f, 42.7f, 43.3f, 43.7f, 44.1f, 44.5f, 44.8f, 45f, 45.3f, 45.5f, 45.7f, 45.9f, 46f, 46.2f, 46.4f, 46.5f, 46.6f, 46.8f, 46.9f};
                 float[] data_sd1 = {35.7f, 38.4f, 40.3f, 41.7f, 42.8f, 43.8f, 44.6f, 45.2f, 45.8f, 46.3f, 46.7f, 47f, 47.4f, 47.6f, 47.9f, 48.1f, 48.3f, 48.5f, 48.7f, 48.9f, 49f, 49.2f, 49.3f, 49.5f, 49.6f};
                 float[] data_sd0 = {34.5f, 37.3f, 39.1f, 40.5f, 41.6f, 42.6f, 43.3f, 44f, 44.5f, 45f, 45.4f, 45.8f, 46.1f, 46.3f, 46.6f, 46.8f, 47f, 47.2f, 47.4f, 47.5f, 47.7f, 47.8f, 48f, 48.1f, 48.3f};
-                float[] dataset = {32f, 30f};
+                float [] dataset = convertArrayListToFloatArray(listLK);
 
                 Grafik graf = new Grafik(
                         mChart,
@@ -237,5 +249,51 @@ public class HasilStuntingActivity extends AppCompatActivity {
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
+    private void getDataBabyByNik(final String nik){
+        DatabaseReference mDatabase = FirebaseDatabase
+                .getInstance(Method.database_url)
+                .getReference("databulanan/" + nik);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Mengumpulkan data ke dalam TreeMap berdasarkan tanggal
+                for (DataSnapshot babySnapshot : snapshot.getChildren()) {
+                    String tanggal = babySnapshot.getKey();
+                    BeratTinggiLKBulanan baby = babySnapshot.getValue(BeratTinggiLKBulanan.class);
+                    sortedData.put(tanggal, baby);
+                }
+
+                // Memproses data yang sudah disortir berdasarkan tanggal
+                for (Map.Entry<String, BeratTinggiLKBulanan> entry : sortedData.entrySet()) {
+                    BeratTinggiLKBulanan babyData = entry.getValue();
+
+                    try {
+                        listBerat.add(Float.parseFloat(babyData.getBerat()));
+                        listTinggi.add(Float.parseFloat(babyData.getTinggi()));
+                        listLK.add(Float.parseFloat(babyData.getLk()));
+                    } catch (NumberFormatException e) {
+                        Log.e("ConversionError", "Error converting string to float", e);
+                        // Anda bisa menambahkan tindakan tambahan di sini, misalnya memberi informasi ke pengguna atau menyimpan data yang bermasalah untuk ditinjau
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("FirebaseError", "Error fetching data: ", error.toException());
+            }
+        });
+    }
+    private float[] convertArrayListToFloatArray(ArrayList<Float> list) {
+        float[] result = new float[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            result[i] = list.get(i);
+        }
+        return result;
+    }
+
+
 
 }

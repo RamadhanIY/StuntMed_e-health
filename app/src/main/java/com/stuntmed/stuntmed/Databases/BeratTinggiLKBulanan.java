@@ -37,5 +37,33 @@ public class BeratTinggiLKBulanan {
         BeratTinggiLKBulanan beratTinggiLKBulanan = new BeratTinggiLKBulanan(berat,tinggi,lk,label1,label2,label3);
         mDatabase.child("databulanan").child(nik).child(bulan).setValue(beratTinggiLKBulanan);
     }
+    public String getBerat() {
+        return berat;
+    }
+
+    // Setter untuk berat
+    public void setBerat(String berat) {
+        this.berat = berat;
+    }
+
+    // Getter untuk tinggi
+    public String getTinggi() {
+        return tinggi;
+    }
+
+    // Setter untuk tinggi
+    public void setTinggi(String tinggi) {
+        this.tinggi = tinggi;
+    }
+
+    // Getter untuk lk
+    public String getLk() {
+        return lk;
+    }
+
+    // Setter untuk lk
+    public void setLk(String lk) {
+        this.lk = lk;
+    }
 
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/pagecolor">
+
+    <LinearLayout
+        android:id="@+id/ImunisasiList"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_5"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/bulan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/bulan"
+                android:textColor="#484C52"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/vaksin"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/vaksin1"
+            android:textColor="#484C52"
+            android:textSize="15sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/dosis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/satu_dosis"
+            android:textColor="#484C52"
+            android:textSize="15sp"></TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
